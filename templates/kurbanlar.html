@@ -91,7 +91,7 @@
       font-size: 1rem;
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     }
-
+    
     .footer-links h3, 
     .footer-contact h3 {
       font-size: 1.4rem;
@@ -832,41 +832,55 @@
       margin: 30px 0;
     }
     
+    /* Hotspot Tooltip Stilleri */
+    .hotspot-tooltip {
+        position: absolute;
+        background: rgba(0, 0, 0, 0.85);
+        color: white;
+        padding: 8px 15px;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 500;
+        white-space: nowrap;
+        z-index: 1000;
+        pointer-events: none;
+        transform: translateX(-50%);
+        display: none;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        animation: fadeIn 0.2s ease-out;
+        max-width: 200px;
+        text-align: center;
+        line-height: 1.4;
+    }
+
     .hotspot {
-      position: absolute;
-      width: 30px;
-      height: 30px;
-      background: #ff4d4d;
-      border-radius: 50%;
-      transform: translate(-50%, -50%);
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 0 5px rgba(255, 77, 77, 0.3);
-      animation: pulse 2s infinite;
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        background: #ff4d4d;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 0 0 5px rgba(255, 77, 77, 0.3);
+        animation: pulse 2s infinite;
+        z-index: 10;
     }
-    
+
     .hotspot:hover {
-      transform: translate(-50%, -50%) scale(1.5);
+        transform: translate(-50%, -50%) scale(1.5);
+        z-index: 11;
     }
-    
-    .hotspot::after {
-      content: attr(data-title);
-      position: absolute;
-      bottom: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(0,0,0,0.8);
-      color: white;
-      padding: 5px 10px;
-      border-radius: 5px;
-      font-size: 14px;
-      white-space: nowrap;
-      opacity: 0;
-      transition: opacity 0.3s ease;
+
+    @keyframes pulse {
+        0% { transform: translate(-50%, -50%) scale(1); }
+        50% { transform: translate(-50%, -50%) scale(1.1); }
+        100% { transform: translate(-50%, -50%) scale(1); }
     }
-    
-    .hotspot:hover::after {
-      opacity: 1;
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateX(-50%) translateY(10px); }
+        to { opacity: 1; transform: translateX(-50%) translateY(0); }
     }
     
     /* Progress Tracker */
@@ -1288,18 +1302,57 @@
       <h2 class="map-title en-text" style="display:none;">Global Distribution of Endangered Species</h2>
       
       <div class="world-map">
-        <div class="hotspot" style="top: 20%; left: 30%;" data-title="Kutup Ayıları - Arktik"></div>
-        <div class="hotspot" style="top: 20%; left: 40%;" data-title="Kutup Ayıları - Arktik"></div>
-        <div class="hotspot" style="top: 37%; left: 49%;" data-title="Alp canlıları - Alpler"></div>
-        <div class="hotspot" style="top: 40%; left: 18%;" data-title="Ormanlar - ABD"></div>
-        <div class="hotspot" style="top: 20%; left: 63%;" data-title="Ormanlar ve canlılar - Sibirya"></div>
-        <div class="hotspot" style="top: 82%; left: 83%;" data-title="Ormanlar ve canlılar - Avusturalya"></div>
-        <div class="hotspot" style="top: 60%; left: 75%;" data-title="Deniz Kaplumbağaları - Tropikler"></div>
-        <div class="hotspot" style="top: 62%; left: 55%;" data-title="Filler - Afrika"></div>
-        <div class="hotspot" style="top: 77%; left: 53%;" data-title="Filler - Afrika"></div>
-        <div class="hotspot" style="top: 57%; left: 47%;" data-title="Maymunlar - Afrika"></div>
-        <div class="hotspot" style="top: 45%; left: 75%;" data-title="Pandalar - Asya"></div>
-        <div class="hotspot" style="top: 66%; left: 30%;" data-title="Amazon Türleri - Güney Amerika"></div>
+        <!-- Kutup Ayıları / Polar Bears -->
+        <div class="hotspot" style="top: 20%; left: 30%;" 
+            data-title-tr="Kutup Ayıları - Arktik" 
+            data-title-en="Polar Bears - Arctic"></div>
+        <div class="hotspot" style="top: 20%; left: 40%;" 
+            data-title-tr="Kutup Ayıları - Arktik" 
+            data-title-en="Polar Bears - Arctic"></div>
+        
+        <!-- Alpler / Alps -->
+        <div class="hotspot" style="top: 37%; left: 49%;" 
+            data-title-tr="Alp canlıları - Alpler" 
+            data-title-en="Alpine Species - Alps"></div>
+        
+        <!-- Ormanlar / Forests -->
+        <div class="hotspot" style="top: 40%; left: 18%;" 
+            data-title-tr="Ormanlar - ABD" 
+            data-title-en="Forests - USA"></div>
+        <div class="hotspot" style="top: 20%; left: 63%;" 
+            data-title-tr="Ormanlar ve canlılar - Sibirya" 
+            data-title-en="Forests and Wildlife - Siberia"></div>
+        <div class="hotspot" style="top: 82%; left: 83%;" 
+            data-title-tr="Ormanlar ve canlılar - Avusturalya" 
+            data-title-en="Forests and Wildlife - Australia"></div>
+        
+        <!-- Deniz Kaplumbağaları / Sea Turtles -->
+        <div class="hotspot" style="top: 60%; left: 75%;" 
+            data-title-tr="Deniz Kaplumbağaları - Tropikler" 
+            data-title-en="Sea Turtles - Tropics"></div>
+        
+        <!-- Filler / Elephants -->
+        <div class="hotspot" style="top: 62%; left: 55%;" 
+            data-title-tr="Filler - Afrika" 
+            data-title-en="Elephants - Africa"></div>
+        <div class="hotspot" style="top: 77%; left: 53%;" 
+            data-title-tr="Filler - Afrika" 
+            data-title-en="Elephants - Africa"></div>
+        
+        <!-- Maymunlar / Monkeys -->
+        <div class="hotspot" style="top: 57%; left: 47%;" 
+            data-title-tr="Maymunlar - Afrika" 
+            data-title-en="Monkeys - Africa"></div>
+        
+        <!-- Pandalar / Pandas -->
+        <div class="hotspot" style="top: 45%; left: 75%;" 
+            data-title-tr="Pandalar - Asya" 
+            data-title-en="Pandas - Asia"></div>
+        
+        <!-- Amazon Türleri / Amazon Species -->
+        <div class="hotspot" style="top: 66%; left: 30%;" 
+            data-title-tr="Amazon Türleri - Güney Amerika" 
+            data-title-en="Amazon Species - South America"></div>
       </div>
       
       <div class="progress-tracker">
@@ -1347,6 +1400,7 @@
           </div>
         </div>
       </div>
+    </div>
   </section>
 
   <!-- Timeline Section -->
@@ -1563,6 +1617,12 @@
     
     // Language Toggle Functionality
     document.addEventListener('DOMContentLoaded', function() {
+      // Sayfa yüklendiğinde Türkçe dilini aktif et
+      document.querySelectorAll('.tr-text').forEach(el => el.style.display = '');
+      document.querySelectorAll('.en-text').forEach(el => el.style.display = 'none');
+      document.getElementById('langTR').classList.add('active');
+      document.getElementById('langEN').classList.remove('active');
+
       const langTR = document.getElementById('langTR');
       const langEN = document.getElementById('langEN');
       
@@ -1657,12 +1717,115 @@
       
       // Hotspot click functionality
       const hotspots = document.querySelectorAll('.hotspot');
+      let activeTooltip = null;
+
+      // Tooltip oluşturma fonksiyonu
+      function createTooltip(element, text) {
+          // Önceki tooltip'i temizle
+          if (activeTooltip) {
+              activeTooltip.remove();
+          }
+          
+          // Yeni tooltip oluştur
+          const tooltip = document.createElement('div');
+          tooltip.className = 'hotspot-tooltip';
+          tooltip.textContent = text;
+          document.body.appendChild(tooltip);
+          
+          // Pozisyon ayarla
+          const rect = element.getBoundingClientRect();
+          const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+          const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+          
+          tooltip.style.left = `${rect.left + scrollLeft + (element.offsetWidth / 2)}px`;
+          tooltip.style.top = `${rect.top + scrollTop - 35}px`;
+          tooltip.style.display = 'block';
+          
+          // Tooltip'in genişliğine göre sola kaydırma yap
+          tooltip.style.marginLeft = `-${tooltip.offsetWidth / 2}px`;
+          
+          activeTooltip = tooltip;
+          return tooltip;
+      }
+
+      // Dil kontrolü fonksiyonu
+      function isTurkishActive() {
+          return document.querySelector('.tr-text').style.display !== 'none';
+      }
+
+      // Hotspot event listener'ları
       hotspots.forEach(hotspot => {
-        hotspot.addEventListener('click', function() {
-          alert(this.getAttribute('data-title') + ' bölgesindeki türler kritik tehlike altında!');
-        });
+          // Hover efekti
+          hotspot.addEventListener('mouseenter', function() {
+              const title = isTurkishActive() ? 
+                  this.getAttribute('data-title-tr') : 
+                  this.getAttribute('data-title-en');
+              this.currentTooltip = createTooltip(this, title);
+          });
+          
+          hotspot.addEventListener('mouseleave', function() {
+              if (this.currentTooltip) {
+                  this.currentTooltip.remove();
+                  this.currentTooltip = null;
+                  activeTooltip = null;
+              }
+          });
+          
+          // Click efekti
+          hotspot.addEventListener('click', function(e) {
+              e.stopPropagation();
+              const title = isTurkishActive() ? 
+                  this.getAttribute('data-title-tr') : 
+                  this.getAttribute('data-title-en');
+              
+              if (isTurkishActive()) {
+                  alert(title + ' bölgesindeki türler kritik tehlike altında!');
+              } else {
+                  alert('Species in ' + title + ' region are critically endangered!');
+              }
+          });
       });
-    });
+
+      // Dil değişimlerinde tooltip'leri güncelle
+      function updateHotspotTooltips() {
+          if (activeTooltip) {
+              const hotspot = document.querySelector('.hotspot:hover');
+              if (hotspot) {
+                  const title = isTurkishActive() ? 
+                      hotspot.getAttribute('data-title-tr') : 
+                      hotspot.getAttribute('data-title-en');
+                  activeTooltip.textContent = title;
+                  // Konumu yeniden hesapla
+                  const rect = hotspot.getBoundingClientRect();
+                  const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+                  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                  
+                  activeTooltip.style.left = `${rect.left + scrollLeft + (hotspot.offsetWidth / 2)}px`;
+                  activeTooltip.style.top = `${rect.top + scrollTop - 35}px`;
+                  activeTooltip.style.marginLeft = `-${activeTooltip.offsetWidth / 2}px`;
+              }
+          }
+      }
+
+      // Dil değiştirme butonlarına event listener ekle
+      document.getElementById('langTR').addEventListener('click', updateHotspotTooltips);
+      document.getElementById('langEN').addEventListener('click', updateHotspotTooltips);
+
+      // Sayfa scroll olduğunda tooltip pozisyonunu güncelle
+      window.addEventListener('scroll', function() {
+          if (activeTooltip) {
+              const hotspot = document.querySelector('.hotspot:hover');
+              if (hotspot) {
+                  const rect = hotspot.getBoundingClientRect();
+                  const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+                  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                  
+                  activeTooltip.style.left = `${rect.left + scrollLeft + (hotspot.offsetWidth / 2)}px`;
+                  activeTooltip.style.top = `${rect.top + scrollTop - 35}px`;
+              }
+          }
+      });
+    })
   </script>
 </body>
 </html>
