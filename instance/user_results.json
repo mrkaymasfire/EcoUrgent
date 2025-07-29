@@ -1,0 +1,58 @@
+[
+  {
+    "timestamp": "2025-07-25T16:37:14.787602",
+    "score": 50,
+    "category_scores": {
+      "transportation": 50,
+      "nutrition": 50,
+      "energy": 50,
+      "waste": 50,
+      "consumption": 50,
+      "technology": 50,
+      "lifestyle": 50
+    },
+    "test_type": "kisa"
+  },
+  {
+    "timestamp": "2025-07-25T16:37:41.749992",
+    "score": 52,
+    "category_scores": {
+      "transportation": 62.5,
+      "nutrition": 50.0,
+      "energy": 37.5,
+      "waste": 75.0,
+      "consumption": 12.5,
+      "technology": 75.0,
+      "lifestyle": 50
+    },
+    "test_type": "kisa"
+  },
+  {
+    "timestamp": "2025-07-25T16:38:03.930368",
+    "score": 50,
+    "category_scores": {
+      "transportation": 50,
+      "nutrition": 50,
+      "energy": 50,
+      "waste": 50,
+      "consumption": 50,
+      "technology": 50,
+      "lifestyle": 50
+    },
+    "test_type": "kisa"
+  },
+  {
+    "timestamp": "2025-07-25T16:38:25.962561",
+    "score": 59,
+    "category_scores": {
+      "transportation": 87.5,
+      "nutrition": 25.0,
+      "energy": 50.0,
+      "waste": 75.0,
+      "consumption": 25.0,
+      "technology": 100.0,
+      "lifestyle": 50
+    },
+    "test_type": "kisa"
+  }
+]

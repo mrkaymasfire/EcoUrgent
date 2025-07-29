@@ -1,0 +1,1668 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kurbanlar - Doğa ve Hayvanlar</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Pacifico&display=swap" rel="stylesheet" />
+  <!-- Animate On Scroll CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  
+  <!-- Favicon -->
+  <link rel="icon" href="static/img/favicon.ico" type="image/x-icon" />
+
+  <style>
+    :root {
+      --primary-color: #006666;
+      --secondary-color: #00ffaa;
+      --text-dark: #1b3a36;
+      --text-light: #e0f7f5;
+      --bg-light: #e6fef7;
+      --bg-dark: #004040;
+      --card-bg: #ffffff;
+      --shadow-color: rgba(0, 255, 170, 0.4);
+      --dark-color: #2c3e50;
+      --primary-dark: #1a2a3a;
+      --white: #ffffff;
+      --transition: all 0.3s ease;
+      --shadow-lg: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+    /* FOOTER STYLES */
+    .footer {
+      background: linear-gradient(135deg, #0f3d3d, #092929);
+      color: #e0f7f5;
+      padding: 5rem 2rem 2rem;
+      margin-top: 5rem;
+      position: relative;
+      border-top: 4px solid #00aa7a;
+      box-shadow: 0 -5px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background: linear-gradient(to bottom, rgba(0, 170, 122, 0.25), transparent);
+      z-index: 0;
+    }
+
+    .footer-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 3rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-logo {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      font-family: 'Montserrat', sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #ffffff;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .footer-logo i {
+      color: #00cc99;
+      font-size: 1.8rem;
+    }
+
+    .footer-about {
+      margin-bottom: 2rem;
+      line-height: 1.7;
+      color: #c4e8e2;
+      font-size: 1rem;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    .footer-links h3, 
+    .footer-contact h3 {
+      font-size: 1.4rem;
+      margin-bottom: 2rem;
+      position: relative;
+      padding-bottom: 0.8rem;
+      font-family: 'Montserrat', sans-serif;
+      color: #ffffff;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .footer-links h3::after, 
+    .footer-contact h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 4px;
+      background: linear-gradient(to right, #00aa7a, #00ffaa);
+      border-radius: 2px;
+      box-shadow: 0 2px 4px rgba(0, 255, 170, 0.3);
+    }
+
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .footer-links li:hover {
+      transform: translateX(5px);
+    }
+
+    .footer-links a {
+      color: #c4e8e2;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1rem;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    .footer-links a:hover {
+      color: #00ffaa;
+    }
+
+    .footer-links i {
+      font-size: 0.9rem;
+      color: #00aa7a;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+      gap: 15px;
+    }
+
+    .contact-icon {
+      color: #00cc99;
+      font-size: 1.2rem;
+      margin-top: 3px;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    .contact-item div {
+      color: #c4e8e2;
+      line-height: 1.5;
+      font-size: 1rem;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 45px;
+      height: 45px;
+      background-color: rgba(0, 204, 153, 0.1);
+      border-radius: 50%;
+      color: #ffffff;
+      transition: all 0.3s ease;
+      font-size: 1.2rem;
+      border: 1px solid rgba(0, 204, 153, 0.3);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    .social-link:hover {
+      background-color: #00cc99;
+      transform: translateY(-5px);
+      color: #ffffff;
+      box-shadow: 0 5px 15px rgba(0, 204, 153, 0.3);
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 3rem;
+      margin-top: 3rem;
+      border-top: 1px solid rgba(0, 204, 153, 0.2);
+      color: #a0c4bc;
+      font-size: 0.9rem;
+      position: relative;
+      z-index: 1;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    /* RESPONSIVE TASARIM */
+    @media (max-width: 768px) {
+      .footer {
+        padding: 3rem 1.5rem 1.5rem;
+        border-top-width: 3px;
+      }
+      
+      .footer-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      
+      .footer-logo {
+        font-size: 1.8rem;
+        justify-content: center;
+      }
+      
+      .footer-about {
+        text-align: center;
+      }
+      
+      .footer-links h3, 
+      .footer-contact h3 {
+        font-size: 1.3rem;
+        margin-bottom: 1.5rem;
+        text-align: center;
+      }
+      
+      .footer-links h3::after,
+      .footer-contact h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      
+      .footer-links ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .social-links {
+        justify-content: center;
+      }
+      
+      .contact-item {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .footer {
+        padding: 2.5rem 1rem 1.5rem;
+      }
+      
+      .footer-logo {
+        font-size: 1.6rem;
+      }
+      
+      .social-link {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+      }
+    }
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      scroll-behavior: smooth;
+      padding-top: 80px; /* Navbar yüksekliği için padding eklendi */
+    }
+
+    /* Language Toggle - Yeni konumu */
+    .language-toggle {
+      position: fixed;
+      bottom: 100px;
+      right: 30px;
+      z-index: 1000;
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+      border-radius: 30px;
+      padding: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .language-toggle button {
+      background: none;
+      border: none;
+      color: var(--text-light);
+      padding: 8px 15px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .language-toggle button.active {
+      background: var(--secondary-color);
+      color: var(--bg-dark);
+    }
+
+    /* YENİ NAVBAR TASARIMI */
+    .navbar {
+      background: linear-gradient(135deg, var(--dark-color), var(--primary-dark));
+      padding: 1rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: var(--shadow-lg);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      transition: var(--transition);
+      backdrop-filter: blur(10px);
+      background-color: rgba(44, 62, 80, 0.9);
+    }
+    
+    .navbar.scrolled {
+      padding: 0.8rem 3rem;
+      background-color: rgba(44, 62, 80, 0.98);
+    }
+    
+    .navbar-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .navbar-logo {
+      font-weight: 700;
+      font-size: 1.8rem;
+      font-family: 'Montserrat', sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--white);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    
+    .navbar-logo:hover {
+      transform: scale(1.03);
+    }
+    
+    .navbar-logo i {
+      font-size: 1.5rem;
+      color: var(--primary-color);
+    }
+    
+    .navbar-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+    
+    .navbar a {
+      color: var(--white);
+      text-decoration: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 50px;
+      transition: var(--transition);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .navbar a::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--primary-color);
+      transition: var(--transition);
+    }
+    
+    .navbar a:hover::before, .navbar a.aktif::before {
+      width: 100%;
+    }
+    
+    .navbar a:hover, .navbar a.aktif {
+      color: var(--primary-color);
+    }
+
+    /* HERO SECTION */
+    .hero {
+      background: url('static/img/arkaplan3.jpg') no-repeat center center/cover;
+      padding: 120px 20px;
+      margin-top: 0;
+      text-align: center;
+      color: var(--text-light);
+      position: relative;
+      overflow: hidden;
+      border-radius: 0 0 40px 40px;
+      box-shadow: inset 0 0 50px rgba(0, 60, 50, 0.7);
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: -80px; /* Navbar yüksekliğini dengelemek için */
+    }
+
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(135deg, rgba(0, 170, 153, 0.85) 0%, rgba(0, 60, 50, 0.85) 100%);
+      z-index: 0;
+      border-radius: 0 0 40px 40px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      padding: 40px;
+      background-color: rgba(0, 40, 40, 0.5);
+      border-radius: 20px;
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      border: 2px solid rgba(0, 255, 170, 0.3);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin: 0 auto;
+      font-weight: 800;
+      line-height: 1.2;
+      text-shadow: 0 4px 8px rgba(0,0,0,0.45);
+      animation: fadeSlideIn 1.2s ease forwards;
+      opacity: 0;
+      transform: translateY(40px);
+      margin-bottom: 20px;
+    }
+
+    .hero p.subtitle {
+      font-size: 1.5rem;
+      font-family: 'Pacifico', cursive;
+      color: #a0ffe0;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      animation: fadeSlideIn 1.2s ease forwards 0.3s;
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    @keyframes fadeSlideIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 60px auto 100px;
+      padding: 0 20px;
+      z-index: 10;
+      position: relative;
+    }
+
+    /* ANIMAL CARDS */
+    .animal-box {
+      display: flex;
+      background: var(--card-bg);
+      margin-bottom: 40px;
+      border-radius: 16px;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      cursor: pointer;
+      border: 2px solid transparent;
+      position: relative;
+    }
+
+    .animal-box:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 25px 50px var(--shadow-color);
+      z-index: 100;
+      border-color: var(--secondary-color);
+    }
+
+    .animal-box img {
+      width: 350px;
+      object-fit: cover;
+      border-right: 6px solid var(--secondary-color);
+      transition: all 0.5s ease;
+      filter: grayscale(20%);
+    }
+
+    .animal-box:hover img {
+      filter: grayscale(0%);
+      transform: scale(1.05);
+    }
+
+    .message {
+      padding: 30px 35px;
+      flex: 1;
+      background: linear-gradient(to right, #f4fffc, #e6fff8);
+      border-left: 6px solid var(--secondary-color);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+    }
+
+    .animal-title {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--primary-color);
+      margin-bottom: 14px;
+      letter-spacing: 1.1px;
+      display: flex;
+      align-items: center;
+    }
+
+    .animal-title i {
+      margin-right: 15px;
+      font-size: 24px;
+      color: #00aa7a;
+    }
+
+    .message p {
+      font-size: 18.5px;
+      line-height: 1.8;
+      margin: 0;
+      color: var(--text-dark);
+      position: relative;
+    }
+
+    .message p::before {
+      content: '"';
+      font-size: 60px;
+      font-family: 'Times New Roman', serif;
+      color: rgba(0, 170, 120, 0.2);
+      position: absolute;
+      top: -20px;
+      left: -15px;
+    }
+
+    .message p::after {
+      content: '"';
+      font-size: 60px;
+      font-family: 'Times New Roman', serif;
+      color: rgba(0, 170, 120, 0.2);
+      position: absolute;
+      bottom: -50px;
+      right: -5px;
+    }
+
+    /* CLOSING MESSAGE */
+    .closing-message {
+      text-align: center;
+      max-width: 900px;
+      margin: 80px auto 120px;
+      padding: 60px 50px;
+      background: linear-gradient(135deg, #b4fff9, #dbfff6);
+      border-top: 6px solid var(--secondary-color);
+      border-radius: 30px;
+      font-size: 21px;
+      font-weight: 700;
+      line-height: 1.9;
+      color: var(--bg-dark);
+      box-shadow: 0 15px 40px rgba(0, 255, 170, 0.25);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .closing-message::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('static/img/water-texture.png') repeat;
+      opacity: 0.05;
+      z-index: 0;
+    }
+
+    .closing-message i {
+      font-size: 28px;
+      margin: 0 5px;
+      vertical-align: middle;
+      color: #007a5e;
+    }
+
+    /* STATS BAR */
+    .stats-bar {
+      background: linear-gradient(90deg, var(--primary-color), #008080);
+      color: white;
+      padding: 15px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 18px;
+      margin: 40px 0;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+
+    .stat-item {
+      margin: 10px;
+      padding: 10px 20px;
+      background-color: rgba(255,255,255,0.15);
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+    }
+
+    .stat-item i {
+      margin-right: 10px;
+      font-size: 22px;
+    }
+
+    /* FLOATING ACTION BUTTON */
+    .floating-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--secondary-color), #00cc88);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+      cursor: pointer;
+      z-index: 100;
+      transition: all 0.3s ease;
+      border: none;
+    }
+
+    .floating-btn:hover {
+      transform: scale(1.1) rotate(15deg);
+      box-shadow: 0 8px 25px var(--shadow-color);
+    }
+
+    /* MODAL */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.8);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      background: linear-gradient(135deg, var(--bg-light), #d0f8f0);
+      padding: 40px;
+      border-radius: 20px;
+      max-width: 600px;
+      width: 90%;
+      position: relative;
+      box-shadow: 0 10px 50px rgba(0, 255, 170, 0.3);
+      border: 3px solid var(--secondary-color);
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 24px;
+      cursor: pointer;
+      color: var(--primary-color);
+      transition: all 0.3s ease;
+    }
+
+    .close-modal:hover {
+      color: var(--secondary-color);
+      transform: rotate(90deg);
+    }
+
+    .modal h2 {
+      color: var(--primary-color);
+      margin-bottom: 20px;
+      font-size: 28px;
+      text-align: center;
+    }
+
+    .modal p {
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--text-dark);
+      margin-bottom: 25px;
+    }
+
+    .modal-btn {
+      background: linear-gradient(135deg, var(--secondary-color), #00cc88);
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-size: 16px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: block;
+      margin: 0 auto;
+      font-weight: bold;
+    }
+
+    .modal-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px var(--shadow-color);
+    }
+
+    /* LIKE BUTTON */
+    .heart-btn {
+      position: absolute;
+      bottom: 15px;
+      right: 15px;
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: #ccc;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .heart-btn.liked {
+      color: #ff4081;
+    }
+
+    .heart-btn:hover {
+      transform: scale(1.2);
+    }
+
+    /* NEW FEATURES */
+    
+    /* Emergency Alert Banner */
+    .emergency-alert {
+      position: fixed;
+      top: 80px;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(90deg, #ff4d4d, #ff1a1a);
+      color: white;
+      padding: 15px;
+      text-align: center;
+      font-weight: bold;
+      z-index: 999;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+      animation: pulseAlert 2s infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .emergency-alert i {
+      font-size: 20px;
+    }
+    
+    @keyframes pulseAlert {
+      0% { opacity: 0.9; }
+      50% { opacity: 1; }
+      100% { opacity: 0.9; }
+    }
+    
+    /* Interactive Map Section */
+    .map-section {
+      background: var(--bg-light);
+      padding: 60px 20px;
+      margin: 60px 0;
+      text-align: center;
+    }
+    
+    .map-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      position: relative;
+    }
+    
+    .map-title {
+      font-size: 2.2rem;
+      color: var(--primary-color);
+      margin-bottom: 30px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .map-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    }
+    
+    .world-map {
+      width: 100%;
+      height: 500px;
+      background: url('static/img/world-map.png') no-repeat center center/contain;
+      position: relative;
+      margin: 30px 0;
+    }
+    
+    .hotspot {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background: #ff4d4d;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 0 5px rgba(255, 77, 77, 0.3);
+      animation: pulse 2s infinite;
+    }
+    
+    .hotspot:hover {
+      transform: translate(-50%, -50%) scale(1.5);
+    }
+    
+    .hotspot::after {
+      content: attr(data-title);
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.8);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 14px;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .hotspot:hover::after {
+      opacity: 1;
+    }
+    
+    /* Progress Tracker */
+    .progress-tracker {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      margin-top: 40px;
+      text-align: left;
+    }
+    
+    .progress-title {
+      font-size: 1.5rem;
+      color: var(--primary-color);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .progress-item {
+      margin-bottom: 20px;
+    }
+    
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+    
+    .progress-bar {
+      height: 10px;
+      background: #e0e0e0;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+      border-radius: 5px;
+      transition: width 1s ease;
+    }
+    
+    /* Donation Counter */
+    .donation-counter {
+      background: var(--bg-dark);
+      color: white;
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      margin-top: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .donation-counter::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('static/img/water-texture.png') repeat;
+      opacity: 0.1;
+    }
+    
+    .counter-title {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    
+    .counter-amount {
+      font-size: 3rem;
+      font-weight: bold;
+      color: var(--secondary-color);
+      margin-bottom: 20px;
+      position: relative;
+    }
+    
+    .counter-goal {
+      font-size: 1.2rem;
+      opacity: 0.8;
+      position: relative;
+    }
+    
+    /* Timeline Section */
+    .timeline-section {
+      padding: 60px 20px;
+      background: linear-gradient(135deg, #e6fff8, #f0fff9);
+      margin: 60px 0;
+    }
+    
+    .timeline-container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    .timeline-title {
+      font-size: 2.2rem;
+      color: var(--primary-color);
+      text-align: center;
+      margin-bottom: 50px;
+      position: relative;
+    }
+    
+    .timeline-title::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    }
+    
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .timeline::before {
+      content: '';
+      position: absolute;
+      width: 4px;
+      background: var(--primary-color);
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -2px;
+    }
+    
+    .timeline-item {
+      padding: 10px 40px;
+      position: relative;
+      width: 50%;
+      box-sizing: border-box;
+      margin-bottom: 30px;
+    }
+    
+    .timeline-item:nth-child(odd) {
+      left: 0;
+    }
+    
+    .timeline-item:nth-child(even) {
+      left: 50%;
+    }
+    
+    .timeline-content {
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      position: relative;
+    }
+    
+    .timeline-date {
+      font-weight: bold;
+      color: var(--primary-color);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .timeline-dot {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: var(--secondary-color);
+      border-radius: 50%;
+      top: 15px;
+      right: -10px;
+      z-index: 1;
+    }
+    
+    .timeline-item:nth-child(even) .timeline-dot {
+      left: -10px;
+      right: auto;
+    }
+    
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 1rem;
+        flex-direction: column;
+      }
+      
+      .navbar-links {
+        margin-top: 1rem;
+        gap: 0.5rem;
+      }
+      
+      .navbar a {
+        padding: 0.5rem;
+        font-size: 0.9rem;
+      }
+      
+      .language-toggle {
+        bottom: 90px;
+        right: 15px;
+      }
+      .hero {
+        padding: 80px 20px;
+        min-height: auto;
+      }
+      
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      
+      .hero p.subtitle {
+        font-size: 1.2rem;
+      }
+      
+      .animal-box {
+        flex-direction: column;
+      }
+      
+      .animal-box img {
+        width: 100%;
+        height: 250px;
+        border-right: none;
+        border-bottom: 6px solid var(--secondary-color);
+      }
+      
+      .message {
+        padding: 25px;
+      }
+      
+      .animal-title {
+        font-size: 24px;
+      }
+      
+      .message p {
+        font-size: 17px;
+      }
+      
+      .closing-message {
+        font-size: 18px;
+        padding: 40px 25px;
+      }
+      
+      .stats-bar {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .language-toggle button {
+        padding: 5px 10px;
+        font-size: 14px;
+      }
+      
+      .emergency-alert {
+        top: 70px;
+        padding: 10px;
+        font-size: 14px;
+      }
+      
+      .world-map {
+        height: 300px;
+      }
+      
+      .timeline::before {
+        left: 31px;
+      }
+      
+      .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+      }
+      
+      .timeline-item:nth-child(even) {
+        left: 0;
+      }
+      
+      .timeline-dot {
+        left: 21px;
+        right: auto;
+      }
+    }
+
+    /* ANIMATIONS */
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .animal-box:hover {
+      animation: pulse 1.5s infinite ease-in-out;
+    }
+
+    .floating-btn {
+      animation: float 3s ease-in-out infinite;
+    }
+
+    /* PARALLAX EFFECT */
+    .parallax {
+      background-attachment: fixed;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Emergency Alert Banner -->
+  <div class="emergency-alert tr-text">
+    <i class="fas fa-exclamation-triangle"></i>
+    ACİL DURUM: Her gün 150'den fazla tür yok oluyor! Harekete geçme zamanı!
+  </div>
+  <div class="emergency-alert en-text" style="display:none;">
+    <i class="fas fa-exclamation-triangle"></i>
+    EMERGENCY: Over 150 species go extinct every day! Time to take action!
+  </div>
+
+  <!-- Language Toggle -->
+  <div class="language-toggle">
+    <button id="langTR" class="active">TR</button>
+    <button id="langEN">EN</button>
+  </div>
+
+
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="{{ url_for('index') }}" class="navbar-logo">
+        <i class="fas fa-paw"></i>
+        <span class="tr-text">Eco Urgent</span>
+        <span class="en-text" style="display:none;">Eco Urgent</span>
+      </a>
+  <div class="navbar-links">
+        <a href="{{ url_for('index') }}"><i class="fas fa-home"></i> <span class="tr-text">Ana Sayfa</span><span class="en-text">Home</span></a>
+        <a href="{{ url_for('bilgilendirme') }}"><i class="fas fa-chart-bar"></i> <span class="tr-text">Bilgilendirme</span><span class="en-text">Information</span></a>
+        <a href="{{ url_for('kurbanlar') }}" class="aktif"><i class="fas fa-dove"></i> <span class="tr-text">Kurbanlar</span><span class="en-text">Victims</span></a>
+        <a href="{{ url_for('senin_etkin') }}"><i class="fas fa-flask"></i> <span class="tr-text">Senin Etkin</span><span class="en-text">Your Impact</span></a>
+      </div>
+    </div>
+  </nav>
+  
+  <section class="hero parallax">
+    <div class="hero-content">
+      <h1 data-aos="fade-up" class="tr-text">
+        BİRAZ DA İKLİM KRİZİNİN <br />
+        <span style="color:#00ffaa; text-shadow: 0 0 10px rgba(0, 255, 170, 0.7);">KURBANLARININ HİKAYELERİNİ DİNLEYELİM...</span>
+      </h1>
+      <h1 data-aos="fade-up" class="en-text" style="display:none;">
+        LET'S HEAR THE STORIES OF <br />
+        <span style="color:#00ffaa; text-shadow: 0 0 10px rgba(0, 255, 170, 0.7);">CLIMATE CRISIS VICTIMS...</span>
+      </h1>
+      <p class="subtitle tr-text" data-aos="fade-up" data-aos-delay="200">Onlar anlatamıyor, ama biz hissedebiliyoruz.</p>
+      <p class="subtitle en-text" data-aos="fade-up" data-aos-delay="200" style="display:none;">They can't speak, but we can feel.</p>
+    </div>
+  </section>
+
+  <div class="stats-bar" data-aos="fade-up">
+    <div class="stat-item tr-text">
+      <i class="fas fa-skull"></i> 150+ Tür Yok Oluyor
+    </div>
+    <div class="stat-item en-text" style="display:none;">
+      <i class="fas fa-skull"></i> 150+ Species Going Extinct
+    </div>
+    <div class="stat-item tr-text">
+      <i class="fas fa-tree"></i> 10 Milyon Hektar Orman Kaybı
+    </div>
+    <div class="stat-item en-text" style="display:none;">
+      <i class="fas fa-tree"></i> 10 Million Hectares Forest Loss
+    </div>
+    <div class="stat-item tr-text">
+      <i class="fas fa-temperature-high"></i> 1.2°C Küresel Isınma
+    </div>
+    <div class="stat-item en-text" style="display:none;">
+      <i class="fas fa-temperature-high"></i> 1.2°C Global Warming
+    </div>
+  </div>
+
+  <main class="container">
+    {% set animals = [
+      ('kutupayisi.jpg', 'Kutup Ayısı', 'Polar Bear', 'paw', 'Evim eridi. İnsanlar evimi yok etti. Donuyorum. Yemek bulamıyorum. Sevinçle denizden yiyecek sanarak aldığım şey kaynağı belli olmayan pet şişeydi. Dilerim yavrularımın başına gelen sizin yavrularınızın başına da gelir.', 'My home melted. Humans destroyed my home. I\'m freezing. I can\'t find food. What I happily took from the sea thinking it was food turned out to be a plastic bottle. I hope what happened to my cubs happens to your children too.'),
+      ('caretta.jpg', 'Caretta Caretta', 'Loggerhead Sea Turtle', 'fish', 'Denizlerde kendi alemimde gezinirim, bir tas yemeğe huzur içinde yaşar giderim. Artık yemek bulamıyorum, yemek sanıp aldıklarım renksiz içi boş bir çöp oluyor. Bunu yiyemem. Ölüyorum. Bunlar nereden geldi? Bu arada, buralar neden bu kadar sıcakladı ya?', 'I used to roam freely in the seas, living peacefully with just a bite to eat. Now I can\'t find food, what I think is food turns out to be colorless empty trash. I can\'t eat this. I\'m dying. Where did these come from? By the way, why has it gotten so hot here?'),
+      ('fil.jpg', 'Afrika Fili', 'African Elephant', 'elephant', 'Ormanda babamla yürüyordum. Aniden bir grup işgalci babama işgence etti, boynuzunu söküp aldı. Bu soykırım değil de ne? Ayrıca burası neden bu kadar kötü kokmaya başladı?', 'I was walking in the forest with my father. Suddenly a group of invaders tortured my father and took his tusks. If this isn\'t genocide, what is? Also, why has it started to smell so bad here?'),
+      ('panda.jpg', 'Panda', 'Giant Panda', 'leaf', 'Sessizim, barışçılım. Ormanım yok artık. Birileri yaktı, yıktı, dağıttı. Açım. Güvende değilim. Sadece yaşamak istiyorum.', 'I\'m quiet, peaceful. My forest is gone now. Someone burned it, destroyed it, scattered it. I\'m hungry. I\'m not safe. I just want to live.'),
+      ('gorilla.jpg', 'Goril', 'Gorilla', 'mountain', 'Oyun oynuyorduk ağaçlarda. Silah sesleri duyduk. Kardeşim artık yok. Onun kokusunu arıyorum hâlâ. Onun yerine tozlu hava ve çöpler var.', 'We were playing in the trees. We heard gunshots. My sibling is gone now. I still search for their scent. In their place is dusty air and trash.'),
+      ('kopekbaligi.jpg', 'Köpekbalığı', 'Shark', 'water', 'Hepiniz beni vahşi olarak damgaladınız. Oysaki asıl vahşiler, yırtıcılar sizlerdiniz. Ben sizin yavrularınızı kaçırıyor muyum? Yemeklerinize el koyuyor muyum?', 'You all labeled me as savage. But the real savages, the predators were you. Do I kidnap your children? Do I take your food?'),
+      ('yunus.jpg', 'Yunus', 'Dolphin', 'swimmer', 'Denizler eskiden şarkılarla doluydu. Şimdi ses yok. Plastik içinde yüzüyorum. Nefes almak zorlaştı.', 'The seas used to be full of songs. Now there\'s no sound. I swim in plastic. Breathing has become difficult.'),
+      ('fok.jpg', 'Fok Balığı', 'Seal', 'snowflake', 'Annemi çağırdım. Gelmedi. Yerine üzerime doğru çizgili , hataltı tuzak geldi. Bir dakika, beni yukarıya çekiyorlar! İmdat!', 'I called my mother. She didn\'t come. Instead, a striped, net trap came toward me. Wait, they\'re pulling me up! Help!'),
+      ('penguen.jpg', 'Penguen', 'Penguin', 'snowman', 'Buz çatladı. Balık bulamıyorum. Yuvam kayboldu. Gitmem gerek ama nereye?', 'The ice cracked. I can\'t find fish. My nest is gone. I need to go but where?'),
+      ('geyik.jpg', 'Kutup Geyiği', 'Reindeer', 'deer', 'Kuzeyin yolunu bulamıyorum. Eskiden her yer kuzeydi, nereye ışınlandım? Ve garip bir şekilde üşümeye başladım.', 'I can\'t find my way north. Everywhere used to be north, where have I been teleported to? And strangely, I\'ve started to feel cold.'),
+      ('frog.jpg', 'Altın Kurbağa', 'Golden Toad', 'frog', '... (0.7 derecelik ısı artışı soyunu YOK ETTİ)', '... (0.7°C temperature rise WIPED OUT the species)')
+    ] %}
+
+    {% for image, title_tr, title_en, icon, msg_tr, msg_en in animals %}
+    <article class="animal-box" data-aos="fade-up" data-aos-delay="{{ loop.index * 100 }}" tabindex="0">
+      <img src="{{ url_for('static', filename='img/' ~ image) }}" alt="{{ title_tr }}" />
+      <div class="message">
+        <h2 class="animal-title"><i class="fas fa-{{ icon }}"></i> <span class="tr-text">{{ title_tr }}</span><span class="en-text" style="display:none;">{{ title_en }}</span></h2>
+        <p class="tr-text">{{ msg_tr }}</p>
+        <p class="en-text" style="display:none;">{{ msg_en }}</p>
+        <button class="heart-btn" aria-label="Bu hikayeyi beğen"><i class="far fa-heart"></i></button>
+      </div>
+    </article>
+    {% endfor %}
+  </main>
+
+  <!-- Interactive Map Section -->
+  <section class="map-section" data-aos="fade-up">
+    <div class="map-container">
+      <h2 class="map-title tr-text">Tehlike Altındaki Türlerin Küresel Dağılımı</h2>
+      <h2 class="map-title en-text" style="display:none;">Global Distribution of Endangered Species</h2>
+      
+      <div class="world-map">
+        <div class="hotspot" style="top: 20%; left: 30%;" data-title="Kutup Ayıları - Arktik"></div>
+        <div class="hotspot" style="top: 20%; left: 40%;" data-title="Kutup Ayıları - Arktik"></div>
+        <div class="hotspot" style="top: 37%; left: 49%;" data-title="Alp canlıları - Alpler"></div>
+        <div class="hotspot" style="top: 40%; left: 18%;" data-title="Ormanlar - ABD"></div>
+        <div class="hotspot" style="top: 20%; left: 63%;" data-title="Ormanlar ve canlılar - Sibirya"></div>
+        <div class="hotspot" style="top: 82%; left: 83%;" data-title="Ormanlar ve canlılar - Avusturalya"></div>
+        <div class="hotspot" style="top: 60%; left: 75%;" data-title="Deniz Kaplumbağaları - Tropikler"></div>
+        <div class="hotspot" style="top: 62%; left: 55%;" data-title="Filler - Afrika"></div>
+        <div class="hotspot" style="top: 77%; left: 53%;" data-title="Filler - Afrika"></div>
+        <div class="hotspot" style="top: 57%; left: 47%;" data-title="Maymunlar - Afrika"></div>
+        <div class="hotspot" style="top: 45%; left: 75%;" data-title="Pandalar - Asya"></div>
+        <div class="hotspot" style="top: 66%; left: 30%;" data-title="Amazon Türleri - Güney Amerika"></div>
+      </div>
+      
+      <div class="progress-tracker">
+        <h3 class="progress-title"><i class="fas fa-chart-line"></i> <span class="tr-text">Koruma Çabalarının İlerlemesi</span><span class="en-text" style="display:none;">Conservation Progress</span></h3>
+        
+        <div class="progress-item">
+          <div class="progress-label tr-text">
+            <span>Yaşam Alanı Koruma</span>
+            <span>65%</span>
+          </div>
+          <div class="progress-label en-text" style="display:none;">
+            <span>Habitat Protection</span>
+            <span>65%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 65%"></div>
+          </div>
+        </div>
+        
+        <div class="progress-item">
+          <div class="progress-label tr-text">
+            <span>Yasa Dışı Avlanmanın Önlenmesi</span>
+            <span>42%</span>
+          </div>
+          <div class="progress-label en-text" style="display:none;">
+            <span>Poaching Prevention</span>
+            <span>42%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 42%"></div>
+          </div>
+        </div>
+        
+        <div class="progress-item">
+          <div class="progress-label tr-text">
+            <span>Halk Bilinçlendirme</span>
+            <span>78%</span>
+          </div>
+          <div class="progress-label en-text" style="display:none;">
+            <span>Public Awareness</span>
+            <span>78%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 78%"></div>
+          </div>
+        </div>
+      </div>
+  </section>
+
+  <!-- Timeline Section -->
+  <section class="timeline-section" data-aos="fade-up">
+    <div class="timeline-container">
+      <h2 class="timeline-title tr-text">İklim Krizi ve Türlerin Yok Oluşu</h2>
+      <h2 class="timeline-title en-text" style="display:none;">Climate Crisis and Species Extinction</h2>
+      
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <div class="timeline-date"><i class="fas fa-calendar-alt"></i> <span class="tr-text">1970</span><span class="en-text" style="display:none;">1970</span></div>
+            <p class="tr-text">Dünya vahşi yaşam popülasyonlarının %60'ı kaybedildi</p>
+            <p class="en-text" style="display:none;">60% of world's wildlife populations lost</p>
+          </div>
+          <div class="timeline-dot"></div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <div class="timeline-date"><i class="fas fa-calendar-alt"></i> <span class="tr-text">1989</span><span class="en-text" style="display:none;">1989</span></div>
+            <p class="tr-text">Altın kurbağa soyu tükendi (0.7°C sıcaklık artışı)</p>
+            <p class="en-text" style="display:none;">Golden toad went extinct (0.7°C temperature rise)</p>
+          </div>
+          <div class="timeline-dot"></div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <div class="timeline-date"><i class="fas fa-calendar-alt"></i> <span class="tr-text">2006</span><span class="en-text" style="display:none;">2006</span></div>
+            <p class="tr-text">Kutup ayıları tehlike altındaki türler listesine alındı</p>
+            <p class="en-text" style="display:none;">Polar bears listed as threatened species</p>
+          </div>
+          <div class="timeline-dot"></div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <div class="timeline-date"><i class="fas fa-calendar-alt"></i> <span class="tr-text">2018</span><span class="en-text" style="display:none;">2018</span></div>
+            <p class="tr-text">Son erkek kuzey beyaz gergedanı öldü</p>
+            <p class="en-text" style="display:none;">Last male northern white rhino died</p>
+          </div>
+          <div class="timeline-dot"></div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <div class="timeline-date"><i class="fas fa-calendar-alt"></i> <span class="tr-text">2023</span><span class="en-text" style="display:none;">2023</span></div>
+            <p class="tr-text">Türlerin yok oluş hızı normalin 1000 katına ulaştı</p>
+            <p class="en-text" style="display:none;">Extinction rate reached 1000x normal levels</p>
+          </div>
+          <div class="timeline-dot"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="closing-message" data-aos="fade-up" data-aos-delay="300">
+    <div class="tr-text">
+      <i class="fas fa-seedling"></i> <strong>Unutmayın:</strong> Doğa bizim evimiz, bu canlılar da komşularımız.  
+      <br /><br />
+      <i class="fas fa-globe-americas"></i> Bu sayfada okuduklarınız sadece hayvanların değil, aynı zamanda insanlığın ortak kaderidir.  
+      <br /><br />
+      <i class="fas fa-tree"></i> Doğa ile yaptığımız bu savaşta her zaman kaybeden biz olacağız. Siz hiç evinizi mahveder misiniz?
+      <br /><br />
+      <i class="fas fa-tint"></i> Birlikte harekete geçersek, onların sesi, yaşamın sesi, doğanın sesi olabiliriz.  
+      <br /><br />
+      <i class="fas fa-dove"></i> <em>Çünkü onlar konuşamıyor ama biz duyabiliyoruz...</em>
+    </div>
+    <div class="en-text" style="display:none;">
+      <i class="fas fa-seedling"></i> <strong>Remember:</strong> Nature is our home, these creatures are our neighbors.  
+      <br /><br />
+      <i class="fas fa-globe-americas"></i> What you've read on this page is not just the fate of animals, but also the shared destiny of humanity.  
+      <br /><br />
+      <i class="fas fa-tree"></i> In this war we wage against nature, we will always be the losers. Would you ever destroy your own home?
+      <br /><br />
+      <i class="fas fa-tint"></i> If we act together, we can become their voice, the voice of life, the voice of nature.  
+      <br /><br />
+      <i class="fas fa-dove"></i> <em>Because they can't speak but we can hear...</em>
+    </div>
+  </section>
+
+  <button class="floating-btn" id="actionBtn" aria-label="Harekete geç">
+    <i class="fas fa-hands-helping"></i>
+  </button>
+
+  <div class="modal" id="actionModal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h2 class="tr-text"><i class="fas fa-hands-helping"></i> Harekete Geç!</h2>
+      <h2 class="en-text" style="display:none;"><i class="fas fa-hands-helping"></i> Take Action!</h2>
+      <p class="tr-text">Bu hayvanların sesi olmak için yapabilecekleriniz:</p>
+      <p class="en-text" style="display:none;">What you can do to be the voice of these animals:</p>
+      <ul style="text-align: left; margin-left: 20px;">
+        <li class="tr-text">Plastik kullanımınızı azaltın</li>
+        <li class="en-text" style="display:none;">Reduce your plastic use</li>
+        <li class="tr-text">Yerel koruma projelerine destek olun</li>
+        <li class="en-text" style="display:none;">Support local conservation projects</li>
+        <li class="tr-text">Sürdürülebilir ürünler tercih edin</li>
+        <li class="en-text" style="display:none;">Choose sustainable products</li>
+        <li class="tr-text">Bilgi paylaşarak farkındalık yaratın</li>
+        <li class="en-text" style="display:none;">Raise awareness by sharing information</li>
+        <li class="tr-text">Karbon ayak izinizi küçültün</li>
+        <li class="en-text" style="display:none;">Reduce your carbon footprint</li>
+      </ul>
+      <p class="tr-text">Küçük adımlar büyük değişimler yaratabilir. Bugün harekete geçin!</p>
+      <p class="en-text" style="display:none;">Small steps can create big changes. Take action today!</p>
+      <button class="modal-btn tr-text">Kabul Ediyorum</button>
+      <button class="modal-btn en-text" style="display:none;">I Agree</button>
+    </div>
+  </div>
+  
+  <!-- Footer -->
+  <footer class="footer">
+      <div class="footer-container">
+          <div class="footer-about">
+              <div class="footer-logo">
+                  <i class="fas fa-leaf"></i>
+                  <span class="tr-text">Eco Urgent</span>
+                  <span class="en-text" style="display:none">Eco Urgent</span>
+              </div>
+              <p class="footer-about tr-text">İklim değişikliği ile mücadelede birlikte hareket ediyoruz. Siz de söz verin, geleceğimizi birlikte kurtaralım.</p>
+              <p class="footer-about en-text" style="display:none">We act together in the fight against climate change. Make your pledge and let's save our future together.</p>
+          </div>
+          
+          <div class="footer-links">
+              <h3 class="tr-text">Hızlı Linkler</h3>
+              <h3 class="en-text" style="display:none">Quick Links</h3>
+              <ul>
+                  <li><a href="{{ url_for('index') }}">
+                      <i class="fas fa-chevron-right"></i>
+                      <span class="tr-text">Ana Sayfa</span>
+                      <span class="en-text" style="display:none">Home</span>
+                  </a></li>
+                  <li><a href="{{ url_for('bilgilendirme') }}">
+                      <i class="fas fa-chevron-right"></i>
+                      <span class="tr-text">Bilgilendirme</span>
+                      <span class="en-text" style="display:none">Information</span>
+                  </a></li>
+                  <li><a href="{{ url_for('kurbanlar') }}">
+                      <i class="fas fa-chevron-right"></i>
+                      <span class="tr-text">Kurbanlar</span>
+                      <span class="en-text" style="display:none">Victims</span>
+                  </a></li>
+                  <li><a href="{{ url_for('senin_etkin') }}">
+                      <i class="fas fa-chevron-right"></i>
+                      <span class="tr-text">Senin Etkin</span>
+                      <span class="en-text" style="display:none">Your Impact</span>
+                  </a></li>
+              </ul>
+          </div>
+          
+          <div class="footer-contact">
+              <h3 class="tr-text">İletişim</h3>
+              <h3 class="en-text" style="display:none">Contact</h3>
+              
+              <div class="contact-item">
+                  <i class="fas fa-map-marker-alt contact-icon"></i>
+                  <div>
+                      <span class="tr-text">24 № Tam Orta Okul </span>
+                      <span class="en-text" style="display:none">Fully Secondary School №24S</span>
+                      <br>
+                      <span class="tr-text">Bakü, Azerbaycan</span>
+                      <span class="en-text" style="display:none">Baku, Azerbaijan</span>
+                  </div>
+              </div>
+              
+              <div class="contact-item">
+                  <i class="fas fa-envelope contact-icon"></i>
+                  <div>
+                      <span>kaymasali3@gmail.com</span>
+                  </div>
+              </div>
+              
+              <div class="contact-item">
+                  <i class="fas fa-phone-alt contact-icon"></i>
+                  <div>
+                      <span>+994 50 602 29 16</span>
+                  </div>
+              </div>
+              
+              <div class="social-links">
+                  <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                  <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                  <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+              </div>
+          </div>
+      </div>
+      
+      <div class="copyright">
+          <p class="tr-text">&copy; 2025 Eco Urgent. Tüm hakları saklıdır.</p>
+          <p class="en-text" style="display:none">&copy; 2025 Eco Urgent. All rights reserved. </p>
+      </div>
+  </footer>
+  <!-- Animate On Scroll JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    AOS.init({
+      once: true,
+      offset: 100,
+      duration: 800
+    });
+    
+    // Navbar scroll efekti
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+    
+    // Language Toggle Functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const langTR = document.getElementById('langTR');
+      const langEN = document.getElementById('langEN');
+      
+      langTR.addEventListener('click', function() {
+        this.classList.add('active');
+        langEN.classList.remove('active');
+        document.querySelectorAll('.tr-text').forEach(el => el.style.display = '');
+        document.querySelectorAll('.en-text').forEach(el => el.style.display = 'none');
+      });
+      
+      langEN.addEventListener('click', function() {
+        this.classList.add('active');
+        langTR.classList.remove('active');
+        document.querySelectorAll('.en-text').forEach(el => el.style.display = '');
+        document.querySelectorAll('.tr-text').forEach(el => el.style.display = 'none');
+      });
+
+      // Modal functionality
+      const modal = document.getElementById('actionModal');
+      const btn = document.getElementById('actionBtn');
+      const span = document.getElementsByClassName('close-modal')[0];
+      
+      btn.onclick = function() {
+        modal.style.display = 'flex';
+      }
+      
+      span.onclick = function() {
+        modal.style.display = 'none';
+      }
+      
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = 'none';
+        }
+      }
+
+      // Heart button functionality
+      const heartBtns = document.querySelectorAll('.heart-btn');
+      heartBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          this.classList.toggle('liked');
+          const icon = this.querySelector('i');
+          if (this.classList.contains('liked')) {
+            icon.classList.remove('far');
+            icon.classList.add('fas');
+            // Small animation effect
+            this.style.transform = 'scale(1.3)';
+            setTimeout(() => {
+              this.style.transform = 'scale(1)';
+            }, 300);
+          } else {
+            icon.classList.remove('fas');
+            icon.classList.add('far');
+          }
+        });
+      });
+
+      // Parallax effect on mouse movement
+      document.addEventListener('mousemove', function(e) {
+        const hero = document.querySelector('.hero');
+        const x = e.clientX / window.innerWidth;
+        const y = e.clientY / window.innerHeight;
+        hero.style.backgroundPosition = `${x * 30}px ${y * 30}px`;
+      });
+      
+      // Animated counter for donation amount
+      const counterElement = document.querySelector('.counter-amount');
+      const targetAmount = 1245890;
+      const duration = 2000; // Animation duration in ms
+      const increment = targetAmount / (duration / 16); // Roughly 60fps
+      
+      let currentAmount = 0;
+      const animateCounter = () => {
+        currentAmount += increment;
+        if (currentAmount < targetAmount) {
+          counterElement.textContent = '$' + Math.floor(currentAmount).toLocaleString();
+          requestAnimationFrame(animateCounter);
+        } else {
+          counterElement.textContent = '$' + targetAmount.toLocaleString();
+        }
+      };
+      
+      // Start animation when counter is in view
+      const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+          animateCounter();
+          observer.unobserve(counterElement);
+        }
+      });
+      
+      observer.observe(counterElement);
+      
+      // Hotspot click functionality
+      const hotspots = document.querySelectorAll('.hotspot');
+      hotspots.forEach(hotspot => {
+        hotspot.addEventListener('click', function() {
+          alert(this.getAttribute('data-title') + ' bölgesindeki türler kritik tehlike altında!');
+        });
+      });
+    });
+  </script>
+</body>
+</html>
