@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -1199,19 +1199,19 @@
 <body>
 
   <!-- Emergency Alert Banner -->
-  <div class="emergency-alert tr-text">
+  <div class="emergency-alert tr-text" style="display:none;">
     <i class="fas fa-exclamation-triangle"></i>
     ACİL DURUM: Her gün 150'den fazla tür yok oluyor! Harekete geçme zamanı!
   </div>
-  <div class="emergency-alert en-text" style="display:none;">
+  <div class="emergency-alert en-text">
     <i class="fas fa-exclamation-triangle"></i>
     EMERGENCY: Over 150 species go extinct every day! Time to take action!
   </div>
 
   <!-- Language Toggle -->
   <div class="language-toggle">
-    <button id="langTR" class="active">TR</button>
-    <button id="langEN">EN</button>
+    <button id="langTR">TR</button>
+    <button id="langEN" class="active">EN</button>
   </div>
 
 
@@ -1219,50 +1219,50 @@
     <div class="navbar-container">
       <a href="{{ url_for('index') }}" class="navbar-logo">
         <i class="fas fa-paw"></i>
-        <span class="tr-text">Eco Urgent</span>
-        <span class="en-text" style="display:none;">Eco Urgent</span>
+        <span class="tr-text" style="display:none;">Eco Urgent</span>
+        <span class="en-text">Eco Urgent</span>
       </a>
   <div class="navbar-links">
-        <a href="{{ url_for('index') }}"><i class="fas fa-home"></i> <span class="tr-text">Ana Sayfa</span><span class="en-text">Home</span></a>
-        <a href="{{ url_for('bilgilendirme') }}"><i class="fas fa-chart-bar"></i> <span class="tr-text">Bilgilendirme</span><span class="en-text">Information</span></a>
-        <a href="{{ url_for('kurbanlar') }}" class="aktif"><i class="fas fa-dove"></i> <span class="tr-text">Kurbanlar</span><span class="en-text">Victims</span></a>
-        <a href="{{ url_for('senin_etkin') }}"><i class="fas fa-flask"></i> <span class="tr-text">Senin Etkin</span><span class="en-text">Your Impact</span></a>
+        <a href="{{ url_for('index') }}"><i class="fas fa-home"></i> <span class="tr-text" style="display:none;">Ana Sayfa</span><span class="en-text">Home</span></a>
+        <a href="{{ url_for('bilgilendirme') }}"><i class="fas fa-chart-bar"></i> <span class="tr-text" style="display:none;">Bilgilendirme</span><span class="en-text">Information</span></a>
+        <a href="{{ url_for('kurbanlar') }}" class="aktif"><i class="fas fa-dove"></i> <span class="tr-text" style="display:none;">Kurbanlar</span><span class="en-text">Victims</span></a>
+        <a href="{{ url_for('senin_etkin') }}"><i class="fas fa-flask"></i> <span class="tr-text" style="display:none;">Senin Etkin</span><span class="en-text">Your Impact</span></a>
       </div>
     </div>
   </nav>
   
   <section class="hero parallax">
     <div class="hero-content">
-      <h1 data-aos="fade-up" class="tr-text">
+      <h1 data-aos="fade-up" class="tr-text" style="display:none;">
         BİRAZ DA İKLİM KRİZİNİN <br />
         <span style="color:#00ffaa; text-shadow: 0 0 10px rgba(0, 255, 170, 0.7);">KURBANLARININ HİKAYELERİNİ DİNLEYELİM...</span>
       </h1>
-      <h1 data-aos="fade-up" class="en-text" style="display:none;">
+      <h1 data-aos="fade-up" class="en-text">
         LET'S HEAR THE STORIES OF <br />
         <span style="color:#00ffaa; text-shadow: 0 0 10px rgba(0, 255, 170, 0.7);">CLIMATE CRISIS VICTIMS...</span>
       </h1>
-      <p class="subtitle tr-text" data-aos="fade-up" data-aos-delay="200">Onlar anlatamıyor, ama biz hissedebiliyoruz.</p>
-      <p class="subtitle en-text" data-aos="fade-up" data-aos-delay="200" style="display:none;">They can't speak, but we can feel.</p>
+      <p class="subtitle tr-text" data-aos="fade-up" data-aos-delay="200" style="display:none;">Onlar anlatamıyor, ama biz hissedebiliyoruz.</p>
+      <p class="subtitle en-text" data-aos="fade-up" data-aos-delay="200">They can't speak, but we can feel.</p>
     </div>
   </section>
 
   <div class="stats-bar" data-aos="fade-up">
-    <div class="stat-item tr-text">
+    <div class="stat-item tr-text" style="display:none;">
       <i class="fas fa-skull"></i> 150+ Tür Yok Oluyor
     </div>
-    <div class="stat-item en-text" style="display:none;">
+    <div class="stat-item en-text">
       <i class="fas fa-skull"></i> 150+ Species Going Extinct
     </div>
-    <div class="stat-item tr-text">
+    <div class="stat-item tr-text" style="display:none;">
       <i class="fas fa-tree"></i> 10 Milyon Hektar Orman Kaybı
     </div>
-    <div class="stat-item en-text" style="display:none;">
+    <div class="stat-item en-text">
       <i class="fas fa-tree"></i> 10 Million Hectares Forest Loss
     </div>
-    <div class="stat-item tr-text">
+    <div class="stat-item tr-text" style="display:none;">
       <i class="fas fa-temperature-high"></i> 1.2°C Küresel Isınma
     </div>
-    <div class="stat-item en-text" style="display:none;">
+    <div class="stat-item en-text">
       <i class="fas fa-temperature-high"></i> 1.2°C Global Warming
     </div>
   </div>
@@ -1286,9 +1286,9 @@
     <article class="animal-box" data-aos="fade-up" data-aos-delay="{{ loop.index * 100 }}" tabindex="0">
       <img src="{{ url_for('static', filename='img/' ~ image) }}" alt="{{ title_tr }}" />
       <div class="message">
-        <h2 class="animal-title"><i class="fas fa-{{ icon }}"></i> <span class="tr-text">{{ title_tr }}</span><span class="en-text" style="display:none;">{{ title_en }}</span></h2>
-        <p class="tr-text">{{ msg_tr }}</p>
-        <p class="en-text" style="display:none;">{{ msg_en }}</p>
+        <h2 class="animal-title"><i class="fas fa-{{ icon }}"></i> <span class="tr-text" style="display:none;">{{ title_tr }}</span><span class="en-text">{{ title_en }}</span></h2>
+        <p class="tr-text" style="display:none;">{{ msg_tr }}</p>
+        <p class="en-text">{{ msg_en }}</p>
         <button class="heart-btn" aria-label="Bu hikayeyi beğen"><i class="far fa-heart"></i></button>
       </div>
     </article>
@@ -1298,8 +1298,8 @@
   <!-- Interactive Map Section -->
   <section class="map-section" data-aos="fade-up">
     <div class="map-container">
-      <h2 class="map-title tr-text">Tehlike Altındaki Türlerin Küresel Dağılımı</h2>
-      <h2 class="map-title en-text" style="display:none;">Global Distribution of Endangered Species</h2>
+      <h2 class="map-title tr-text" style="display:none;">Tehlike Altındaki Türlerin Küresel Dağılımı</h2>
+      <h2 class="map-title en-text">Global Distribution of Endangered Species</h2>
       
       <div class="world-map">
         <!-- Kutup Ayıları / Polar Bears -->
@@ -1356,14 +1356,14 @@
       </div>
       
       <div class="progress-tracker">
-        <h3 class="progress-title"><i class="fas fa-chart-line"></i> <span class="tr-text">Koruma Çabalarının İlerlemesi</span><span class="en-text" style="display:none;">Conservation Progress</span></h3>
+        <h3 class="progress-title"><i class="fas fa-chart-line"></i> <span class="tr-text" style="display:none;">Koruma Çabalarının İlerlemesi</span><span class="en-text">Conservation Progress</span></h3>
         
         <div class="progress-item">
-          <div class="progress-label tr-text">
+          <div class="progress-label tr-text" style="display:none;">
             <span>Yaşam Alanı Koruma</span>
             <span>65%</span>
           </div>
-          <div class="progress-label en-text" style="display:none;">
+          <div class="progress-label en-text">
             <span>Habitat Protection</span>
             <span>65%</span>
           </div>
@@ -1373,11 +1373,11 @@
         </div>
         
         <div class="progress-item">
-          <div class="progress-label tr-text">
+          <div class="progress-label tr-text" style="display:none;">
             <span>Yasa Dışı Avlanmanın Önlenmesi</span>
             <span>42%</span>
           </div>
-          <div class="progress-label en-text" style="display:none;">
+          <div class="progress-label en-text">
             <span>Poaching Prevention</span>
             <span>42%</span>
           </div>
@@ -1387,11 +1387,11 @@
         </div>
         
         <div class="progress-item">
-          <div class="progress-label tr-text">
+          <div class="progress-label tr-text" style="display:none;">
             <span>Halk Bilinçlendirme</span>
             <span>78%</span>
           </div>
-          <div class="progress-label en-text" style="display:none;">
+          <div class="progress-label en-text">
             <span>Public Awareness</span>
             <span>78%</span>
           </div>
@@ -1406,51 +1406,51 @@
   <!-- Timeline Section -->
   <section class="timeline-section" data-aos="fade-up">
     <div class="timeline-container">
-      <h2 class="timeline-title tr-text">İklim Krizi ve Türlerin Yok Oluşu</h2>
-      <h2 class="timeline-title en-text" style="display:none;">Climate Crisis and Species Extinction</h2>
+      <h2 class="timeline-title tr-text" style="display:none;">İklim Krizi ve Türlerin Yok Oluşu</h2>
+      <h2 class="timeline-title en-text">Climate Crisis and Species Extinction</h2>
       
       <div class="timeline">
         <div class="timeline-item">
           <div class="timeline-content">
-            <div class="timeline-date"><i class="fas fa-calendar-alt"></i> <span class="tr-text">1970</span><span class="en-text" style="display:none;">1970</span></div>
-            <p class="tr-text">Dünya vahşi yaşam popülasyonlarının %60'ı kaybedildi</p>
-            <p class="en-text" style="display:none;">60% of world's wildlife populations lost</p>
+            <div class="timeline-date"><i class="fas fa-calendar-alt"></i> <span class="tr-text" style="display:none;">1970</span><span class="en-text">1970</span></div>
+            <p class="tr-text" style="display:none;">Dünya vahşi yaşam popülasyonlarının %60'ı kaybedildi</p>
+            <p class="en-text">60% of world's wildlife populations lost</p>
           </div>
           <div class="timeline-dot"></div>
         </div>
         
         <div class="timeline-item">
           <div class="timeline-content">
-            <div class="timeline-date"><i class="fas fa-calendar-alt"></i> <span class="tr-text">1989</span><span class="en-text" style="display:none;">1989</span></div>
-            <p class="tr-text">Altın kurbağa soyu tükendi (0.7°C sıcaklık artışı)</p>
-            <p class="en-text" style="display:none;">Golden toad went extinct (0.7°C temperature rise)</p>
+            <div class="timeline-date"><i class="fas fa-calendar-alt"></i> <span class="tr-text" style="display:none;">1989</span><span class="en-text">1989</span></div>
+            <p class="tr-text" style="display:none;">Altın kurbağa soyu tükendi (0.7°C sıcaklık artışı)</p>
+            <p class="en-text">Golden toad went extinct (0.7°C temperature rise)</p>
           </div>
           <div class="timeline-dot"></div>
         </div>
         
         <div class="timeline-item">
           <div class="timeline-content">
-            <div class="timeline-date"><i class="fas fa-calendar-alt"></i> <span class="tr-text">2006</span><span class="en-text" style="display:none;">2006</span></div>
-            <p class="tr-text">Kutup ayıları tehlike altındaki türler listesine alındı</p>
-            <p class="en-text" style="display:none;">Polar bears listed as threatened species</p>
+            <div class="timeline-date"><i class="fas fa-calendar-alt"></i> <span class="tr-text" style="display:none;">2006</span><span class="en-text">2006</span></div>
+            <p class="tr-text" style="display:none;">Kutup ayıları tehlike altındaki türler listesine alındı</p>
+            <p class="en-text">Polar bears listed as threatened species</p>
           </div>
           <div class="timeline-dot"></div>
         </div>
         
         <div class="timeline-item">
           <div class="timeline-content">
-            <div class="timeline-date"><i class="fas fa-calendar-alt"></i> <span class="tr-text">2018</span><span class="en-text" style="display:none;">2018</span></div>
-            <p class="tr-text">Son erkek kuzey beyaz gergedanı öldü</p>
-            <p class="en-text" style="display:none;">Last male northern white rhino died</p>
+            <div class="timeline-date"><i class="fas fa-calendar-alt"></i> <span class="tr-text" style="display:none;">2018</span><span class="en-text">2018</span></div>
+            <p class="tr-text" style="display:none;">Son erkek kuzey beyaz gergedanı öldü</p>
+            <p class="en-text">Last male northern white rhino died</p>
           </div>
           <div class="timeline-dot"></div>
         </div>
         
         <div class="timeline-item">
           <div class="timeline-content">
-            <div class="timeline-date"><i class="fas fa-calendar-alt"></i> <span class="tr-text">2023</span><span class="en-text" style="display:none;">2023</span></div>
-            <p class="tr-text">Türlerin yok oluş hızı normalin 1000 katına ulaştı</p>
-            <p class="en-text" style="display:none;">Extinction rate reached 1000x normal levels</p>
+            <div class="timeline-date"><i class="fas fa-calendar-alt"></i> <span class="tr-text" style="display:none;">2023</span><span class="en-text">2023</span></div>
+            <p class="tr-text" style="display:none;">Türlerin yok oluş hızı normalin 1000 katına ulaştı</p>
+            <p class="en-text">Extinction rate reached 1000x normal levels</p>
           </div>
           <div class="timeline-dot"></div>
         </div>
@@ -1459,7 +1459,7 @@
   </section>
 
   <section class="closing-message" data-aos="fade-up" data-aos-delay="300">
-    <div class="tr-text">
+    <div class="tr-text" style="display:none;">
       <i class="fas fa-seedling"></i> <strong>Unutmayın:</strong> Doğa bizim evimiz, bu canlılar da komşularımız.  
       <br /><br />
       <i class="fas fa-globe-americas"></i> Bu sayfada okuduklarınız sadece hayvanların değil, aynı zamanda insanlığın ortak kaderidir.  
@@ -1470,7 +1470,7 @@
       <br /><br />
       <i class="fas fa-dove"></i> <em>Çünkü onlar konuşamıyor ama biz duyabiliyoruz...</em>
     </div>
-    <div class="en-text" style="display:none;">
+    <div class="en-text">
       <i class="fas fa-seedling"></i> <strong>Remember:</strong> Nature is our home, these creatures are our neighbors.  
       <br /><br />
       <i class="fas fa-globe-americas"></i> What you've read on this page is not just the fate of animals, but also the shared destiny of humanity.  
@@ -1490,112 +1490,135 @@
   <div class="modal" id="actionModal">
     <div class="modal-content">
       <span class="close-modal">&times;</span>
-      <h2 class="tr-text"><i class="fas fa-hands-helping"></i> Harekete Geç!</h2>
-      <h2 class="en-text" style="display:none;"><i class="fas fa-hands-helping"></i> Take Action!</h2>
-      <p class="tr-text">Bu hayvanların sesi olmak için yapabilecekleriniz:</p>
-      <p class="en-text" style="display:none;">What you can do to be the voice of these animals:</p>
+      <h2 class="tr-text" style="display:none;"><i class="fas fa-hands-helping"></i> Harekete Geç!</h2>
+      <h2 class="en-text"><i class="fas fa-hands-helping"></i> Take Action!</h2>
+      <p class="tr-text" style="display:none;">Bu hayvanların sesi olmak için yapabilecekleriniz:</p>
+      <p class="en-text">What you can do to be the voice of these animals:</p>
       <ul style="text-align: left; margin-left: 20px;">
-        <li class="tr-text">Plastik kullanımınızı azaltın</li>
-        <li class="en-text" style="display:none;">Reduce your plastic use</li>
-        <li class="tr-text">Yerel koruma projelerine destek olun</li>
-        <li class="en-text" style="display:none;">Support local conservation projects</li>
-        <li class="tr-text">Sürdürülebilir ürünler tercih edin</li>
-        <li class="en-text" style="display:none;">Choose sustainable products</li>
-        <li class="tr-text">Bilgi paylaşarak farkındalık yaratın</li>
-        <li class="en-text" style="display:none;">Raise awareness by sharing information</li>
-        <li class="tr-text">Karbon ayak izinizi küçültün</li>
-        <li class="en-text" style="display:none;">Reduce your carbon footprint</li>
+        <li class="tr-text" style="display:none;">Plastik kullanımınızı azaltın</li>
+        <li class="en-text">Reduce your plastic use</li>
+        <li class="tr-text" style="display:none;">Yerel koruma projelerine destek olun</li>
+        <li class="en-text">Support local conservation projects</li>
+        <li class="tr-text" style="display:none;">Sürdürülebilir ürünler tercih edin</li>
+        <li class="en-text">Choose sustainable products</li>
+        <li class="tr-text" style="display:none;">Bilgi paylaşarak farkındalık yaratın</li>
+        <li class="en-text">Raise awareness by sharing information</li>
+        <li class="tr-text" style="display:none;">Karbon ayak izinizi küçültün</li>
+        <li class="en-text">Reduce your carbon footprint</li>
       </ul>
-      <p class="tr-text">Küçük adımlar büyük değişimler yaratabilir. Bugün harekete geçin!</p>
-      <p class="en-text" style="display:none;">Small steps can create big changes. Take action today!</p>
-      <button class="modal-btn tr-text">Kabul Ediyorum</button>
-      <button class="modal-btn en-text" style="display:none;">I Agree</button>
+      <p class="tr-text" style="display:none;">Küçük adımlar büyük değişimler yaratabilir. Bugün harekete geçin!</p>
+      <p class="en-text">Small steps can create big changes. Take action today!</p>
+      <button class="modal-btn tr-text" style="display:none;">Kabul Ediyorum</button>
+      <button class="modal-btn en-text">I Agree</button>
     </div>
   </div>
   
-  <!-- Footer -->
-  <footer class="footer">
-      <div class="footer-container">
-          <div class="footer-about">
-              <div class="footer-logo">
-                  <i class="fas fa-leaf"></i>
-                  <span class="tr-text">Eco Urgent</span>
-                  <span class="en-text" style="display:none">Eco Urgent</span>
-              </div>
-              <p class="footer-about tr-text">İklim değişikliği ile mücadelede birlikte hareket ediyoruz. Siz de söz verin, geleceğimizi birlikte kurtaralım.</p>
-              <p class="footer-about en-text" style="display:none">We act together in the fight against climate change. Make your pledge and let's save our future together.</p>
-          </div>
-          
-          <div class="footer-links">
-              <h3 class="tr-text">Hızlı Linkler</h3>
-              <h3 class="en-text" style="display:none">Quick Links</h3>
-              <ul>
-                  <li><a href="{{ url_for('index') }}">
-                      <i class="fas fa-chevron-right"></i>
-                      <span class="tr-text">Ana Sayfa</span>
-                      <span class="en-text" style="display:none">Home</span>
-                  </a></li>
-                  <li><a href="{{ url_for('bilgilendirme') }}">
-                      <i class="fas fa-chevron-right"></i>
-                      <span class="tr-text">Bilgilendirme</span>
-                      <span class="en-text" style="display:none">Information</span>
-                  </a></li>
-                  <li><a href="{{ url_for('kurbanlar') }}">
-                      <i class="fas fa-chevron-right"></i>
-                      <span class="tr-text">Kurbanlar</span>
-                      <span class="en-text" style="display:none">Victims</span>
-                  </a></li>
-                  <li><a href="{{ url_for('senin_etkin') }}">
-                      <i class="fas fa-chevron-right"></i>
-                      <span class="tr-text">Senin Etkin</span>
-                      <span class="en-text" style="display:none">Your Impact</span>
-                  </a></li>
-              </ul>
-          </div>
-          
-          <div class="footer-contact">
-              <h3 class="tr-text">İletişim</h3>
-              <h3 class="en-text" style="display:none">Contact</h3>
-              
-              <div class="contact-item">
-                  <i class="fas fa-map-marker-alt contact-icon"></i>
-                  <div>
-                      <span class="tr-text">24 № Tam Orta Okul </span>
-                      <span class="en-text" style="display:none">Fully Secondary School №24S</span>
-                      <br>
-                      <span class="tr-text">Bakü, Azerbaycan</span>
-                      <span class="en-text" style="display:none">Baku, Azerbaijan</span>
-                  </div>
-              </div>
-              
-              <div class="contact-item">
-                  <i class="fas fa-envelope contact-icon"></i>
-                  <div>
-                      <span>kaymasali3@gmail.com</span>
-                  </div>
-              </div>
-              
-              <div class="contact-item">
-                  <i class="fas fa-phone-alt contact-icon"></i>
-                  <div>
-                      <span>+994 50 602 29 16</span>
-                  </div>
-              </div>
-              
-              <div class="social-links">
-                  <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                  <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                  <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                  <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
-              </div>
-          </div>
-      </div>
-      
-      <div class="copyright">
-          <p class="tr-text">&copy; 2025 Eco Urgent. Tüm hakları saklıdır.</p>
-          <p class="en-text" style="display:none">&copy; 2025 Eco Urgent. All rights reserved. </p>
-      </div>
-  </footer>
+ <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <i class="fas fa-leaf"></i>
+                    <span>Eco Urgent</span>
+                </div>
+                <p class="footer-about">
+                    {% if current_lang == 'tr' %}
+                        İklim değişikliği ile mücadelede birlikte hareket ediyoruz. Siz de söz verin, geleceğimizi birlikte kurtaralım.
+                    {% else %}
+                        We act together in the fight against climate change. Make your pledge and let's save our future together.
+                    {% endif %}
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <h3>
+                    {% if current_lang == 'tr' %}
+                        Hızlı Linkler
+                    {% else %}
+                        Quick Links
+                    {% endif %}
+                </h3>
+                <ul>
+                    <li><a href="{{ url_for('index') }}">
+                        <i class="fas fa-chevron-right"></i>
+                        <span>{{ t.home }}</span>
+                    </a></li>
+                    <li><a href="{{ url_for('bilgilendirme') }}">
+                        <i class="fas fa-chevron-right"></i>
+                        <span>{{ t.info }}</span>
+                    </a></li>
+                    <li><a href="{{ url_for('kurbanlar') }}">
+                        <i class="fas fa-chevron-right"></i>
+                        <span>{{ t.victims }}</span>
+                    </a></li>
+                    <li><a href="{{ url_for('senin_etkin') }}">
+                        <i class="fas fa-chevron-right"></i>
+                        <span>{{ t.impact_test }}</span>
+                    </a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h3>
+                    {% if current_lang == 'tr' %}
+                        İletişim
+                    {% else %}
+                        Contact
+                    {% endif %}
+                </h3>
+
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt contact-icon"></i>
+                    <div>
+                        <span>
+                            {% if current_lang == 'tr' %}
+                                24 № Tam Orta Okul
+                            {% else %}
+                                Fully Secondary School №24
+                            {% endif %}
+                        </span>
+                        <br>
+                        <span>
+                            {% if current_lang == 'tr' %}
+                                Bakü, Azerbaycan
+                            {% else %}
+                                Baku, Azerbaijan
+                            {% endif %}
+                        </span>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <i class="fas fa-envelope contact-icon"></i>
+                    <div>
+                        <span>kaymasali3@gmail.com</span>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt contact-icon"></i>
+                    <div>
+                        <span>+994 50 602 29 16</span>
+                    </div>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://instagram.com/mrkaymasfire" class="social-link" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2025 Eco Urgent. 
+                {% if current_lang == 'tr' %}
+                    Tüm hakları saklıdır.
+                {% else %}
+                    All rights reserved.
+                {% endif %}
+            </p>
+        </div>
+    </footer>
   <!-- Animate On Scroll JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>
@@ -1617,11 +1640,11 @@
     
     // Language Toggle Functionality
     document.addEventListener('DOMContentLoaded', function() {
-      // Sayfa yüklendiğinde Türkçe dilini aktif et
-      document.querySelectorAll('.tr-text').forEach(el => el.style.display = '');
-      document.querySelectorAll('.en-text').forEach(el => el.style.display = 'none');
-      document.getElementById('langTR').classList.add('active');
-      document.getElementById('langEN').classList.remove('active');
+      // Sayfa yüklendiğinde İngilizce dilini aktif et
+      document.querySelectorAll('.tr-text').forEach(el => el.style.display = 'none');
+      document.querySelectorAll('.en-text').forEach(el => el.style.display = '');
+      document.getElementById('langTR').classList.remove('active');
+      document.getElementById('langEN').classList.add('active');
 
       const langTR = document.getElementById('langTR');
       const langEN = document.getElementById('langEN');
