@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -916,7 +916,8 @@
                 left: 0;
                 width: 100%;
                 background: var(--dark-color);
-                padding: 1rem;
+                padding: text
+            1rem;
                 box-shadow: var(--shadow-md);
             }
             
@@ -1241,8 +1242,8 @@
 <body class="bilgi-body">
     <!-- Language Toggle -->
     <div class="language-toggle">
-        <button class="language-btn active" id="tr-btn">TR</button>
-        <button class="language-btn" id="en-btn">EN</button>
+        <button class="language-btn" id="tr-btn">TR</button>
+        <button class="language-btn active" id="en-btn">EN</button>
     </div>
 
     <!-- Navbar -->
@@ -1250,30 +1251,30 @@
         <div class="navbar-container">
             <a href="{{ url_for('index') }}" class="navbar-logo">
                 <i class="fas fa-leaf"></i>
-                <span class="tr-text">Eco Urgent</span>
-                <span class="en-text" style="display:none">Eco Urgent</span>
+                <span class="tr-text" style="display:none">Eco Urgent</span>
+                <span class="en-text">Eco Urgent</span>
             </a>
             
             <div class="navbar-links" id="navbarLinks">
                 <a href="{{ url_for('index') }}">
                     <i class="fas fa-home"></i>
-                    <span class="tr-text">Ana Sayfa</span>
-                    <span class="en-text" style="display:none">Home</span>
+                    <span class="tr-text" style="display:none">Ana Sayfa</span>
+                    <span class="en-text">Home</span>
                 </a>
                 <a href="{{ url_for('bilgilendirme') }}" class="aktif">
                     <i class="fas fa-chart-bar"></i>
-                    <span class="tr-text">Bilgilendirme</span>
-                    <span class="en-text" style="display:none">Information</span>
+                    <span class="tr-text" style="display:none">Bilgilendirme</span>
+                    <span class="en-text">Information</span>
                 </a>
                 <a href="{{ url_for('kurbanlar') }}">
                     <i class="fas fa-heart"></i>
-                    <span class="tr-text">Kurbanlar</span>
-                    <span class="en-text" style="display:none">Victims</span>
+                    <span class="tr-text" style="display:none">Kurbanlar</span>
+                    <span class="en-text">Victims</span>
                 </a>
                 <a href="{{ url_for('senin_etkin') }}">
                     <i class="fas fa-flask"></i>
-                    <span class="tr-text">Senin Etkin</span>
-                    <span class="en-text" style="display:none">Your Impact</span>
+                    <span class="tr-text" style="display:none">Senin Etkin</span>
+                    <span class="en-text">Your Impact</span>
                 </a>
             </div>
             
@@ -1325,10 +1326,10 @@
     <!-- Bilgi Giriş Bölümü -->
     <div class="bilgi-giris">
         <div class="giris-icerik">
-            <h1 class="tr-text">Durumun <span class="highlight-text">Ciddiyetini</span> Hala Anlamadınız mı?</h1>
-            <h1 class="en-text" style="display:none">Haven't You Understood the <span class="highlight-text">Seriousness</span> of the Situation Yet?</h1>
-            <p class="tr-text">Şimdi, gelin hep beraber öğrenelim. İklim krizi kapımızda ve her saniye geleceğimizi şekillendiriyor. Bu bölümde, dünyanın dört bir yanında yaşanan felaketlerin ardındaki gerçekleri, etkileyici verilerle ve çarpıcı görsellerle birlikte keşfedeceksiniz.</p>
-            <p class="en-text" style="display:none">Now, let's learn together. The climate crisis is at our door and shaping our future every second. In this section, you'll discover the truths behind disasters happening around the world with impressive data and striking visuals.</p>
+            <h1 class="tr-text" style="display:none">Durumun <span class="highlight-text">Ciddiyetini</span> Hala Anlamadınız mı?</h1>
+            <h1 class="en-text">Haven't You Understood the <span class="highlight-text">Seriousness</span> of the Situation Yet?</h1>
+            <p class="tr-text" style="display:none">Şimdi, gelin hep beraber öğrenelim. İklim krizi kapımızda ve her saniye geleceğimizi şekillendiriyor. Bu bölümde, dünyanın dört bir yanında yaşanan felaketlerin ardındaki gerçekleri, etkileyici verilerle ve çarpıcı görsellerle birlikte keşfedeceksiniz.</p>
+            <p class="en-text">Now, let's learn together. The climate crisis is at our door and shaping our future every second. In this section, you'll discover the truths behind disasters happening around the world with impressive data and striking visuals.</p>
         </div>
         <div class="scroll-down" onclick="scrollToContent()">
             <i class="fas fa-chevron-down"></i>
@@ -1733,8 +1734,8 @@
             <div class="footer-about">
                 <div class="footer-logo">
                     <i class="fas fa-leaf"></i>
-                    <span class="tr-text">Eco Urgent</span>
-                    <span class="en-text" style="display:none">Eco Urgent</span>
+                    <span class="tr-text" style="display:none">Eco Urgent</span>
+                    <span class="en-text">Eco Urgent</span>
                 </div>
                 <p class="footer-about tr-text">İklim değişikliği ile mücadelede birlikte hareket ediyoruz. Siz de söz verin, geleceğimizi birlikte kurtaralım.</p>
                 <p class="footer-about en-text" style="display:none">We act together in the fight against climate change. Make your pledge and let's save our future together.</p>
@@ -1746,23 +1747,23 @@
                 <ul>
                     <li><a href="{{ url_for('index') }}">
                         <i class="fas fa-chevron-right"></i>
-                        <span class="tr-text">Ana Sayfa</span>
-                        <span class="en-text" style="display:none">Home</span>
+                        <span class="tr-text" style="display:none">Ana Sayfa</span>
+                        <span class="en-text">Home</span>
                     </a></li>
                     <li><a href="{{ url_for('bilgilendirme') }}">
                         <i class="fas fa-chevron-right"></i>
-                        <span class="tr-text">Bilgilendirme</span>
-                        <span class="en-text" style="display:none">Information</span>
+                        <span class="tr-text" style="display:none">Bilgilendirme</span>
+                        <span class="en-text">Information</span>
                     </a></li>
                     <li><a href="{{ url_for('kurbanlar') }}">
                         <i class="fas fa-chevron-right"></i>
-                        <span class="tr-text">Kurbanlar</span>
-                        <span class="en-text" style="display:none">Victims</span>
+                        <span class="tr-text" style="display:none">Kurbanlar</span>
+                        <span class="en-text">Victims</span>
                     </a></li>
                     <li><a href="{{ url_for('senin_etkin') }}">
                         <i class="fas fa-chevron-right"></i>
-                        <span class="tr-text">Senin Etkin</span>
-                        <span class="en-text" style="display:none">Your Impact</span>
+                        <span class="tr-text" style="display:none">Senin Etkin</span>
+                        <span class="en-text">Your Impact</span>
                     </a></li>
                 </ul>
             </div>
@@ -1783,8 +1784,7 @@
                 </div>
                 
                 <div class="contact-item">
-                    <i class="fas fa-envelope contact-icon"></i>
-                    <div>
+                    <i class="fas fa-envelope contact-icon"><div>
                         <span>kaymasali3@gmail.com</span>
                     </div>
                 </div>
@@ -1853,8 +1853,8 @@
                     document.documentElement.lang = 'en';
                 }
                 
-                // Reinitialize accordions for the new visible language
-                initAccordions();
+                // Reinitialize accordions for the new visible language with a small delay
+                setTimeout(initAccordions, 100);
             }
             
             trBtn.addEventListener('click', function() {
@@ -1889,12 +1889,24 @@
 
         // Improved accordion initialization
         function initAccordions() {
-            // Add event listeners to all accordions
+            // Remove all existing accordion initialization
             document.querySelectorAll('.accordion').forEach(acc => {
-                // Skip if already has a click handler
-                if (acc.hasAttribute('data-accordion-initialized')) {
-                    return;
-                }
+                acc.removeAttribute('data-accordion-initialized');
+                acc.classList.remove('active');
+                // Clone the element to remove all event listeners
+                const newAcc = acc.cloneNode(true);
+                acc.parentNode.replaceChild(newAcc, acc);
+            });
+            
+            // Reset all panels
+            document.querySelectorAll('.panel').forEach(panel => {
+                panel.style.maxHeight = null;
+            });
+            
+            // Add event listeners to all visible accordions
+            document.querySelectorAll('.accordion').forEach(acc => {
+                // Only initialize visible accordions
+                if (acc.style.display === 'none') return;
                 
                 acc.setAttribute('data-accordion-initialized', 'true');
                 
@@ -1915,15 +1927,19 @@
 
                 // Close all accordions by default
                 const panel = acc.nextElementSibling;
-                panel.style.maxHeight = null;
+                if (panel) {
+                    panel.style.maxHeight = null;
+                }
             });
 
-            // Open first accordion by default
-            const firstAccordion = document.querySelector('.accordion');
+            // Open first visible accordion by default
+            const firstAccordion = document.querySelector('.accordion:not([style*="display: none"])');
             if (firstAccordion) {
                 firstAccordion.classList.add('active');
                 const panel = firstAccordion.nextElementSibling;
-                panel.style.maxHeight = panel.scrollHeight + 'px';
+                if (panel) {
+                    panel.style.maxHeight = panel.scrollHeight + 'px';
+                }
             }
         }
 
