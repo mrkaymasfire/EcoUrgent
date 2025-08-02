@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1231,21 +1231,18 @@
 <body>
     <!-- Language Switch -->
     <div class="language-switch">
-        <button class="language-btn active" data-lang="tr">TR</button>
-        <button class="language-btn" data-lang="en">EN</button>
+        <button class="language-btn" data-lang="tr">TR</button>
+        <button class="language-btn active" data-lang="en">EN</button>
     </div>
     
     <!-- Navbar -->
     <nav class="navbar">
         <div class="navbar-container">
             <a href="{{ url_for('index') }}" class="navbar-logo">
-                <i class="fas fa-leaf"></i>
-                <span class="tr-text">Eco Urgent</span>
-                <span class="en-text" style="display:none">Eco Urgent</span>
+                <i class="fas fa-leaf"></i> Eco Urgent
             </a>
-            
             <div class="navbar-links">
-                <a href="{{ url_for('index') }}" class="aktif">
+                <a href="{{ url_for('index') }}">
                     <i class="fas fa-home"></i>
                     <span class="tr-text">Ana Sayfa</span>
                     <span class="en-text" style="display:none">Home</span>
@@ -1265,14 +1262,17 @@
                     <span class="tr-text">Senin Etkin</span>
                     <span class="en-text" style="display:none">Your Impact</span>
                 </a>
+                <a href="{{ url_for('destek') }}" class="active">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    <span class="tr-text">Siteyi Destekle</span>
+                    <span class="en-text" style="display:none">Support Us</span>
+                </a>
             </div>
-            
             <button class="mobile-menu-btn">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
     </nav>
-    
     <!-- Hero Section -->
     <section class="hero">
         <div class="floating-elements">
@@ -1289,15 +1289,15 @@
         </div>
         
         <div class="hero-content animate__animated animate__fadeInUp">
-            <h1 class="tr-text">Bugününüzü Unutursanız, Yarın Unutacak Hayatınız Olmayabilir</h1>
-            <h1 class="en-text" style="display:none">If You Forget Today, Tomorrow You May Have No Life to Forget</h1>
+            <h1 class="tr-text" style="display:none">Bugününüzü Unutursanız, Yarın Unutacak Hayatınız Olmayabilir</h1>
+            <h1 class="en-text">If You Forget Today, Tomorrow You May Have No Life to Forget</h1>
             
-            <p class="tr-text">İklim değişikliği ile mücadelede hep birlikte hareket edelim. Söz verin, fark yaratın!</p>
-            <p class="en-text" style="display:none">Let's act together in the fight against climate change. Make a pledge, make a difference!</p>
+            <p class="tr-text" style="display:none">İklim değişikliği ile mücadelede hep birlikte hareket edelim. Söz verin, fark yaratın!</p>
+            <p class="en-text">Let's act together in the fight against climate change. Make a pledge, make a difference!</p>
             
             <a href="#pledge" class="cta-button animate__animated animate__fadeIn animate__delay-1s">
-                <span class="tr-text">Söz Ver</span>
-                <span class="en-text" style="display:none">Pledge</span>
+                <span class="tr-text" style="display:none">Söz Ver</span>
+                <span class="en-text">Pledge</span>
                 <i class="fas fa-arrow-down"></i>
             </a>
         </div>
@@ -1584,6 +1584,11 @@
                         <i class="fas fa-chevron-right"></i>
                         <span>{{ t.impact_test }}</span>
                     </a></li>
+                    <li><a href="{{ url_for('destek') }}">
+                        <i class="fas fa-chevron-right"></i>
+                        <span class="tr-text">Siteyi Destekle</span>
+                        <span class="en-text" style="display: none">Support Us</span>
+                    </a></li>
                 </ul>
             </div>
 
@@ -1656,15 +1661,19 @@
     </div>
     
     <script>
+        // Initialize default language as English
+        document.querySelectorAll('.tr-text').forEach(el => el.style.display = 'none');
+        document.querySelectorAll('.en-text').forEach(el => el.style.display = '');
+
         // Language Switch Functionality
         document.querySelectorAll('.language-btn').forEach(btn => {
             btn.addEventListener('click', function() {
                 const lang = this.getAttribute('data-lang');
-                
+
                 // Update active button
                 document.querySelectorAll('.language-btn').forEach(b => b.classList.remove('active'));
                 this.classList.add('active');
-                
+
                 // Show/hide language texts
                 if (lang === 'tr') {
                     document.querySelectorAll('.tr-text').forEach(el => el.style.display = '');
