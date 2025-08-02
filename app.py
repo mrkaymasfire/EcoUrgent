@@ -22,6 +22,7 @@ translations = {
     'tr': {
         'home': 'Ana Sayfa',
         'info': 'Bilgilendirme',
+        'destek': 'Siteyi Destekle',
         'victims': 'Kurbanlar',
         'impact_test': 'Senin Etkin',
         'title': 'Çevresel Etki Testi',
@@ -53,6 +54,7 @@ translations = {
         'subtitle': 'Measure the impact of your daily habits on the world',
         'detailed_test_desc': 'Get a detailed report with 20 comprehensive questions (12-15 minutes)',
         'select_test': 'Select Test Type',
+        'destek': 'Support Us',
         'quick_test': 'Quick Test',
         'quick_test_desc': 'Measure your general impact with 10 basic questions (5-7 minutes)',
         'detailed_test': 'Detailed Analysis',
@@ -388,7 +390,7 @@ def determine_badges(score, category_scores, current_lang):
 @app.route("/", methods=["GET", "POST"])
 def index():
     global soz_sayaci, son_soz_tarihi
-    current_lang = session.get('lang', 'tr')
+    current_lang = session.get('lang', 'en')
     
     if request.method == "POST":
         nick = request.form["nick"].strip()
@@ -408,22 +410,26 @@ def index():
                          son_bes_kisi=son_bes_kisi,
                          current_lang=current_lang,
                          t=translations[current_lang])
+@app.route("/destek")
+def destek():
+    current_lang = session.get('lang', 'tr')
+    return render_template("destek.html", current_lang=current_lang, t=translations[current_lang])
 
 @app.route("/bilgilendirme")
 def bilgilendirme():
-    current_lang = session.get('lang', 'tr')
+    current_lang = session.get('lang', 'en')
     return render_template("bilgi.html", current_lang=current_lang, t=translations[current_lang])
 
 @app.route("/kurbanlar")
 def kurbanlar():
-    current_lang = session.get('lang', 'tr')
+    current_lang = session.get('lang', 'en')
     return render_template("kurbanlar.html", current_lang=current_lang, t=translations[current_lang])
 
 @app.route("/senin-etkin", methods=["GET", "POST"])
 def senin_etkin():
     sonuc = None
     test_turu = None
-    current_lang = session.get('lang', 'tr')
+    current_lang = session.get('lang', 'en')
     
     if request.method == "POST":
         # Test type selection form
@@ -604,7 +610,7 @@ def senin_etkin():
 def set_language(lang):
     if lang in translations:
         session['lang'] = lang
-    return jsonify(success=True, language=session.get('lang', 'tr'))
+    return jsonify(success=True, language=session.get('lang', 'en'))
 
 if __name__ == "__main__":
     app.run(debug=True)
