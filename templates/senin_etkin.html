@@ -1649,6 +1649,7 @@
         <a href="{{ url_for('bilgilendirme') }}">{{ t.info }}</a>
         <a href="{{ url_for('kurbanlar') }}">{{ t.victims }}</a>
         <a href="{{ url_for('senin_etkin') }}" class="active" aria-current="page">{{ t.impact_test }}</a>
+        <a href="{{ url_for('destek') }}"  aria-current="page">{{ t.destek }}</a>
         <div class="language-selector">
           <button class="language-btn {{ 'active' if current_lang == 'tr' else '' }}" onclick="changeLanguage('tr')">
             TR
@@ -2285,6 +2286,11 @@
                     <li><a href="{{ url_for('senin_etkin') }}">
                         <i class="fas fa-chevron-right"></i>
                         <span>{{ t.impact_test }}</span>
+                    </a></li>
+                    <li><a href="{{ url_for('destek') }}">
+                        <i class="fas fa-chevron-right"></i>
+                        <span class="tr-text">Siteyi Destekle</span>
+                        <span class="en-text" style="display: none">Support Us</span>
                     </a></li>
                 </ul>
             </div>
