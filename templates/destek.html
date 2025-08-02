@@ -1,0 +1,3410 @@
+<!DOCTYPE html>
+<html lang="{{ current_lang }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Support our climate awareness initiative through donations or by playing our educational eco-city building game">
+    <meta name="keywords" content="climate support, environmental donation, eco game, sustainability, carbon footprint, city builder">
+    <title>{{ t.support }} - Climate Awareness</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        :root {
+            --primary: #00a896;
+            --primary-dark: #028a7a;
+            --primary-light: #4dd0c4;
+            --secondary: #f4a261;
+            --accent: #e76f51;
+            --success: #06d6a0;
+            --warning: #ffd60a;
+            --danger: #e63946;
+            --dark: #264653;
+            --darker: #1a252f;
+            --gray: #6c757d;
+            --light: #f8f9fa;
+            --white: #ffffff;
+            --eco-green: #2ecc71;
+            --eco-blue: #3498db;
+            --eco-dark: #0a2e38;
+            --money: #f1c40f;
+            --food: #e67e22;
+            --happiness: #e84393;
+            --gradient-primary: linear-gradient(135deg, var(--primary), var(--primary-light));
+            --gradient-secondary: linear-gradient(135deg, var(--secondary), var(--accent));
+            --gradient-dark: linear-gradient(135deg, var(--dark), var(--darker));
+            --gradient-eco: linear-gradient(135deg, var(--eco-green), var(--eco-blue));
+            --gradient-money: linear-gradient(135deg, var(--money), #f39c12);
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 8px rgba(0,0,0,0.15);
+            --shadow-lg: 0 8px 16px rgba(0,0,0,0.2);
+            --radius-sm: 6px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding-top: 80px;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: var(--gradient-dark);
+            padding: 1rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow-lg);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            background-color: rgba(44, 62, 80, 0.95);
+        }
+        
+        .navbar.scrolled {
+            padding: 0.8rem 3rem;
+            background-color: rgba(44, 62, 80, 0.98);
+        }
+        
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .navbar-logo {
+            font-weight: 700;
+            font-size: 1.8rem;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .navbar-logo:hover {
+            transform: scale(1.03);
+        }
+        
+        .navbar-logo i {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .navbar-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        
+        .navbar a {
+            color: var(--white);
+            text-decoration: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            transition: var(--transition);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .navbar a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        .navbar a:hover::before, .navbar a.active::before {
+            width: 100%;
+        }
+        
+        .navbar a:hover, .navbar a.active {
+            color: var(--primary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1615529328331-f8917597711f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center;
+            background-size: cover;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            color: white;
+            margin-bottom: var(--space-xl);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+
+        /* Language Toggle */
+        .language-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.9);
+            padding: 10px 15px;
+            border-radius: 50px;
+            box-shadow: var(--shadow-md);
+            backdrop-filter: blur(5px);
+        }
+
+        .language-toggle button {
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: var(--shadow-md);
+        }
+
+        .language-toggle button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .language-toggle button.active {
+            background: var(--gradient-secondary);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-xl) var(--space-md);
+        }
+
+        /* Support Message */
+        .support-message-container {
+            background: var(--gradient-primary);
+            color: white;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-xl);
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .support-message-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: shine 3s infinite;
+        }
+
+        .support-message {
+            font-size: 1.1rem;
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .support-message a {
+            color: var(--warning);
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .support-message a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        /* Coffee Button */
+        .coffee-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-sm);
+            background: var(--gradient-money);
+            color: #000;
+            padding: 1rem 2rem;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            box-shadow: var(--shadow-md);
+            margin: var(--space-md) auto;
+            position: relative;
+            z-index: 1;
+            width: fit-content;
+            min-width: 250px;
+        }
+
+        .coffee-button:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+            background: linear-gradient(135deg, #FFDD00, #FFC312);
+        }
+
+        .coffee-icon {
+            width: 24px;
+            height: 24px;
+            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTUgMTBWMThBMyAzIDAgMDA4IDIxSDEzQTMgMyAwIDAwMTYgMThWMTBNNSAxMEgxNk01IDEwSDRBMiAyIDAgMDAyIDEyVjE0QTIgMiAwIDAwNCA1SDVNMTYgMTBIMThBMiAyIDAgMDEyMCAxMlYxNEEyIDIgMCAwMTE4IDE2SDE2TTkgN1Y1QTIgMiAwIDAxMTEgM0gyQTIgMiAwIDAxMTMgNVY3IiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+Cjwvc3ZnPgo=') no-repeat center;
+            background-size: contain;
+        }
+
+        /* Scenario Selection Modal */
+        .scenario-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .scenario-content {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            max-width: 800px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-lg);
+            animation: popIn 0.5s ease-out;
+        }
+
+        .scenario-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-md);
+            margin: var(--space-lg) 0;
+        }
+
+        .scenario-option {
+            background: var(--light);
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            text-align: center;
+        }
+
+        .scenario-option:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary);
+        }
+
+        .scenario-option.selected {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary-dark);
+        }
+
+        .scenario-icon {
+            font-size: 2.5rem;
+            margin-bottom: var(--space-sm);
+        }
+
+        .scenario-title {
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: var(--space-xs);
+        }
+
+        .scenario-desc {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-bottom: var(--space-sm);
+        }
+
+        .scenario-option.selected .scenario-desc {
+            color: rgba(255,255,255,0.8);
+        }
+
+        .scenario-start-btn {
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            display: block;
+            width: 100%;
+            margin-top: var(--space-md);
+        }
+
+        .scenario-start-btn:hover {
+            background: var(--gradient-primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* City Builder Game */
+        .game-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-lg);
+            margin-bottom: var(--space-xl);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .game-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1476231682828-37e571bc172f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center;
+            background-size: cover;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .game-title {
+            font-size: 2.5rem;
+            background: var(--gradient-secondary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: var(--space-md);
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        /* Game Header */
+        .game-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Resources Panel */
+        .resources-panel {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+            background: rgba(255,255,255,0.9);
+            padding: var(--space-sm);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-md);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .resource {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-sm);
+            background: rgba(0,0,0,0.05);
+            font-weight: 600;
+            min-width: 120px;
+        }
+
+        .resource-icon {
+            font-size: 1.2rem;
+        }
+
+        .resource-value {
+            font-size: 1.1rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .resource.money .resource-icon { color: var(--money); }
+        .resource.energy .resource-icon { color: var(--warning); }
+        .resource.food .resource-icon { color: var(--food); }
+        .resource.population .resource-icon { color: var(--primary); }
+        .resource.happiness .resource-icon { color: var(--happiness); }
+
+        /* Missions Panel */
+        .missions-panel {
+            background: white;
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: var(--space-md);
+            border: 1px solid rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .mission-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-sm) 0;
+            border-bottom: 1px dashed rgba(0,0,0,0.1);
+        }
+
+        .mission-icon {
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        .mission-progress {
+            flex-grow: 1;
+            background: rgba(0,0,0,0.1);
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .mission-progress-bar {
+            height: 100%;
+            background: var(--gradient-primary);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        .mission-reward {
+            background: var(--gradient-money);
+            color: #000;
+            padding: 0.25rem 0.5rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Game Controls */
+        .game-controls {
+            display: flex;
+            gap: var(--space-sm);
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: var(--space-lg);
+            position: relative;
+            z-index: 1;
+        }
+
+        .game-btn {
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .game-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .game-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .game-btn.secondary {
+            background: var(--gradient-secondary);
+        }
+
+        /* Game Container */
+        .game-container {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: var(--space-lg);
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        @media (max-width: 992px) {
+            .game-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Game World */
+        .game-world {
+            background: linear-gradient(to bottom, #87ceeb 0%, #98fb98 100%);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            min-height: 500px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
+            touch-action: manipulation;
+        }
+
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 4px;
+            margin: var(--space-md) 0;
+            background: rgba(255,255,255,0.1);
+            padding: var(--space-sm);
+            border-radius: var(--radius-sm);
+            position: relative;
+            z-index: 1;
+        }
+
+        .game-tile {
+            aspect-ratio: 1;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+            background-size: cover;
+            background-position: center;
+            user-select: none;
+        }
+
+        .game-tile:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .game-tile.grass {
+            background: linear-gradient(135deg, #7cb342, #8bc34a);
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .game-tile.water {
+            background: linear-gradient(135deg, #2196f3, #03a9f4);
+            animation: wave 2s ease-in-out infinite;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .game-tile.polluted {
+            background: linear-gradient(135deg, #795548, #8d6e63);
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
+        }
+
+        .game-tile.clean {
+            background: linear-gradient(135deg, #4caf50, #66bb6a);
+            animation: glow 1s ease-in-out;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .game-tile.house {
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+        }
+
+        .game-tile.factory {
+            background: linear-gradient(135deg, #7f8c8d, #95a5a6);
+        }
+
+        .game-tile.solar {
+            background: linear-gradient(135deg, #f1c40f, #f39c12);
+        }
+
+        .game-tile.farm {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+        }
+
+        .game-tile.park {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+        }
+
+        .game-tile.hospital {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+        }
+
+        .game-tile.school {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+        }
+
+        .game-tile.wind {
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+        }
+
+        .game-tile.nursery {
+            background: linear-gradient(135deg, #1abc9c, #16a085);
+        }
+
+        .game-tile.selected {
+            border-color: var(--warning);
+            box-shadow: 0 0 10px rgba(255, 214, 10, 0.5);
+        }
+
+        .building-level {
+            position: absolute;
+            bottom: 2px;
+            right: 2px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            font-size: 0.6rem;
+            padding: 0.1rem 0.3rem;
+            border-radius: 3px;
+        }
+
+        /* Building Menu */
+        .building-menu {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            box-shadow: var(--shadow-md);
+            height: 100%;
+            position: relative;
+            z-index: 1;
+            overflow-y: auto;
+        }
+
+        .building-category {
+            margin-bottom: var(--space-lg);
+        }
+
+        .building-category h3 {
+            font-size: 1.2rem;
+            margin-bottom: var(--space-sm);
+            color: var(--dark);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 0.5rem;
+        }
+
+        .building-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-sm);
+        }
+
+        .building-option {
+            background: var(--light);
+            border-radius: var(--radius-sm);
+            padding: var(--space-sm);
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            border: 1px solid rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .building-option:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+            background: var(--primary-light);
+            color: white;
+        }
+
+        .building-option.selected {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary-dark);
+        }
+
+        .building-icon {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .building-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .building-cost {
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+
+        .building-option.selected .building-cost {
+            color: rgba(255,255,255,0.8);
+        }
+
+        .building-tooltip {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--dark);
+            color: white;
+            padding: 0.5rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+            width: 200px;
+            z-index: 10;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            box-shadow: var(--shadow-md);
+        }
+
+        .building-option:hover .building-tooltip {
+            opacity: 1;
+        }
+
+        /* Stats Panel */
+        .stats-panel {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            box-shadow: var(--shadow-md);
+            margin-top: var(--space-lg);
+        }
+
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px dashed rgba(0,0,0,0.1);
+        }
+
+        .stat-label {
+            font-weight: 500;
+            color: var(--gray);
+        }
+
+        .stat-value {
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Tech Tree Panel */
+        .tech-tree-panel {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            box-shadow: var(--shadow-md);
+            margin-top: var(--space-lg);
+            display: none;
+        }
+
+        .tech-tree {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: var(--space-md);
+        }
+
+        .tech-item {
+            background: var(--light);
+            border-radius: var(--radius-sm);
+            padding: var(--space-sm);
+            position: relative;
+            border-left: 3px solid var(--gray);
+        }
+
+        .tech-item.unlocked {
+            border-left-color: var(--success);
+            background: rgba(6,214,160,0.1);
+        }
+
+        .tech-item.locked {
+            opacity: 0.6;
+        }
+
+        .tech-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .tech-name {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .tech-desc {
+            font-size: 0.8rem;
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+        }
+
+        .tech-cost {
+            font-size: 0.8rem;
+            color: var(--money);
+            font-weight: 600;
+        }
+
+        .tech-requirements {
+            font-size: 0.7rem;
+            color: var(--gray);
+            font-style: italic;
+        }
+
+        /* Events Panel */
+        .events-panel {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            box-shadow: var(--shadow-md);
+            margin-top: var(--space-lg);
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .event-item {
+            padding: var(--space-sm);
+            border-left: 3px solid var(--primary);
+            margin-bottom: var(--space-sm);
+            background: rgba(0,168,150,0.05);
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+        }
+
+        .event-item.warning {
+            border-left-color: var(--warning);
+            background: rgba(255,214,10,0.05);
+        }
+
+        .event-item.danger {
+            border-left-color: var(--danger);
+            background: rgba(230,57,70,0.05);
+        }
+
+        .event-item.success {
+            border-left-color: var(--success);
+            background: rgba(6,214,160,0.05);
+        }
+
+        /* Decision Modal */
+        .decision-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .decision-content {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            max-width: 500px;
+            width: 90%;
+            box-shadow: var(--shadow-lg);
+            animation: popIn 0.5s ease-out;
+            text-align: center;
+        }
+
+        .decision-options {
+            display: flex;
+            gap: var(--space-md);
+            margin-top: var(--space-lg);
+            justify-content: center;
+        }
+
+        .decision-option {
+            background: var(--light);
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            cursor: pointer;
+            transition: var(--transition);
+            flex: 1;
+            max-width: 200px;
+        }
+
+        .decision-option:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .decision-option.positive {
+            background: var(--success);
+            color: white;
+        }
+
+        .decision-option.negative {
+            background: var(--danger);
+            color: white;
+        }
+
+        .decision-option.neutral {
+            background: var(--warning);
+            color: #000;
+        }
+
+        /* Charts Panel */
+        .charts-panel {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            box-shadow: var(--shadow-md);
+            margin-top: var(--space-lg);
+            display: none;
+        }
+
+        .chart-container {
+            height: 200px;
+            margin-bottom: var(--space-md);
+            position: relative;
+        }
+
+        /* Achievement Popup */
+        .achievement-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            z-index: 10000;
+            text-align: center;
+            animation: popIn 0.5s ease-out;
+            display: none;
+            background: var(--gradient-primary);
+            color: white;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        /* Level Indicator */
+        .level-indicator {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: rgba(255,255,255,0.9);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            box-shadow: var(--shadow-md);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+        }
+
+        .level-progress {
+            width: 100px;
+            height: 8px;
+            background: rgba(0,0,0,0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .level-progress-bar {
+            height: 100%;
+            background: var(--gradient-primary);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        /* Environmental Effects */
+        .environment-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .smog-overlay {
+            background: rgba(100, 100, 100, 0.3);
+        }
+
+        .clean-overlay {
+            background: rgba(200, 255, 200, 0.1);
+        }
+
+        /* Animations */
+        @keyframes wave {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-2px); }
+        }
+
+        @keyframes glow {
+            0% { box-shadow: 0 0 5px var(--success); }
+            50% { box-shadow: 0 0 15px var(--success); }
+            100% { box-shadow: 0 0 5px var(--success); }
+        }
+
+        @keyframes shine {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes rain-fall {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100vh); }
+        }
+
+        @keyframes float-up {
+            0% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+        }
+
+        @keyframes popIn {
+            0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+            100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+        }
+
+        /* Floating Particles */
+        .floating-particle {
+            position: absolute;
+            pointer-events: none;
+            font-size: 1.2rem;
+            animation: float-up 2s ease-out forwards;
+            z-index: 10;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #0a2e38, #08313b);
+            color: #e0f7fa;
+            padding: 2rem 1rem;
+            margin-top: 5rem;
+            border-top: 4px solid #2ecc71;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            gap: var(--space-md);
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #ffffff;
+        }
+
+        .footer-logo i {
+            color: #2ecc71;
+            font-size: 1.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: var(--space-md);
+            align-items: center;
+        }
+
+        .footer-links a {
+            color: #b3e5fc;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover {
+            color: #2ecc71;
+        }
+
+        .footer-support {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background-color: rgba(46, 204, 113, 0.1);
+            border-radius: 50%;
+            color: #ffffff;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            border: 1px solid rgba(46, 204, 113, 0.3);
+        }
+
+        .social-link:hover {
+            background-color: #2ecc71;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            margin-top: 1.5rem;
+            border-top: 1px solid rgba(46, 204, 113, 0.2);
+            color: #81d4fa;
+            font-size: 0.8rem;
+            width: 100%;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem;
+            }
+            
+            .navbar-links {
+                gap: 0.5rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .game-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+                gap: var(--space-md);
+            }
+            
+            .footer-links {
+                flex-direction: column;
+            }
+            
+            .footer-support {
+                flex-direction: column;
+            }
+            
+            .level-indicator {
+                top: 80px;
+                right: 10px;
+                padding: 0.3rem 0.8rem;
+                font-size: 0.9rem;
+            }
+            
+            .level-progress {
+                width: 70px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .game-grid {
+                grid-template-columns: repeat(8, 1fr);
+            }
+            
+            .resources-panel {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .resource {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .building-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .decision-options {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .decision-option {
+                max-width: 100%;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="{{ url_for('index') }}" class="navbar-logo">
+                <i class="fas fa-leaf"></i> Eco Urgent
+            </a>
+            <div class="navbar-links">
+                <a href="{{ url_for('index') }}">
+                    <i class="fas fa-home"></i>
+                    <span class="tr-text">Ana Sayfa</span>
+                    <span class="en-text" style="display:none">Home</span>
+                </a>
+                <a href="{{ url_for('bilgilendirme') }}">
+                    <i class="fas fa-chart-bar"></i>
+                    <span class="tr-text">Bilgilendirme</span>
+                    <span class="en-text" style="display:none">Information</span>
+                </a>
+                <a href="{{ url_for('kurbanlar') }}">
+                    <i class="fas fa-heart"></i>
+                    <span class="tr-text">Kurbanlar</span>
+                    <span class="en-text" style="display:none">Victims</span>
+                </a>
+                <a href="{{ url_for('senin_etkin') }}">
+                    <i class="fas fa-flask"></i>
+                    <span class="tr-text">Senin Etkin</span>
+                    <span class="en-text" style="display:none">Your Impact</span>
+                </a>
+                <a href="{{ url_for('destek') }}" class="active">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    <span class="tr-text">Siteyi Destekle</span>
+                    <span class="en-text" style="display:none">Support Us</span>
+                </a>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="tr-text">İklim Değişikliğiyle Mücadele</h1>
+            <h1 class="en-text" style="display:none">Fight Against Climate Change</h1>
+            <p class="tr-text">Geleceğimiz için birlikte hareket edelim. Destek olun, fark yaratalım!</p>
+            <p class="en-text" style="display:none">Let's act together for our future. Support us, make a difference!</p>
+        </div>
+    </section>
+
+    <!-- Language Toggle -->
+    <div class="language-toggle">
+        <button onclick="setLanguage('tr')" class="{{ 'active' if current_lang == 'tr' else '' }}">TR</button>
+        <button onclick="setLanguage('en')" class="{{ 'active' if current_lang == 'en' else '' }}">EN</button>
+    </div>
+
+    <!-- Level Indicator -->
+    <div class="level-indicator">
+        <span class="tr-text">Seviye</span>
+        <span class="en-text" style="display:none">Level</span>
+        <span id="levelValue">1</span>
+        <div class="level-progress">
+            <div class="level-progress-bar" id="levelProgress"></div>
+        </div>
+    </div>
+
+    <!-- Scenario Selection Modal -->
+    <div class="scenario-modal" id="scenarioModal">
+        <div class="scenario-content">
+            <h2 class="tr-text">Senaryo Seçin</h2>
+            <h2 class="en-text" style="display:none">Choose Scenario</h2>
+            <p class="tr-text">Farklı zorluk seviyelerinde oyun deneyimleri yaşayın</p>
+            <p class="en-text" style="display:none">Experience different challenge levels</p>
+            
+            <div class="scenario-options">
+                <div class="scenario-option" onclick="selectScenario('standard')">
+                    <div class="scenario-icon">🌍</div>
+                    <div class="scenario-title tr-text">Standart Şehir</div>
+                    <div class="scenario-title en-text" style="display:none">Standard City</div>
+                    <div class="scenario-desc tr-text">Dengeli kaynaklarla başlayın</div>
+                    <div class="scenario-desc en-text" style="display:none">Start with balanced resources</div>
+                </div>
+                
+                <div class="scenario-option" onclick="selectScenario('drought')">
+                    <div class="scenario-icon">🏜️</div>
+                    <div class="scenario-title tr-text">Kuraklık Krizi</div>
+                    <div class="scenario-title en-text" style="display:none">Drought Crisis</div>
+                    <div class="scenario-desc tr-text">Su kaynakları kısıtlı</div>
+                    <div class="scenario-desc en-text" style="display:none">Limited water resources</div>
+                </div>
+                
+                <div class="scenario-option" onclick="selectScenario('polluted')">
+                    <div class="scenario-icon">☢️</div>
+                    <div class="scenario-title tr-text">Kirli Topraklar</div>
+                    <div class="scenario-title en-text" style="display:none">Polluted Lands</div>
+                    <div class="scenario-desc tr-text">Yüksek karbon ayak izi</div>
+                    <div class="scenario-desc en-text" style="display:none">High carbon footprint</div>
+                </div>
+                
+                <div class="scenario-option" onclick="selectScenario('flood')">
+                    <div class="scenario-icon">🌊</div>
+                    <div class="scenario-title tr-text">Sel Sonrası</div>
+                    <div class="scenario-title en-text" style="display:none">Post-Flood</div>
+                    <div class="scenario-desc tr-text">Sınırlı inşa alanı</div>
+                    <div class="scenario-desc en-text" style="display:none">Limited build area</div>
+                </div>
+            </div>
+            
+            <button class="scenario-start-btn" onclick="startSelectedScenario()">
+                <span class="tr-text">Başla</span>
+                <span class="en-text" style="display:none">Start</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Decision Modal -->
+    <div class="decision-modal" id="decisionModal">
+        <div class="decision-content">
+            <h3 id="decisionTitle"></h3>
+            <p id="decisionText"></p>
+            <div class="decision-options" id="decisionOptions">
+                <!-- Options will be added dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Support Message -->
+        <div class="support-message-container animate__animated animate__fadeInUp">
+            <p class="support-message">
+                <span class="tr-text">Eğer siteyi beğendiyseniz, siteyi desteklemek için <a href="https://buymeacoffee.com/climatehero" class="coffee-link">bu butondan</a> bana destek olabilir, veya bu sitede gördüğünüz reklamlara tıklayabilir (çok değil) ve ya sadece bu sitede zaman geçirebilirsiniz. Teşekkürler!</span>
+                <span class="en-text" style="display:none">If you liked the site, you can support me by <a href="https://buymeacoffee.com/climatehero" class="coffee-link">clicking this button</a>, or by clicking on the ads you see on this site (not too much) or just by spending time on this site. Thank you!</span>
+            </p>
+            
+            <a href="https://buymeacoffee.com/climatehero" class="coffee-button" onclick="trackCoffeeClick()">
+                <span class="coffee-icon"></span>
+                <span class="tr-text">Bana Kahve Ismarla</span>
+                <span class="en-text" style="display:none">Buy Me a Coffee</span>
+            </a>
+        </div>
+
+        <!-- City Builder Game Section -->
+        <div class="game-section animate__animated animate__fadeInUp animate__delay-1s">
+            <h2 class="game-title">
+                <span class="tr-text">🏙️ Eko-Şehir Kurma Oyunu</span>
+                <span class="en-text" style="display: none">🏙️ Eco-City Builder Game</span>
+            </h2>
+            
+            <div class="game-header">
+                <div class="resources-panel">
+                    <div class="resource money">
+                        <i class="fas fa-coins resource-icon"></i>
+                        <span class="resource-value" id="moneyResource">1000</span>
+                    </div>
+                    <div class="resource energy">
+                        <i class="fas fa-bolt resource-icon"></i>
+                        <span class="resource-value" id="energyResource">50</span>
+                    </div>
+                    <div class="resource food">
+                        <i class="fas fa-utensils resource-icon"></i>
+                        <span class="resource-value" id="foodResource">75</span>
+                    </div>
+                    <div class="resource population">
+                        <i class="fas fa-users resource-icon"></i>
+                        <span class="resource-value" id="populationResource">10</span>
+                    </div>
+                    <div class="resource happiness">
+                        <i class="fas fa-smile resource-icon"></i>
+                        <span class="resource-value" id="happinessResource">80</span>
+                    </div>
+                </div>
+                
+                <div class="missions-panel" id="missionsPanel">
+                    <h3 class="tr-text">Görevler</h3>
+                    <h3 class="en-text" style="display:none">Missions</h3>
+                    <div class="mission-item">
+                        <i class="fas fa-tasks mission-icon"></i>
+                        <div class="mission-details">
+                            <div class="mission-text tr-text">3 Park İnşa Et</div>
+                            <div class="mission-text en-text" style="display:none">Build 3 Parks</div>
+                            <div class="mission-progress">
+                                <div class="mission-progress-bar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="mission-reward">+200💰</div>
+                    </div>
+                </div>
+                
+                <div class="game-controls">
+                    <button class="game-btn" onclick="toggleGame()" id="toggleBtn">
+                        <i class="fas fa-play"></i>
+                        <span class="tr-text">Başla</span>
+                        <span class="en-text" style="display: none">Start</span>
+                    </button>
+                    <button class="game-btn secondary" onclick="saveGame()">
+                        <i class="fas fa-save"></i>
+                        <span class="tr-text">Kaydet</span>
+                        <span class="en-text" style="display: none">Save</span>
+                    </button>
+                    <button class="game-btn secondary" onclick="loadGame()">
+                        <i class="fas fa-folder-open"></i>
+                        <span class="tr-text">Yükle</span>
+                        <span class="en-text" style="display: none">Load</span>
+                    </button>
+                    <button class="game-btn secondary" onclick="showTechTree()">
+                        <i class="fas fa-microscope"></i>
+                        <span class="tr-text">Teknoloji</span>
+                        <span class="en-text" style="display: none">Tech</span>
+                    </button>
+                    <button class="game-btn secondary" onclick="showCharts()">
+                        <i class="fas fa-chart-line"></i>
+                        <span class="tr-text">İstatistikler</span>
+                        <span class="en-text" style="display: none">Stats</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="game-container">
+                <div class="game-world">
+                    <div class="environment-overlay smog-overlay" id="smogOverlay"></div>
+                    <div class="environment-overlay clean-overlay" id="cleanOverlay"></div>
+                    <div class="game-grid" id="gameGrid">
+                        <!-- Game tiles will be generated here -->
+                    </div>
+                </div>
+                
+                <div class="building-menu">
+                    <div class="building-category">
+                        <h3 class="tr-text">Konutlar</h3>
+                        <h3 class="en-text" style="display: none">Housing</h3>
+                        <div class="building-options">
+                            <div class="building-option" onclick="selectBuilding('house')">
+                                <div class="building-icon">🏠</div>
+                                <div class="building-name tr-text">Ev</div>
+                                <div class="building-name en-text" style="display: none">House</div>
+                                <div class="building-cost">💰 100</div>
+                                <div class="building-tooltip tr-text">+5 Para, +2 Mutluluk<br>-1 Enerji, -1 Gıda<br>Karbon: +1</div>
+                                <div class="building-tooltip en-text" style="display: none">+5 Money, +2 Happiness<br>-1 Energy, -1 Food<br>Carbon: +1</div>
+                            </div>
+                            <div class="building-option" onclick="selectBuilding('apartment')">
+                                <div class="building-icon">🏢</div>
+                                <div class="building-name tr-text">Apartman</div>
+                                <div class="building-name en-text" style="display: none">Apartment</div>
+                                <div class="building-cost">💰 500</div>
+                                <div class="building-tooltip tr-text">+20 Para, +5 Mutluluk<br>-3 Enerji, -3 Gıda<br>Karbon: +2</div>
+                                <div class="building-tooltip en-text" style="display: none">+20 Money, +5 Happiness<br>-3 Energy, -3 Food<br>Carbon: +2</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="building-category">
+                        <h3 class="tr-text">Endüstri</h3>
+                        <h3 class="en-text" style="display: none">Industry</h3>
+                        <div class="building-options">
+                            <div class="building-option" onclick="selectBuilding('factory')">
+                                <div class="building-icon">🏭</div>
+                                <div class="building-name tr-text">Fabrika</div>
+                                <div class="building-name en-text" style="display: none">Factory</div>
+                                <div class="building-cost">💰 300</div>
+                                <div class="building-tooltip tr-text">+15 Para<br>-5 Enerji, -3 Mutluluk<br>Karbon: +5</div>
+                                <div class="building-tooltip en-text" style="display: none">+15 Money<br>-5 Energy, -3 Happiness<br>Carbon: +5</div>
+                            </div>
+                            <div class="building-option" onclick="selectBuilding('solar')">
+                                <div class="building-icon">☀️</div>
+                                <div class="building-name tr-text">Güneş Paneli</div>
+                                <div class="building-name en-text" style="display: none">Solar Panel</div>
+                                <div class="building-cost">💰 400</div>
+                                <div class="building-tooltip tr-text">+10 Enerji<br>-2 Para<br>Karbon: -3</div>
+                                <div class="building-tooltip en-text" style="display: none">+10 Energy<br>-2 Money<br>Carbon: -3</div>
+                            </div>
+                            <div class="building-option" onclick="selectBuilding('wind')">
+                                <div class="building-icon">🌬️</div>
+                                <div class="building-name tr-text">Rüzgar Türbini</div>
+                                <div class="building-name en-text" style="display: none">Wind Turbine</div>
+                                <div class="building-cost">💰 600</div>
+                                <div class="building-tooltip tr-text">+15 Enerji<br>-3 Para<br>Karbon: -4</div>
+                                <div class="building-tooltip en-text" style="display: none">+15 Energy<br>-3 Money<br>Carbon: -4</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="building-category">
+                        <h3 class="tr-text">Doğa</h3>
+                        <h3 class="en-text" style="display: none">Nature</h3>
+                        <div class="building-options">
+                            <div class="building-option" onclick="selectBuilding('farm')">
+                                <div class="building-icon">🌾</div>
+                                <div class="building-name tr-text">Çiftlik</div>
+                                <div class="building-name en-text" style="display: none">Farm</div>
+                                <div class="building-cost">💰 200</div>
+                                <div class="building-tooltip tr-text">+10 Gıda<br>-2 Enerji<br>Karbon: +1</div>
+                                <div class="building-tooltip en-text" style="display: none">+10 Food<br>-2 Energy<br>Carbon: +1</div>
+                            </div>
+                            <div class="building-option" onclick="selectBuilding('park')">
+                                <div class="building-icon">🌳</div>
+                                <div class="building-name tr-text">Park</div>
+                                <div class="building-name en-text" style="display: none">Park</div>
+                                <div class="building-cost">💰 150</div>
+                                <div class="building-tooltip tr-text">+5 Mutluluk<br>-1 Para<br>Karbon: -1</div>
+                                <div class="building-tooltip en-text" style="display: none">+5 Happiness<br>-1 Money<br>Carbon: -1</div>
+                            </div>
+                            <div class="building-option" onclick="selectBuilding('nursery')">
+                                <div class="building-icon">🌱</div>
+                                <div class="building-name tr-text">Fidanlık</div>
+                                <div class="building-name en-text" style="display: none">Tree Nursery</div>
+                                <div class="building-cost">💰 250</div>
+                                <div class="building-tooltip tr-text">+3 Mutluluk<br>-2 Para<br>Karbon: -2</div>
+                                <div class="building-tooltip en-text" style="display: none">+3 Happiness<br>-2 Money<br>Carbon: -2</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="building-category">
+                        <h3 class="tr-text">Hizmetler</h3>
+                        <h3 class="en-text" style="display: none">Services</h3>
+                        <div class="building-options">
+                            <div class="building-option" onclick="selectBuilding('hospital')">
+                                <div class="building-icon">🏥</div>
+                                <div class="building-name tr-text">Hastane</div>
+                                <div class="building-name en-text" style="display: none">Hospital</div>
+                                <div class="building-cost">💰 700</div>
+                                <div class="building-tooltip tr-text">+10 Mutluluk<br>-5 Enerji, -3 Para<br>Karbon: +2</div>
+                                <div class="building-tooltip en-text" style="display: none">+10 Happiness<br>-5 Energy, -3 Money<br>Carbon: +2</div>
+                            </div>
+                            <div class="building-option" onclick="selectBuilding('school')">
+                                <div class="building-icon">🏫</div>
+                                <div class="building-name tr-text">Okul</div>
+                                <div class="building-name en-text" style="display: none">School</div>
+                                <div class="building-cost">💰 500</div>
+                                <div class="building-tooltip tr-text">+5 Mutluluk, +5 Sürdürülebilirlik<br>-3 Enerji, -2 Para<br>Karbon: +1</div>
+                                <div class="building-tooltip en-text" style="display: none">+5 Happiness, +5 Sustainability<br>-3 Energy, -2 Money<br>Carbon: +1</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="stats-panel">
+                        <h3 class="tr-text">Şehir İstatistikleri</h3>
+                        <h3 class="en-text" style="display: none">City Stats</h3>
+                        <div class="stat-item">
+                            <span class="stat-label tr-text">Karbon Ayak İzi</span>
+                            <span class="stat-label en-text" style="display: none">Carbon Footprint</span>
+                            <span class="stat-value" id="carbonStat">50</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label tr-text">Yaşanabilirlik</span>
+                            <span class="stat-label en-text" style="display: none">Livability</span>
+                            <span class="stat-value" id="livabilityStat">75</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label tr-text">Sürdürülebilirlik</span>
+                            <span class="stat-label en-text" style="display: none">Sustainability</span>
+                            <span class="stat-value" id="sustainabilityStat">60</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label tr-text">Toplam Bina</span>
+                            <span class="stat-label en-text" style="display: none">Total Buildings</span>
+                            <span class="stat-value" id="totalBuildingsStat">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label tr-text">Oyun Süresi</span>
+                            <span class="stat-label en-text" style="display: none">Play Time</span>
+                            <span class="stat-value" id="playTimeStat">0:00</span>
+                        </div>
+                    </div>
+                    
+                    <div class="tech-tree-panel" id="techTreePanel">
+                        <h3 class="tr-text">Teknoloji Ağacı</h3>
+                        <h3 class="en-text" style="display: none">Tech Tree</h3>
+                        <div class="tech-tree" id="techTree">
+                            <!-- Tech items will be added dynamically -->
+                        </div>
+                    </div>
+                    
+                    <div class="charts-panel" id="chartsPanel">
+                        <h3 class="tr-text">Kaynak Geçmişi</h3>
+                        <h3 class="en-text" style="display: none">Resource History</h3>
+                        <div class="chart-container" id="moneyChart"></div>
+                        <div class="chart-container" id="energyChart"></div>
+                        <div class="chart-container" id="carbonChart"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="events-panel" id="eventsPanel">
+                <h3 class="tr-text">Olaylar</h3>
+                <h3 class="en-text" style="display: none">Events</h3>
+                <div class="event-item">
+                    <span class="tr-text">Şehir kuruldu! Haydi geliştirmeye başlayalım.</span>
+                    <span class="en-text" style="display: none">City founded! Let's start developing.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Achievement Popup -->
+    <div class="achievement-popup" id="achievementPopup">
+        <h3>🏆 <span class="tr-text">Başarım Kazandınız!</span><span class="en-text" style="display: none">Achievement Unlocked!</span></h3>
+        <p id="achievementText"></p>
+        <button class="game-btn" onclick="closeAchievement()">
+            <span class="tr-text">Tamam</span>
+            <span class="en-text" style="display: none">OK</span>
+        </button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <i class="fas fa-leaf"></i>
+                <span>Eco Urgent</span>
+            </div>
+            
+            <div class="footer-links">
+                <a href="{{ url_for('index') }}" class="tr-text">Ana Sayfa</a>
+                <a href="{{ url_for('index') }}" class="en-text" style="display: none">Home</a>
+                <a href="{{ url_for('bilgilendirme') }}" class="tr-text">Bilgilendirme</a>
+                <a href="{{ url_for('bilgilendirme') }}" class="en-text" style="display: none">Information</a>
+                <a href="{{ url_for('kurbanlar') }}" class="tr-text">Kurbanlar</a>
+                <a href="{{ url_for('kurbanlar') }}" class="en-text" style="display: none">Victims</a>
+                <a href="{{ url_for('senin_etkin') }}" class="tr-text">Senin Etkin</a>
+                <a href="{{ url_for('senin_etkin') }}" class="en-text" style="display: none">Your Impact</a>
+            </div>
+            
+            <div class="footer-support">
+                <a href="https://buymeacoffee.com/climatehero" class="coffee-button" onclick="trackCoffeeClick()">
+                    <span class="coffee-icon"></span>
+                    <span class="tr-text">Destek Ol</span>
+                    <span class="en-text" style="display: none">Support</span>
+                </a>
+                
+                <div class="footer-social">
+                    <a href="https://instagram.com/mrkaymasfire" class="social-link" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 Eco Urgent. 
+                <span class="tr-text">Tüm hakları saklıdır.</span>
+                <span class="en-text" style="display: none">All rights reserved.</span>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Enhanced Game Variables
+        let gameState = {
+            isPlaying: false,
+            selectedBuilding: null,
+            money: 1000,
+            energy: 50,
+            food: 75,
+            population: 10,
+            happiness: 80,
+            carbonFootprint: 50,
+            livability: 75,
+            sustainability: 60,
+            buildings: [],
+            events: [],
+            achievements: [],
+            missions: [],
+            completedMissions: [],
+            techUnlocked: [],
+            gameSpeed: 1000, // 1 second
+            gameInterval: null,
+            lastUpdate: Date.now(),
+            weather: 'sunny',
+            playTime: 0,
+            level: 1,
+            xp: 0,
+            xpToNextLevel: 100,
+            scenario: 'standard',
+            resourceHistory: {
+                money: [],
+                energy: [],
+                food: [],
+                population: [],
+                happiness: [],
+                carbon: [],
+                time: []
+            },
+            selectedScenario: null
+        };
+
+        const buildingTypes = {
+            house: {
+                name: { tr: 'Ev', en: 'House' },
+                emoji: '🏠',
+                cost: 100,
+                produces: { money: 5, happiness: 2 },
+                consumes: { energy: 1, food: 1 },
+                impact: { carbon: 1, livability: 2, sustainability: -1 },
+                maxLevel: 3,
+                upgradeCost: [150, 200]
+            },
+            apartment: {
+                name: { tr: 'Apartman', en: 'Apartment' },
+                emoji: '🏢',
+                cost: 500,
+                produces: { money: 20, happiness: 5 },
+                consumes: { energy: 3, food: 3 },
+                impact: { carbon: 2, livability: 5, sustainability: -2 },
+                maxLevel: 3,
+                upgradeCost: [600, 700]
+            },
+            factory: {
+                name: { tr: 'Fabrika', en: 'Factory' },
+                emoji: '🏭',
+                cost: 300,
+                produces: { money: 15 },
+                consumes: { energy: 5, happiness: 3 },
+                impact: { carbon: 5, livability: -3, sustainability: -4 },
+                maxLevel: 3,
+                upgradeCost: [400, 500],
+                techRequirement: 'industrial_tech'
+            },
+            solar: {
+                name: { tr: 'Güneş Paneli', en: 'Solar Panel' },
+                emoji: '☀️',
+                cost: 400,
+                produces: { energy: 10 },
+                consumes: { money: 2 },
+                impact: { carbon: -3, livability: 1, sustainability: 5 },
+                maxLevel: 3,
+                upgradeCost: [500, 600]
+            },
+            wind: {
+                name: { tr: 'Rüzgar Türbini', en: 'Wind Turbine' },
+                emoji: '🌬️',
+                cost: 600,
+                produces: { energy: 15 },
+                consumes: { money: 3 },
+                impact: { carbon: -4, livability: 2, sustainability: 6 },
+                maxLevel: 3,
+                upgradeCost: [700, 800],
+                techRequirement: 'renewable_tech'
+            },
+            farm: {
+                name: { tr: 'Çiftlik', en: 'Farm' },
+                emoji: '🌾',
+                cost: 200,
+                produces: { food: 10 },
+                consumes: { energy: 2 },
+                impact: { carbon: 1, livability: 2, sustainability: 3 },
+                maxLevel: 3,
+                upgradeCost: [250, 300]
+            },
+            park: {
+                name: { tr: 'Park', en: 'Park' },
+                emoji: '🌳',
+                cost: 150,
+                produces: { happiness: 5 },
+                consumes: { money: 1 },
+                impact: { carbon: -1, livability: 5, sustainability: 4 },
+                maxLevel: 3,
+                upgradeCost: [200, 250]
+            },
+            hospital: {
+                name: { tr: 'Hastane', en: 'Hospital' },
+                emoji: '🏥',
+                cost: 700,
+                produces: { happiness: 10 },
+                consumes: { energy: 5, money: 3 },
+                impact: { carbon: 2, livability: 8, sustainability: 2 },
+                maxLevel: 3,
+                upgradeCost: [800, 900],
+                techRequirement: 'health_tech'
+            },
+            school: {
+                name: { tr: 'Okul', en: 'School' },
+                emoji: '🏫',
+                cost: 500,
+                produces: { happiness: 5, sustainability: 5 },
+                consumes: { energy: 3, money: 2 },
+                impact: { carbon: 1, livability: 5, sustainability: 7 },
+                maxLevel: 3,
+                upgradeCost: [600, 700],
+                techRequirement: 'education_tech'
+            },
+            nursery: {
+                name: { tr: 'Fidanlık', en: 'Tree Nursery' },
+                emoji: '🌱',
+                cost: 250,
+                produces: { happiness: 3 },
+                consumes: { money: 2 },
+                impact: { carbon: -2, livability: 3, sustainability: 5 },
+                maxLevel: 3,
+                upgradeCost: [300, 350]
+            }
+        };
+
+        const techTree = {
+            industrial_tech: {
+                name: { tr: 'Endüstriyel Teknoloji', en: 'Industrial Tech' },
+                emoji: '🏭',
+                cost: 500,
+                description: { 
+                    tr: 'Fabrikaların verimliliğini artırır', 
+                    en: 'Improves factory efficiency' 
+                },
+                requirements: [],
+                effect: () => {
+                    // Factory upgrades are now available
+                }
+            },
+            renewable_tech: {
+                name: { tr: 'Yenilenebilir Enerji', en: 'Renewable Energy' },
+                emoji: '🌞',
+                cost: 600,
+                description: { 
+                    tr: 'Rüzgar türbinlerinin kilidini açar', 
+                    en: 'Unlocks wind turbines' 
+                },
+                requirements: [],
+                effect: () => {
+                    // Wind turbines are now available
+                }
+            },
+            health_tech: {
+                name: { tr: 'Sağlık Teknolojisi', en: 'Health Tech' },
+                emoji: '🏥',
+                cost: 700,
+                description: { 
+                    tr: 'Hastanelerin kilidini açar', 
+                    en: 'Unlocks hospitals' 
+                },
+                requirements: ['industrial_tech'],
+                effect: () => {
+                    // Hospitals are now available
+                }
+            },
+            education_tech: {
+                name: { tr: 'Eğitim Teknolojisi', en: 'Education Tech' },
+                emoji: '📚',
+                cost: 600,
+                description: { 
+                    tr: 'Okulların kilidini açar', 
+                    en: 'Unlocks schools' 
+                },
+                requirements: [],
+                effect: () => {
+                    // Schools are now available
+                }
+            },
+            advanced_farming: {
+                name: { tr: 'Gelişmiş Tarım', en: 'Advanced Farming' },
+                emoji: '🚜',
+                cost: 400,
+                description: { 
+                    tr: 'Çiftlikler %25 daha fazla gıda üretir', 
+                    en: 'Farms produce 25% more food' 
+                },
+                requirements: [],
+                effect: () => {
+                    // Farms get a production boost
+                }
+            }
+        };
+
+        const scenarios = {
+            standard: {
+                name: { tr: 'Standart Şehir', en: 'Standard City' },
+                description: { 
+                    tr: 'Dengeli kaynaklarla başlayın', 
+                    en: 'Start with balanced resources' 
+                },
+                initialResources: {
+                    money: 1000,
+                    energy: 50,
+                    food: 75,
+                    population: 10,
+                    happiness: 80,
+                    carbonFootprint: 50,
+                    livability: 75,
+                    sustainability: 60
+                },
+                mapModifier: (grid) => {
+                    // Standard map - some water tiles
+                    for (let i = 0; i < 15; i++) {
+                        const randomIndex = Math.floor(Math.random() * 100);
+                        const tile = grid.children[randomIndex];
+                        if (tile.classList.contains('grass')) {
+                            tile.className = 'game-tile water';
+                            tile.innerHTML = '💧';
+                        }
+                    }
+                }
+            },
+            drought: {
+                name: { tr: 'Kuraklık Krizi', en: 'Drought Crisis' },
+                description: { 
+                    tr: 'Su kaynakları kısıtlı', 
+                    en: 'Limited water resources' 
+                },
+                initialResources: {
+                    money: 800,
+                    energy: 40,
+                    food: 40,
+                    population: 5,
+                    happiness: 70,
+                    carbonFootprint: 60,
+                    livability: 60,
+                    sustainability: 50
+                },
+                mapModifier: (grid) => {
+                    // Drought - very little water
+                    for (let i = 0; i < 5; i++) {
+                        const randomIndex = Math.floor(Math.random() * 100);
+                        const tile = grid.children[randomIndex];
+                        if (tile.classList.contains('grass')) {
+                            tile.className = 'game-tile water';
+                            tile.innerHTML = '💧';
+                        }
+                    }
+                }
+            },
+            polluted: {
+                name: { tr: 'Kirli Topraklar', en: 'Polluted Lands' },
+                description: { 
+                    tr: 'Yüksek karbon ayak izi', 
+                    en: 'High carbon footprint' 
+                },
+                initialResources: {
+                    money: 1200,
+                    energy: 30,
+                    food: 60,
+                    population: 8,
+                    happiness: 60,
+                    carbonFootprint: 80,
+                    livability: 50,
+                    sustainability: 40
+                },
+                mapModifier: (grid) => {
+                    // Polluted - some polluted tiles
+                    for (let i = 0; i < 20; i++) {
+                        const randomIndex = Math.floor(Math.random() * 100);
+                        const tile = grid.children[randomIndex];
+                        if (tile.classList.contains('grass')) {
+                            tile.className = 'game-tile polluted';
+                            tile.innerHTML = '☢️';
+                        }
+                    }
+                }
+            },
+            flood: {
+                name: { tr: 'Sel Sonrası', en: 'Post-Flood' },
+                description: { 
+                    tr: 'Sınırlı inşa alanı', 
+                    en: 'Limited build area' 
+                },
+                initialResources: {
+                    money: 600,
+                    energy: 60,
+                    food: 50,
+                    population: 6,
+                    happiness: 65,
+                    carbonFootprint: 40,
+                    livability: 65,
+                    sustainability: 70
+                },
+                mapModifier: (grid) => {
+                    // Flood - lots of water
+                    for (let i = 0; i < 40; i++) {
+                        const randomIndex = Math.floor(Math.random() * 100);
+                        const tile = grid.children[randomIndex];
+                        if (tile.classList.contains('grass')) {
+                            tile.className = 'game-tile water';
+                            tile.innerHTML = '💧';
+                        }
+                    }
+                }
+            }
+        };
+
+        const missions = [
+            {
+                id: 'build_3_parks',
+                title: { tr: '3 Park İnşa Et', en: 'Build 3 Parks' },
+                description: { tr: 'Şehrinize 3 park inşa edin', en: 'Build 3 parks in your city' },
+                target: 3,
+                current: 0,
+                reward: { money: 200 },
+                type: 'build',
+                buildingType: 'park'
+            },
+            {
+                id: 'carbon_below_40',
+                title: { tr: 'Karbonu Düşük Tut', en: 'Keep Carbon Low' },
+                description: { tr: 'Karbon ayak izini 5 dakika boyunca 40 altında tut', en: 'Keep carbon footprint below 40 for 5 minutes' },
+                target: 300, // 5 minutes in seconds
+                current: 0,
+                reward: { happiness: 20, sustainability: 10 },
+                type: 'maintain',
+                stat: 'carbonFootprint',
+                threshold: 40
+            },
+            {
+                id: 'upgrade_buildings',
+                title: { tr: 'Binaları Geliştir', en: 'Upgrade Buildings' },
+                description: { tr: '3 binayı yükselt', en: 'Upgrade 3 buildings' },
+                target: 3,
+                current: 0,
+                reward: { money: 300, energy: 20 },
+                type: 'upgrade'
+            },
+            {
+                id: 'reach_population',
+                title: { tr: 'Nüfus Artışı', en: 'Population Growth' },
+                description: { tr: 'Nüfusu 50\'ye çıkar', en: 'Reach population of 50' },
+                target: 50,
+                current: 0,
+                reward: { money: 500, food: 50 },
+                type: 'reach',
+                stat: 'population'
+            }
+        ];
+
+        const decisions = [
+            {
+                id: 'foreign_investment',
+                title: { tr: 'Yabancı Yatırım', en: 'Foreign Investment' },
+                text: { 
+                    tr: 'Bir yabancı şirket şehrinize büyük bir fabrika kurmayı teklif ediyor. Bu iş fırsatını kabul ediyor musunuz?', 
+                    en: 'A foreign company offers to build a large factory in your city. Do you accept this business opportunity?' 
+                },
+                options: [
+                    {
+                        text: { tr: 'Evet', en: 'Yes' },
+                        type: 'positive',
+                        effects: { 
+                            money: 1000, 
+                            carbonFootprint: 15,
+                            happiness: -10 
+                        },
+                        message: { 
+                            tr: 'Fabrika inşa edildi. Ekonomi canlandı ama çevre zarar gördü.', 
+                            en: 'Factory built. Economy boosted but environment suffered.' 
+                        }
+                    },
+                    {
+                        text: { tr: 'Hayır', en: 'No' },
+                        type: 'negative',
+                        effects: { 
+                            happiness: 5,
+                            sustainability: 5 
+                        },
+                        message: { 
+                            tr: 'Teklifi reddettiniz. Vatandaşlar kararınızdan memnun.', 
+                            en: 'You declined the offer. Citizens are happy with your decision.' 
+                        }
+                    }
+                ]
+            },
+            {
+                id: 'renewable_subsidy',
+                title: { tr: 'Yenilenebilir Enerji Sübvansiyonu', en: 'Renewable Energy Subsidy' },
+                text: { 
+                    tr: 'Yenilenebilir enerji kaynaklarına sübvansiyon sağlamak ister misiniz? Bu enerji üretimini artıracak ama bütçeye yük olacak.', 
+                    en: 'Do you want to subsidize renewable energy sources? This will increase energy production but strain the budget.' 
+                },
+                options: [
+                    {
+                        text: { tr: 'Evet', en: 'Yes' },
+                        type: 'positive',
+                        effects: { 
+                            energy: 50, 
+                            money: -300,
+                            sustainability: 10 
+                        },
+                        message: { 
+                            tr: 'Yenilenebilir enerji teşvik edildi. Uzun vadede faydalı olacak.', 
+                            en: 'Renewable energy promoted. Will be beneficial in the long term.' 
+                        }
+                    },
+                    {
+                        text: { tr: 'Hayır', en: 'No' },
+                        type: 'negative',
+                        effects: { 
+                            money: 100,
+                            carbonFootprint: 5 
+                        },
+                        message: { 
+                            tr: 'Sübvansiyon reddedildi. Kısa vadede bütçe rahatladı.', 
+                            en: 'Subsidy declined. Budget relieved in short term.' 
+                        }
+                    }
+                ]
+            }
+        ];
+
+        // Game Initialization
+        function initGame() {
+            // Show scenario selection modal
+            document.getElementById('scenarioModal').style.display = 'flex';
+            
+            // Initialize missions
+            gameState.missions = [...missions];
+            updateMissionsDisplay();
+            
+            // Initialize resource history
+            Object.keys(gameState.resourceHistory).forEach(key => {
+                gameState.resourceHistory[key] = [];
+            });
+            
+            // Initialize language
+            updateLanguageContent();
+        }
+
+        function selectScenario(scenarioId) {
+            gameState.selectedScenario = scenarioId;
+            document.querySelectorAll('.scenario-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            document.querySelector(`.scenario-option[onclick="selectScenario('${scenarioId}')"]`).classList.add('selected');
+        }
+
+        function startSelectedScenario() {
+            if (!gameState.selectedScenario) return;
+            
+            gameState.scenario = gameState.selectedScenario;
+            const scenario = scenarios[gameState.scenario];
+            
+            // Set initial resources
+            Object.keys(scenario.initialResources).forEach(key => {
+                gameState[key] = scenario.initialResources[key];
+            });
+            
+            // Create grid with scenario modifications
+            createGrid();
+            scenario.mapModifier(document.getElementById('gameGrid'));
+            
+            // Close modal
+            document.getElementById('scenarioModal').style.display = 'none';
+            
+            // Add initial event
+            addEvent(getMessage('city_founded'));
+            addEvent({
+                tr: `${scenario.name.tr} senaryosu başladı!`,
+                en: `${scenario.name.en} scenario started!`
+            });
+            
+            updateDisplay();
+        }
+
+        function createGrid() {
+            const grid = document.getElementById('gameGrid');
+            grid.innerHTML = '';
+            grid.style.gridTemplateColumns = 'repeat(10, 1fr)';
+            
+            for (let i = 0; i < 100; i++) {
+                const tile = document.createElement('div');
+                tile.className = 'game-tile grass';
+                tile.dataset.index = i;
+                tile.addEventListener('click', () => handleTileClick(i));
+                tile.innerHTML = '🌱';
+                grid.appendChild(tile);
+            }
+        }
+
+        function handleTileClick(index) {
+            if (!gameState.isPlaying || !gameState.selectedBuilding) return;
+            
+            const grid = document.getElementById('gameGrid');
+            const tile = grid.children[index];
+            
+            if (tile.classList.contains('water')) {
+                addEvent(getMessage('cannot_build_on_water'));
+                return;
+            }
+            
+            // Check if there's already a building here
+            const existingBuilding = gameState.buildings.find(b => b.position === index);
+            if (existingBuilding) {
+                showUpgradePrompt(existingBuilding, index);
+                return;
+            }
+            
+            const buildingType = gameState.selectedBuilding;
+            const building = buildingTypes[buildingType];
+            
+            // Check tech requirements
+            if (building.techRequirement && !gameState.techUnlocked.includes(building.techRequirement)) {
+                addEvent({
+                    tr: `Bu binayı inşa etmek için ${techTree[building.techRequirement].name.tr} teknolojisini araştırmanız gerekiyor!`,
+                    en: `You need to research ${techTree[building.techRequirement].name.en} tech to build this!`
+                });
+                return;
+            }
+            
+            if (gameState.money < building.cost) {
+                addEvent(getMessage('not_enough_money'));
+                return;
+            }
+            
+            // Build the structure
+            gameState.money -= building.cost;
+            gameState.buildings.push({
+                type: buildingType,
+                position: index,
+                level: 1
+            });
+            
+            // Update tile appearance
+            tile.className = `game-tile ${buildingType}`;
+            tile.innerHTML = building.emoji;
+            tile.innerHTML += `<span class="building-level">1</span>`;
+            
+            // Add event
+            addEvent(getMessage('built_' + buildingType, { name: building.name }));
+            
+            // Update missions
+            updateMissionProgress('build', buildingType);
+            
+            // Check for achievements
+            checkAchievements();
+            
+            updateDisplay();
+        }
+
+        function showUpgradePrompt(building, index) {
+            const buildingType = buildingTypes[building.type];
+            if (building.level >= buildingType.maxLevel) {
+                addEvent({
+                    tr: `Bu bina maksimum seviyede (${buildingType.maxLevel})!`,
+                    en: `This building is at max level (${buildingType.maxLevel})!`
+                });
+                return;
+            }
+            
+            const upgradeCost = buildingType.upgradeCost[building.level - 1];
+            if (gameState.money < upgradeCost) {
+                addEvent(getMessage('not_enough_money'));
+                return;
+            }
+            
+            const isTurkish = document.querySelector('.tr-text').style.display !== 'none';
+            const confirmUpgrade = confirm(
+                isTurkish 
+                    ? `${buildingType.name.tr} yükseltmek ${upgradeCost}💰 tutacak. Onaylıyor musunuz?` 
+                    : `Upgrade ${buildingType.name.en} for ${upgradeCost}💰?`
+            );
+            
+            if (confirmUpgrade) {
+                upgradeBuilding(building, index, upgradeCost);
+            }
+        }
+
+        function upgradeBuilding(building, index, cost) {
+            gameState.money -= cost;
+            building.level += 1;
+            
+            const grid = document.getElementById('gameGrid');
+            const tile = grid.children[index];
+            tile.innerHTML = buildingTypes[building.type].emoji;
+            tile.innerHTML += `<span class="building-level">${building.level}</span>`;
+            
+            // Add event
+            addEvent({
+                tr: `${buildingTypes[building.type].name.tr} seviye ${building.level} yükseltildi!`,
+                en: `${buildingTypes[building.type].name.en} upgraded to level ${building.level}!`
+            });
+            
+            // Update missions
+            updateMissionProgress('upgrade');
+            
+            updateDisplay();
+        }
+
+        function selectBuilding(type) {
+            gameState.selectedBuilding = type;
+            
+            // Update UI
+            document.querySelectorAll('.building-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            
+            document.querySelector(`.building-option[onclick="selectBuilding('${type}')"]`).classList.add('selected');
+            
+            addEvent(getMessage('selected_' + type, { name: buildingTypes[type].name }));
+        }
+
+        function toggleGame() {
+            gameState.isPlaying = !gameState.isPlaying;
+            const toggleBtn = document.getElementById('toggleBtn');
+            
+            if (gameState.isPlaying) {
+                toggleBtn.innerHTML = '<i class="fas fa-pause"></i> <span class="tr-text">Duraklat</span><span class="en-text" style="display: none">Pause</span>';
+                startGameLoop();
+                addEvent(getMessage('game_started'));
+            } else {
+                toggleBtn.innerHTML = '<i class="fas fa-play"></i> <span class="tr-text">Devam Et</span><span class="en-text" style="display: none">Resume</span>';
+                stopGameLoop();
+                addEvent(getMessage('game_paused'));
+            }
+        }
+
+        function startGameLoop() {
+            if (gameState.gameInterval) clearInterval(gameState.gameInterval);
+            
+            gameState.gameInterval = setInterval(() => {
+                updateGame();
+            }, gameState.gameSpeed);
+            
+            gameState.lastUpdate = Date.now();
+        }
+
+        function stopGameLoop() {
+            if (gameState.gameInterval) {
+                clearInterval(gameState.gameInterval);
+                gameState.gameInterval = null;
+            }
+        }
+
+        function updateGame() {
+            const now = Date.now();
+            const deltaTime = (now - gameState.lastUpdate) / 1000; // in seconds
+            gameState.lastUpdate = now;
+            
+            // Update play time
+            gameState.playTime += deltaTime;
+            
+            // Process each building
+            gameState.buildings.forEach(building => {
+                const type = buildingTypes[building.type];
+                const levelMultiplier = 1 + (building.level - 1) * 0.5; // 50% boost per level
+                
+                // Add resources
+                if (type.produces) {
+                    for (const [resource, amount] of Object.entries(type.produces)) {
+                        gameState[resource] += amount * levelMultiplier * deltaTime;
+                    }
+                }
+                
+                // Consume resources
+                if (type.consumes) {
+                    for (const [resource, amount] of Object.entries(type.consumes)) {
+                        gameState[resource] = Math.max(0, gameState[resource] - amount * levelMultiplier * deltaTime);
+                    }
+                }
+            });
+            
+            // Update stats
+            updateStats();
+            
+            // Update resource history (every 10 seconds)
+            if (Math.floor(gameState.playTime) % 10 === 0) {
+                updateResourceHistory();
+            }
+            
+            // Random events (5% chance per update)
+            if (Math.random() < 0.05) {
+                triggerRandomEvent();
+            }
+            
+            // Random decisions (2% chance per update)
+            if (Math.random() < 0.02) {
+                triggerRandomDecision();
+            }
+            
+            // Update missions
+            updateMissionProgress('time', deltaTime);
+            
+            // Check for game over conditions
+            if (gameState.happiness <= 0 || gameState.population <= 0) {
+                gameOver();
+            }
+            
+            // Check for level up
+            checkLevelUp();
+            
+            updateDisplay();
+        }
+
+        function updateStats() {
+            // Reset impacts
+            gameState.carbonFootprint = scenarios[gameState.scenario].initialResources.carbonFootprint;
+            gameState.livability = scenarios[gameState.scenario].initialResources.livability;
+            gameState.sustainability = scenarios[gameState.scenario].initialResources.sustainability;
+            
+            // Calculate impacts from buildings
+            gameState.buildings.forEach(building => {
+                const type = buildingTypes[building.type];
+                const levelMultiplier = 1 + (building.level - 1) * 0.5; // 50% boost per level
+                
+                if (type.impact) {
+                    for (const [stat, amount] of Object.entries(type.impact)) {
+                        const adjustedAmount = amount * levelMultiplier;
+                        switch(stat) {
+                            case 'carbon':
+                                gameState.carbonFootprint += adjustedAmount;
+                                break;
+                            case 'livability':
+                                gameState.livability += adjustedAmount;
+                                break;
+                            case 'sustainability':
+                                gameState.sustainability += adjustedAmount;
+                                break;
+                        }
+                    }
+                }
+            });
+            
+            // Clamp values
+            gameState.carbonFootprint = Math.max(0, Math.min(100, gameState.carbonFootprint));
+            gameState.livability = Math.max(0, Math.min(100, gameState.livability));
+            gameState.sustainability = Math.max(0, Math.min(100, gameState.sustainability));
+            
+            // Update population based on livability
+            gameState.population += (gameState.livability - 50) / 100;
+            gameState.population = Math.max(1, gameState.population);
+            
+            // Update happiness based on various factors
+            const happinessChange = 
+                (gameState.livability / 50) + 
+                (gameState.food / gameState.population / 10) + 
+                (gameState.energy / gameState.population / 5) - 
+                (gameState.carbonFootprint / 50);
+                
+            gameState.happiness += happinessChange;
+            gameState.happiness = Math.max(0, Math.min(100, gameState.happiness));
+            
+            // Update environmental effects
+            updateEnvironmentalEffects();
+            
+            // Update missions that track stats
+            updateMissionProgress('stat', 'carbonFootprint');
+            updateMissionProgress('stat', 'population');
+        }
+
+        function updateEnvironmentalEffects() {
+            const smogOverlay = document.getElementById('smogOverlay');
+            const cleanOverlay = document.getElementById('cleanOverlay');
+            
+            // Smog effect based on carbon footprint
+            if (gameState.carbonFootprint > 70) {
+                smogOverlay.style.opacity = '0.5';
+            } else if (gameState.carbonFootprint > 50) {
+                smogOverlay.style.opacity = '0.3';
+            } else {
+                smogOverlay.style.opacity = '0';
+            }
+            
+            // Clean effect based on sustainability
+            if (gameState.sustainability > 80) {
+                cleanOverlay.style.opacity = '0.3';
+            } else if (gameState.sustainability > 60) {
+                cleanOverlay.style.opacity = '0.1';
+            } else {
+                cleanOverlay.style.opacity = '0';
+            }
+        }
+
+        function triggerRandomEvent() {
+            const events = [
+                {
+                    id: 'heat_wave',
+                    message: {
+                        tr: 'Sıcak hava dalgası! Enerji tüketimi arttı.',
+                        en: 'Heat wave! Energy consumption increased.'
+                    },
+                    effect: () => {
+                        gameState.energy *= 0.9;
+                    }
+                },
+                {
+                    id: 'festival',
+                    message: {
+                        tr: 'Şehir festivali! Mutluluk arttı.',
+                        en: 'City festival! Happiness increased.'
+                    },
+                    effect: () => {
+                        gameState.happiness = Math.min(100, gameState.happiness + 10);
+                    }
+                },
+                {
+                    id: 'recession',
+                    message: {
+                        tr: 'Ekonomik durgunluk! Gelirler azaldı.',
+                        en: 'Economic recession! Income decreased.'
+                    },
+                    effect: () => {
+                        gameState.money *= 0.8;
+                    }
+                },
+                {
+                    id: 'innovation',
+                    message: {
+                        tr: 'Yenilikçi fikirler! Sürdürülebilirlik arttı.',
+                        en: 'Innovative ideas! Sustainability increased.'
+                    },
+                    effect: () => {
+                        gameState.sustainability = Math.min(100, gameState.sustainability + 5);
+                    }
+                },
+                {
+                    id: 'rain',
+                    message: {
+                        tr: 'Yağmur yağıyor! Su kaynakları doldu.',
+                        en: 'It\'s raining! Water resources replenished.'
+                    },
+                    effect: () => {
+                        // Convert some grass tiles to water
+                        const grid = document.getElementById('gameGrid');
+                        for (let i = 0; i < 5; i++) {
+                            const randomIndex = Math.floor(Math.random() * 100);
+                            const tile = grid.children[randomIndex];
+                            if (tile.classList.contains('grass')) {
+                                tile.className = 'game-tile water';
+                                tile.innerHTML = '💧';
+                            }
+                        }
+                    }
+                }
+            ];
+            
+            const randomEvent = events[Math.floor(Math.random() * events.length)];
+            addEvent(randomEvent.message);
+            randomEvent.effect();
+        }
+
+        function triggerRandomDecision() {
+            if (gameState.buildings.length < 3) return; // Don't trigger too early
+            
+            const decision = decisions[Math.floor(Math.random() * decisions.length)];
+            showDecisionModal(decision);
+        }
+
+        function showDecisionModal(decision) {
+            const modal = document.getElementById('decisionModal');
+            const title = document.getElementById('decisionTitle');
+            const text = document.getElementById('decisionText');
+            const options = document.getElementById('decisionOptions');
+            
+            const isTurkish = document.querySelector('.tr-text').style.display !== 'none';
+            
+            title.textContent = isTurkish ? decision.title.tr : decision.title.en;
+            text.textContent = isTurkish ? decision.text.tr : decision.text.en;
+            
+            options.innerHTML = '';
+            decision.options.forEach((option, index) => {
+                const optionEl = document.createElement('div');
+                optionEl.className = `decision-option ${option.type}`;
+                optionEl.textContent = isTurkish ? option.text.tr : option.text.en;
+                optionEl.onclick = () => {
+                    applyDecisionEffects(option.effects);
+                    addEvent(isTurkish ? option.message.tr : option.message.en);
+                    modal.style.display = 'none';
+                };
+                options.appendChild(optionEl);
+            });
+            
+            modal.style.display = 'flex';
+        }
+
+        function applyDecisionEffects(effects) {
+            for (const [resource, amount] of Object.entries(effects)) {
+                if (resource === 'carbonFootprint' || resource === 'livability' || resource === 'sustainability') {
+                    gameState[resource] += amount;
+                } else {
+                    gameState[resource] += amount;
+                }
+            }
+            updateDisplay();
+        }
+
+        function gameOver() {
+            stopGameLoop();
+            gameState.isPlaying = false;
+            
+            const toggleBtn = document.getElementById('toggleBtn');
+            toggleBtn.innerHTML = '<i class="fas fa-play"></i> <span class="tr-text">Yeniden Başlat</span><span class="en-text" style="display:none">Restart</span>';
+            
+            const isTurkish = document.querySelector('.tr-text').style.display !== 'none';
+            const message = isTurkish ? 
+                `Oyun Bitti! Final Puanınız: ${Math.floor(gameState.money)}` : 
+                `Game Over! Final Score: ${Math.floor(gameState.money)}`;
+            
+            addEvent(message);
+            
+            if (gameState.money > 5000 && !gameState.achievements.includes('rich_city')) {
+                gameState.achievements.push('rich_city');
+                showAchievement({ 
+                    tr: 'Zengin Şehir!', 
+                    en: 'Rich City!' 
+                });
+            }
+        }
+
+        function addEvent(message) {
+            const eventItem = document.createElement('div');
+            eventItem.className = 'event-item';
+            
+            if (typeof message === 'object') {
+                const isTurkish = document.querySelector('.tr-text').style.display !== 'none';
+                eventItem.textContent = isTurkish ? message.tr : message.en;
+            } else {
+                eventItem.textContent = message;
+            }
+            
+            // Add to game state
+            gameState.events.push(message);
+            
+            // Add to UI
+            const eventsPanel = document.getElementById('eventsPanel');
+            eventsPanel.insertBefore(eventItem, eventsPanel.children[1]);
+            
+            // Limit number of events shown
+            while (eventsPanel.children.length > 20) {
+                eventsPanel.removeChild(eventsPanel.lastChild);
+            }
+            
+            // Scroll to bottom
+            eventsPanel.scrollTop = eventsPanel.scrollHeight;
+        }
+
+        function getMessage(id, params = {}) {
+            const messages = {
+                city_founded: {
+                    tr: 'Şehir kuruldu! Haydi geliştirmeye başlayalım.',
+                    en: 'City founded! Let\'s start developing.'
+                },
+                cannot_build_on_water: {
+                    tr: 'Su üzerine bina inşa edemezsiniz!',
+                    en: 'You cannot build on water!'
+                },
+                not_enough_money: {
+                    tr: 'Yeterli paranız yok!',
+                    en: 'Not enough money!'
+                },
+                already_built_here: {
+                    tr: 'Burada zaten bir yapı var!',
+                    en: 'There\'s already a building here!'
+                },
+                game_started: {
+                    tr: 'Oyun başladı! Şehriniz büyüyor...',
+                    en: 'Game started! Your city is growing...'
+                },
+                game_paused: {
+                    tr: 'Oyun duraklatıldı.',
+                    en: 'Game paused.'
+                },
+                game_saved: {
+                    tr: 'Oyun kaydedildi!',
+                    en: 'Game saved!'
+                },
+                game_loaded: {
+                    tr: 'Oyun yüklendi!',
+                    en: 'Game loaded!'
+                },
+                no_saved_game: {
+                    tr: 'Kayıtlı oyun bulunamadı.',
+                    en: 'No saved game found.'
+                },
+                built_house: {
+                    tr: `Yeni bir ${params.name.tr} inşa edildi!`,
+                    en: `A new ${params.name.en} was built!`
+                },
+                built_apartment: {
+                    tr: `Yeni bir ${params.name.tr} inşa edildi!`,
+                    en: `A new ${params.name.en} was built!`
+                },
+                built_factory: {
+                    tr: `Yeni bir ${params.name.tr} inşa edildi!`,
+                    en: `A new ${params.name.en} was built!`
+                },
+                built_solar: {
+                    tr: `Yeni bir ${params.name.tr} inşa edildi!`,
+                    en: `A new ${params.name.en} was built!`
+                },
+                built_wind: {
+                    tr: `Yeni bir ${params.name.tr} inşa edildi!`,
+                    en: `A new ${params.name.en} was built!`
+                },
+                built_farm: {
+                    tr: `Yeni bir ${params.name.tr} inşa edildi!`,
+                    en: `A new ${params.name.en} was built!`
+                },
+                built_park: {
+                    tr: `Yeni bir ${params.name.tr} inşa edildi!`,
+                    en: `A new ${params.name.en} was built!`
+                },
+                built_hospital: {
+                    tr: `Yeni bir ${params.name.tr} inşa edildi!`,
+                    en: `A new ${params.name.en} was built!`
+                },
+                built_school: {
+                    tr: `Yeni bir ${params.name.tr} inşa edildi!`,
+                    en: `A new ${params.name.en} was built!`
+                },
+                built_nursery: {
+                    tr: `Yeni bir ${params.name.tr} inşa edildi!`,
+                    en: `A new ${params.name.en} was built!`
+                },
+                selected_house: {
+                    tr: `${params.name.tr} seçildi. Bir karo tıklayarak inşa edin.`,
+                    en: `${params.name.en} selected. Click a tile to build.`
+                },
+                selected_apartment: {
+                    tr: `${params.name.tr} seçildi. Bir karo tıklayarak inşa edin.`,
+                    en: `${params.name.en} selected. Click a tile to build.`
+                },
+                selected_factory: {
+                    tr: `${params.name.tr} seçildi. Bir karo tıklayarak inşa edin.`,
+                    en: `${params.name.en} selected. Click a tile to build.`
+                },
+                selected_solar: {
+                    tr: `${params.name.tr} seçildi. Bir karo tıklayarak inşa edin.`,
+                    en: `${params.name.en} selected. Click a tile to build.`
+                },
+                selected_wind: {
+                    tr: `${params.name.tr} seçildi. Bir karo tıklayarak inşa edin.`,
+                    en: `${params.name.en} selected. Click a tile to build.`
+                },
+                selected_farm: {
+                    tr: `${params.name.tr} seçildi. Bir karo tıklayarak inşa edin.`,
+                    en: `${params.name.en} selected. Click a tile to build.`
+                },
+                selected_park: {
+                    tr: `${params.name.tr} seçildi. Bir karo tıklayarak inşa edin.`,
+                    en: `${params.name.en} selected. Click a tile to build.`
+                },
+                selected_hospital: {
+                    tr: `${params.name.tr} seçildi. Bir karo tıklayarak inşa edin.`,
+                    en: `${params.name.en} selected. Click a tile to build.`
+                },
+                selected_school: {
+                    tr: `${params.name.tr} seçildi. Bir karo tıklayarak inşa edin.`,
+                    en: `${params.name.en} selected. Click a tile to build.`
+                },
+                selected_nursery: {
+                    tr: `${params.name.tr} seçildi. Bir karo tıklayarak inşa edin.`,
+                    en: `${params.name.en} selected. Click a tile to build.`
+                }
+            };
+            
+            return messages[id] || { tr: id, en: id };
+        }
+
+        function updateDisplay() {
+            // Update resources
+            document.getElementById('moneyResource').textContent = Math.floor(gameState.money);
+            document.getElementById('energyResource').textContent = Math.floor(gameState.energy);
+            document.getElementById('foodResource').textContent = Math.floor(gameState.food);
+            document.getElementById('populationResource').textContent = Math.floor(gameState.population);
+            document.getElementById('happinessResource').textContent = Math.floor(gameState.happiness);
+            
+            // Update stats
+            document.getElementById('carbonStat').textContent = Math.floor(gameState.carbonFootprint);
+            document.getElementById('livabilityStat').textContent = Math.floor(gameState.livability);
+            document.getElementById('sustainabilityStat').textContent = Math.floor(gameState.sustainability);
+            document.getElementById('totalBuildingsStat').textContent = gameState.buildings.length;
+            
+            // Update play time
+            const minutes = Math.floor(gameState.playTime / 60);
+            const seconds = Math.floor(gameState.playTime % 60);
+            document.getElementById('playTimeStat').textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+            
+            // Update level display
+            document.getElementById('levelValue').textContent = gameState.level;
+            document.getElementById('levelProgress').style.width = `${(gameState.xp / gameState.xpToNextLevel) * 100}%`;
+            
+            // Color code resources based on levels
+            updateResourceColor('moneyResource', gameState.money, 500);
+            updateResourceColor('energyResource', gameState.energy, 30);
+            updateResourceColor('foodResource', gameState.food, gameState.population * 5);
+            updateResourceColor('happinessResource', gameState.happiness, 50);
+        }
+
+        function updateResourceColor(id, value, threshold) {
+            const element = document.getElementById(id);
+            if (value < threshold * 0.3) {
+                element.style.color = 'var(--danger)';
+            } else if (value < threshold) {
+                element.style.color = 'var(--warning)';
+            } else {
+                element.style.color = '';
+            }
+        }
+
+        function saveGame() {
+            localStorage.setItem('ecoCityGame', JSON.stringify(gameState));
+            addEvent(getMessage('game_saved'));
+        }
+
+        function loadGame() {
+            const savedGame = localStorage.getItem('ecoCityGame');
+            if (savedGame) {
+                gameState = JSON.parse(savedGame);
+                renderBuildings();
+                updateDisplay();
+                addEvent(getMessage('game_loaded'));
+            } else {
+                addEvent(getMessage('no_saved_game'));
+            }
+        }
+
+        function renderBuildings() {
+            const grid = document.getElementById('gameGrid');
+            
+            // Reset all tiles to grass
+            for (let i = 0; i < grid.children.length; i++) {
+                const tile = grid.children[i];
+                if (!tile.classList.contains('water')) {
+                    tile.className = 'game-tile grass';
+                    tile.innerHTML = '🌱';
+                }
+            }
+            
+            // Render buildings
+            gameState.buildings.forEach(building => {
+                const tile = grid.children[building.position];
+                if (tile) {
+                    tile.className = `game-tile ${building.type}`;
+                    tile.innerHTML = buildingTypes[building.type].emoji;
+                    tile.innerHTML += `<span class="building-level">${building.level}</span>`;
+                }
+            });
+        }
+
+        function updateMissionsDisplay() {
+            const missionsPanel = document.getElementById('missionsPanel');
+            missionsPanel.innerHTML = '';
+            
+            // Add title
+            const title = document.createElement('h3');
+            title.className = 'tr-text';
+            title.textContent = 'Görevler';
+            missionsPanel.appendChild(title);
+            
+            const titleEn = document.createElement('h3');
+            titleEn.className = 'en-text';
+            titleEn.textContent = 'Missions';
+            titleEn.style.display = 'none';
+            missionsPanel.appendChild(titleEn);
+            
+            // Add active missions
+            gameState.missions.forEach(mission => {
+                if (gameState.completedMissions.includes(mission.id));
+                
+                const missionItem = document.createElement('div');
+                missionItem.className = 'mission-item';
+                
+                const icon = document.createElement('i');
+                icon.className = 'fas fa-tasks mission-icon';
+                missionItem.appendChild(icon);
+                
+                const details = document.createElement('div');
+                details.className = 'mission-details';
+                
+                const text = document.createElement('div');
+                text.className = 'mission-text tr-text';
+                text.textContent = mission.title.tr;
+                details.appendChild(text);
+                
+                const textEn = document.createElement('div');
+                textEn.className = 'mission-text en-text';
+                textEn.textContent = mission.title.en;
+                textEn.style.display = 'none';
+                details.appendChild(textEn);
+                
+                const progress = document.createElement('div');
+                progress.className = 'mission-progress';
+                
+                const progressBar = document.createElement('div');
+                progressBar.className = 'mission-progress-bar';
+                progressBar.style.width = `${(mission.current / mission.target) * 100}%`;
+                progress.appendChild(progressBar);
+                
+                details.appendChild(progress);
+                missionItem.appendChild(details);
+                
+                const reward = document.createElement('div');
+                reward.className = 'mission-reward';
+                
+                if (mission.reward.money) {
+                    reward.textContent += `+${mission.reward.money}💰 `;
+                }
+                if (mission.reward.energy) {
+                    reward.textContent += `+${mission.reward.energy}⚡ `;
+                }
+                if (mission.reward.happiness) {
+                    reward.textContent += `+${mission.reward.happiness}😊 `;
+                }
+                if (mission.reward.sustainability) {
+                    reward.textContent += `+${mission.reward.sustainability}🌱 `;
+                }
+                if (mission.reward.food) {
+                    reward.textContent += `+${mission.reward.food}🍎 `;
+                }
+                
+                missionItem.appendChild(reward);
+                missionsPanel.appendChild(missionItem);
+            });
+        }
+
+        function updateMissionProgress(type, specific) {
+            gameState.missions.forEach(mission => {
+                if (gameState.completedMissions.includes(mission.id)) return;
+                
+                if (type === 'build' && mission.type === 'build' && mission.buildingType === specific) {
+                    mission.current += 1;
+                } else if (type === 'upgrade' && mission.type === 'upgrade') {
+                    mission.current += 1;
+                } else if (type === 'stat' && mission.type === 'reach' && mission.stat === specific) {
+                    mission.current = gameState[specific];
+                } else if (type === 'stat' && mission.type === 'maintain' && mission.stat === specific) {
+                    if (gameState[specific] <= mission.threshold) {
+                        mission.current += 1;
+                    } else {
+                        mission.current = 0;
+                    }
+                } else if (type === 'time' && mission.type === 'maintain') {
+                    mission.current += specific;
+                }
+                
+                // Check if mission is completed
+                if (mission.current >= mission.target) {
+                    completeMission(mission);
+                }
+            });
+            
+            updateMissionsDisplay();
+        }
+
+        function completeMission(mission) {
+            gameState.completedMissions.push(mission.id);
+            
+            // Apply rewards
+            if (mission.reward.money) gameState.money += mission.reward.money;
+            if (mission.reward.energy) gameState.energy += mission.reward.energy;
+            if (mission.reward.happiness) gameState.happiness += mission.reward.happiness;
+            if (mission.reward.sustainability) gameState.sustainability += mission.reward.sustainability;
+            if (mission.reward.food) gameState.food += mission.reward.food;
+            
+            // Add XP
+            addXP(50);
+            
+            // Add event
+            const isTurkish = document.querySelector('.tr-text').style.display !== 'none';
+            addEvent(isTurkish ? 
+                `Görev tamamlandı: ${mission.title.tr}! Ödül kazanıldı.` : 
+                `Mission complete: ${mission.title.en}! Reward earned.`);
+            
+            // Check for new missions
+            if (gameState.completedMissions.length >= gameState.missions.length && gameState.missions.length < missions.length) {
+                // Add a new mission
+                const newMission = missions.find(m => !gameState.missions.some(gm => gm.id === m.id));
+                if (newMission) {
+                    gameState.missions.push({...newMission});
+                    addEvent(isTurkish ? 
+                        `Yeni görev: ${newMission.title.tr}` : 
+                        `New mission: ${newMission.title.en}`);
+                }
+            }
+        }
+
+        function addXP(amount) {
+            gameState.xp += amount;
+            if (gameState.xp >= gameState.xpToNextLevel) {
+                levelUp();
+            }
+        }
+
+        function levelUp() {
+            gameState.level += 1;
+            gameState.xp -= gameState.xpToNextLevel;
+            gameState.xpToNextLevel = Math.floor(gameState.xpToNextLevel * 1.5);
+            
+            // Add event
+            const isTurkish = document.querySelector('.tr-text').style.display !== 'none';
+            addEvent(isTurkish ? 
+                `Tebrikler! Seviye atladınız: ${gameState.level}` : 
+                `Congratulations! Level up: ${gameState.level}`);
+            
+            // Check for achievements
+            checkAchievements();
+        }
+
+        function checkLevelUp() {
+            if (gameState.xp >= gameState.xpToNextLevel) {
+                levelUp();
+            }
+        }
+
+        function checkAchievements() {
+            const achievements = [
+                {
+                    id: 'first_building',
+                    condition: () => gameState.buildings.length === 1 && !gameState.achievements.includes('first_building'),
+                    text: { tr: 'İlk Bina!', en: 'First Building!' }
+                },
+                {
+                    id: 'eco_city',
+                    condition: () => gameState.sustainability >= 80 && !gameState.achievements.includes('eco_city'),
+                    text: { tr: 'Eko-Şehir!', en: 'Eco-City!' }
+                },
+                {
+                    id: 'happy_city',
+                    condition: () => gameState.happiness >= 90 && !gameState.achievements.includes('happy_city'),
+                    text: { tr: 'Mutlu Şehir!', en: 'Happy City!' }
+                },
+                {
+                    id: 'level_5',
+                    condition: () => gameState.level >= 5 && !gameState.achievements.includes('level_5'),
+                    text: { tr: 'Seviye 5!', en: 'Level 5!' }
+                },
+                {
+                    id: 'master_builder',
+                    condition: () => gameState.buildings.length >= 20 && !gameState.achievements.includes('master_builder'),
+                    text: { tr: 'Usta İnşaatçı!', en: 'Master Builder!' }
+                }
+            ];
+            
+            achievements.forEach(achievement => {
+                if (achievement.condition()) {
+                    gameState.achievements.push(achievement.id);
+                    showAchievement(achievement.text);
+                }
+            });
+        }
+
+        function showAchievement(text) {
+            const popup = document.getElementById('achievementPopup');
+            const textElement = document.getElementById('achievementText');
+            const isTurkish = document.querySelector('.tr-text').style.display !== 'none';
+            
+            textElement.textContent = isTurkish ? text.tr : text.en;
+            popup.style.display = 'block';
+            
+            // Play sound if available
+            if (typeof Audio !== 'undefined') {
+                const sound = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-achievement-bell-600.mp3');
+                sound.play().catch(e => console.log('Audio play failed:', e));
+            }
+            
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 3000);
+        }
+
+        function closeAchievement() {
+            document.getElementById('achievementPopup').style.display = 'none';
+        }
+
+        function showTechTree() {
+            const techTreePanel = document.getElementById('techTreePanel');
+            const chartsPanel = document.getElementById('chartsPanel');
+            
+            if (techTreePanel.style.display === 'block') {
+                techTreePanel.style.display = 'none';
+                return;
+            }
+            
+            chartsPanel.style.display = 'none';
+            techTreePanel.style.display = 'block';
+            
+            // Populate tech tree
+            const techTreeElement = document.getElementById('techTree');
+            techTreeElement.innerHTML = '';
+            
+            Object.keys(techTree).forEach(techId => {
+                const tech = techTree[techId];
+                const isUnlocked = gameState.techUnlocked.includes(techId);
+                const requirementsMet = tech.requirements.every(req => gameState.techUnlocked.includes(req));
+                
+                const techItem = document.createElement('div');
+                techItem.className = `tech-item ${isUnlocked ? 'unlocked' : requirementsMet ? '' : 'locked'}`;
+                
+                const icon = document.createElement('div');
+                icon.className = 'tech-icon';
+                icon.textContent = tech.emoji;
+                techItem.appendChild(icon);
+                
+                const name = document.createElement('div');
+                name.className = 'tech-name';
+                const isTurkish = document.querySelector('.tr-text').style.display !== 'none';
+                name.textContent = isTurkish ? tech.name.tr : tech.name.en;
+                techItem.appendChild(name);
+                
+                const desc = document.createElement('div');
+                desc.className = 'tech-desc';
+                desc.textContent = isTurkish ? tech.description.tr : tech.description.en;
+                techItem.appendChild(desc);
+                
+                if (!isUnlocked) {
+                    const cost = document.createElement('div');
+                    cost.className = 'tech-cost';
+                    cost.textContent = `💰 ${tech.cost}`;
+                    techItem.appendChild(cost);
+                    
+                    if (tech.requirements.length > 0) {
+                        const reqs = document.createElement('div');
+                        reqs.className = 'tech-requirements';
+                        const reqNames = tech.requirements.map(req => 
+                            isTurkish ? techTree[req].name.tr : techTree[req].name.en
+                        );
+                        reqs.textContent = isTurkish ? 
+                            `Gereksinimler: ${reqNames.join(', ')}` : 
+                            `Requires: ${reqNames.join(', ')}`;
+                        techItem.appendChild(reqs);
+                    }
+                    
+                    if (requirementsMet) {
+                        techItem.onclick = () => researchTech(techId);
+                    }
+                }
+                
+                techTreeElement.appendChild(techItem);
+            });
+        }
+
+        function researchTech(techId) {
+            const tech = techTree[techId];
+            
+            if (gameState.money < tech.cost) {
+                addEvent(getMessage('not_enough_money'));
+                return;
+            }
+            
+            gameState.money -= tech.cost;
+            gameState.techUnlocked.push(techId);
+            
+            // Apply tech effect
+            tech.effect();
+            
+            // Add event
+            const isTurkish = document.querySelector('.tr-text').style.display !== 'none';
+            addEvent(isTurkish ? 
+                `Teknoloji araştırıldı: ${tech.name.tr}` : 
+                `Technology researched: ${tech.name.en}`);
+            
+            // Add XP
+            addXP(100);
+            
+            // Refresh tech tree display
+            showTechTree();
+            updateDisplay();
+        }
+
+        function showCharts() {
+            const techTreePanel = document.getElementById('techTreePanel');
+            const chartsPanel = document.getElementById('chartsPanel');
+            
+            if (chartsPanel.style.display === 'block') {
+                chartsPanel.style.display = 'none';
+                return;
+            }
+            
+            techTreePanel.style.display = 'none';
+            chartsPanel.style.display = 'block';
+            
+            // In a real implementation, you would use a charting library here
+            // For this example, we'll just display the raw data
+            document.getElementById('moneyChart').innerHTML = 
+                `<p class="tr-text">Para Tarihçesi: ${gameState.resourceHistory.money.join(', ')}</p>
+                 <p class="en-text" style="display:none">Money History: ${gameState.resourceHistory.money.join(', ')}</p>`;
+                 
+            document.getElementById('energyChart').innerHTML = 
+                `<p class="tr-text">Enerji Tarihçesi: ${gameState.resourceHistory.energy.join(', ')}</p>
+                 <p class="en-text" style="display:none">Energy History: ${gameState.resourceHistory.energy.join(', ')}</p>`;
+                 
+            document.getElementById('carbonChart').innerHTML = 
+                `<p class="tr-text">Karbon Tarihçesi: ${gameState.resourceHistory.carbon.join(', ')}</p>
+                 <p class="en-text" style="display:none">Carbon History: ${gameState.resourceHistory.carbon.join(', ')}</p>`;
+        }
+
+        function updateResourceHistory() {
+            gameState.resourceHistory.money.push(Math.floor(gameState.money));
+            gameState.resourceHistory.energy.push(Math.floor(gameState.energy));
+            gameState.resourceHistory.food.push(Math.floor(gameState.food));
+            gameState.resourceHistory.population.push(Math.floor(gameState.population));
+            gameState.resourceHistory.happiness.push(Math.floor(gameState.happiness));
+            gameState.resourceHistory.carbon.push(Math.floor(gameState.carbonFootprint));
+            gameState.resourceHistory.time.push(Math.floor(gameState.playTime));
+            
+            // Keep history to a reasonable size
+            if (gameState.resourceHistory.money.length > 20) {
+                Object.keys(gameState.resourceHistory).forEach(key => {
+                    gameState.resourceHistory[key].shift();
+                });
+            }
+        }
+
+        function trackCoffeeClick() {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'buy_coffee_click', {
+                    'event_category': 'support',
+                    'event_label': 'donation_button'
+                });
+            }
+        }
+
+        function setLanguage(lang) {
+            fetch(`/set_language/${lang}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        location.reload();
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        function updateLanguageContent() {
+            const currentLang = "{{ current_lang }}" || 'en'; // Default to English if not set
+            const trElements = document.querySelectorAll('.tr-text');
+            const enElements = document.querySelectorAll('.en-text');
+            
+            if (currentLang === 'tr') {
+                trElements.forEach(el => el.style.display = el.style.display.includes('inline') ? 'inline' : 'block');
+                enElements.forEach(el => el.style.display = 'none');
+            } else {
+                trElements.forEach(el => el.style.display = 'none');
+                enElements.forEach(el => el.style.display = el.style.display.includes('inline') ? 'inline' : 'block');
+            }
+            
+            // Update language toggle buttons
+            document.querySelector('.language-toggle button:nth-child(1)').classList.toggle('active', currentLang === 'tr');
+            document.querySelector('.language-toggle button:nth-child(2)').classList.toggle('active', currentLang === 'en');
+        }
+
+        // Initialize game when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initGame();
+            updateLanguageContent();
+            
+            // Add touch event listeners for mobile
+            if ('ontouchstart' in window) {
+                const grid = document.getElementById('gameGrid');
+                grid.addEventListener('touchstart', handleTouchStart, {passive: true});
+                grid.addEventListener('touchmove', handleTouchMove, {passive: true});
+            }
+        });
+
+        // Mobile touch handling
+        let touchStartX = 0;
+        let touchStartY = 0;
+        
+        function handleTouchStart(e) {
+            touchStartX = e.touches[0].clientX;
+            touchStartY = e.touches[0].clientY;
+        }
+        
+        function handleTouchMove(e) {
+            if (!gameState.selectedBuilding) return;
+            
+            const touchX = e.touches[0].clientX;
+            const touchY = e.touches[0].clientY;
+            
+            const dx = touchX - touchStartX;
+            const dy = touchY - touchStartY;
+            
+            // If significant movement, scroll instead of build
+            if (Math.abs(dx) > 10 || Math.abs(dy) > 10) {
+                gameState.selectedBuilding = null;
+                document.querySelectorAll('.building-option').forEach(option => {
+                    option.classList.remove('selected');
+                });
+            }
+        }
+    </script>
+</body>
+</html>
