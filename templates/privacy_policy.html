@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="{{ current_lang }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if current_lang == 'tr' %}Gizlilik Politikası | Eco Urgent{% else %}Privacy Policy | Eco Urgent{% endif %}</title>
+    <meta name="description" content="{% if current_lang == 'tr' %}Eco Urgent gizlilik politikası. Kişisel verilerinizin nasıl korunduğunu öğrenin.{% else %}Eco Urgent privacy policy. Learn how your personal data is protected.{% endif %}">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #2ecc71;
+            --primary-dark: #27ae60;
+            --secondary-color: #3498db;
+            --dark-color: #2c3e50;
+            --darker-color: #1a252f;
+            --light-color: #ecf0f1;
+            --lighter-color: #f9f9f9;
+            --text-color: #333;
+            --text-light: #777;
+            --white: #fff;
+            --transition: all 0.4s ease;
+            --shadow-md: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--lighter-color);
+            padding-top: 80px;
+        }
+        /* FOOTER STYLES */
+        .footer {
+        background: linear-gradient(135deg, #0a2e38, #08313b);
+        color: #e0f7fa;
+        padding: 5rem 2rem 2rem;
+        margin-top: 5rem;
+        position: relative;
+        border-top: 4px solid #2ecc71;
+        box-shadow: 0 -5px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        background: linear-gradient(to bottom, rgba(46, 204, 113, 0.2), transparent);
+        z-index: 0;
+        }
+
+        .footer-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 3rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+        }
+
+        .footer-logo {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        font-family: 'Montserrat', sans-serif;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: #ffffff;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .footer-logo i {
+        color: #2ecc71;
+        font-size: 1.8rem;
+        }
+
+        .footer-about {
+        margin-bottom: 2rem;
+        line-height: 1.7;
+        color: #b3e5fc;
+        font-size: 1rem;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer-links h3, 
+        .footer-contact h3 {
+        font-size: 1.4rem;
+        margin-bottom: 2rem;
+        position: relative;
+        padding-bottom: 0.8rem;
+        font-family: 'Montserrat', sans-serif;
+        color: #ffffff;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer-links h3::after, 
+        .footer-contact h3::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 4px;
+        background: linear-gradient(to right, #2ecc71, #3498db);
+        border-radius: 2px;
+        box-shadow: 0 2px 4px rgba(46, 204, 113, 0.3);
+        }
+
+        .footer-links ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        }
+
+        .footer-links li {
+        margin-bottom: 1rem;
+        transition: all 0.3s ease;
+        }
+
+        .footer-links li:hover {
+        transform: translateX(5px);
+        }
+
+        .footer-links a {
+        color: #b3e5fc;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 1rem;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer-links a:hover {
+        color: #2ecc71;
+        }
+
+        .footer-links i {
+        font-size: 0.9rem;
+        color: #2ecc71;
+        }
+
+        .contact-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 1.5rem;
+        gap: 15px;
+        }
+
+        .contact-icon {
+        color: #2ecc71;
+        font-size: 1.2rem;
+        margin-top: 3px;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-item div {
+        color: #b3e5fc;
+        line-height: 1.5;
+        font-size: 1rem;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-links {
+        display: flex;
+        gap: 1.5rem;
+        margin-top: 2rem;
+        }
+
+        .social-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 45px;
+        height: 45px;
+        background-color: rgba(46, 204, 113, 0.1);
+        border-radius: 50%;
+        color: #ffffff;
+        transition: all 0.3s ease;
+        font-size: 1.2rem;
+        border: 1px solid rgba(46, 204, 113, 0.3);
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-link:hover {
+        background-color: #2ecc71;
+        transform: translateY(-5px);
+        color: #ffffff;
+        box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
+        }
+
+        .copyright {
+        text-align: center;
+        padding-top: 3rem;
+        margin-top: 3rem;
+        border-top: 1px solid rgba(46, 204, 113, 0.2);
+        color: #81d4fa;
+        font-size: 0.9rem;
+        position: relative;
+        z-index: 1;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+        .footer {
+            padding: 3rem 1.5rem 1.5rem;
+            border-top-width: 3px;
+        }
+        
+        .footer-container {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            justify-content: center;
+        }
+        
+        .footer-about {
+            text-align: center;
+        }
+        
+        .footer-links h3, 
+        .footer-contact h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .footer-links h3::after,
+        .footer-contact h3::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .footer-links ul {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .social-links {
+            justify-content: center;
+        }
+        
+        .contact-item {
+            justify-content: center;
+        }
+        }
+
+        @media (max-width: 480px) {
+        .footer {
+            padding: 2.5rem 1rem 1.5rem;
+        }
+        
+        .footer-logo {
+            font-size: 1.6rem;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            font-size: 1.1rem;
+        }
+        }
+        .navbar {
+            background: linear-gradient(135deg, var(--dark-color), var(--primary-dark));
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow-md);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .navbar-logo {
+            font-weight: 700;
+            font-size: 1.8rem;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .navbar-logo i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .navbar a {
+            color: var(--white);
+            text-decoration: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            transition: var(--transition);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .navbar a:hover {
+            color: var(--primary-color);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            background: var(--white);
+            padding: 3rem 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+        }
+
+        .content-section {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--dark-color);
+            margin-bottom: 1.5rem;
+            font-family: 'Montserrat', sans-serif;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        .content-section p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .content-section ul {
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+        }
+
+        .content-section li {
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .language-toggle {
+            position: fixed;
+            top: 70px;
+            right: 20px;
+            z-index: 1200;
+            display: flex;
+            gap: 10px;
+            background: rgba(255,255,255,0.9);
+            padding: 10px 15px;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            backdrop-filter: blur(5px);
+        }
+
+        .language-toggle button {
+            background: none;
+            border: none;
+            font-weight: 600;
+            padding: 5px 10px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .language-toggle button.active {
+            background: linear-gradient(135deg, #2ecc71, #3498db);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem;
+            }
+
+            .navbar-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--dark-color);
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .navbar-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .content-section {
+                padding: 2rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .language-toggle {
+                top: 80px;
+                right: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="{{ url_for('index') }}" class="navbar-logo">
+                <i class="fas fa-leaf"></i> Eco Urgent
+            </a>
+            <div class="navbar-links" id="navbarLinks">
+                <a href="{{ url_for('index') }}">
+                    <i class="fas fa-home"></i>
+                    {{ t['home'] }}
+                </a>
+                <a href="{{ url_for('bilgilendirme') }}">
+                    <i class="fas fa-chart-bar"></i>
+                    {{ t['info'] }}
+                </a>
+                <a href="{{ url_for('kurbanlar') }}">
+                    <i class="fas fa-heart"></i>
+                    {{ t['victims'] }}
+                </a>
+                <a href="{{ url_for('senin_etkin') }}">
+                    <i class="fas fa-flask"></i>
+                    {{ t['impact_test'] }}
+                </a>
+                <a href="{{ url_for('destek') }}">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    {{ t['destek'] }}
+                </a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Language Toggle -->
+    <div class="language-toggle">
+        <a href="{{ url_for('set_language', lang='tr') }}" id="langTR" class="{% if current_lang == 'tr' %}active{% endif %}">TR</a>
+        <a href="{{ url_for('set_language', lang='en') }}" id="langEN" class="{% if current_lang == 'en' %}active{% endif %}">EN</a>
+    </div>
+
+    <div class="container">
+        <div class="page-header">
+            <h1 class="page-title">
+                {{ t['privacy_policy'] }}
+            </h1>
+            <p class="page-subtitle">
+                {% if current_lang == 'tr' %}
+                    Kişisel verilerinizin korunması bizim için önemlidir
+                {% else %}
+                    Protecting your personal data is important to us
+                {% endif %}
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">
+                {% if current_lang == 'tr' %}1. Gizlilik Politikası Hakkında{% else %}1. About This Privacy Policy{% endif %}
+            </h2>
+            <p>
+                {% if current_lang == 'tr' %}
+                    Eco Urgent ("Biz" veya "Site"), kullanıcılarının gizliliğine büyük önem vermektedir. Bu Gizlilik Politikası, kişisel verilerinizin nasıl toplandığını, kullanıldığını, paylaşıldığını ve korunduğunu açıklar. Bu politikayı okumanızı ve veri işleme uygulamalarımızı anladığınızdan emin olmanızı önemle rica ederiz.
+                {% else %}
+                    Eco Urgent ("We" or "Site") values the privacy of its users greatly. This Privacy Policy describes how your personal data is collected, used, shared and protected. We strongly encourage you to read this policy and make sure you understand our data processing practices.
+                {% endif %}
+            </p>
+            <p>
+                {% if current_lang == 'tr' %}
+                    Bu politika, 6698 sayılı Kişisel Verilerin Korunması Kanunu ("KVKK") ve Avrupa Birliği Genel Veri Koruma Tüzüğü ("GDPR") gibi geçerli veri koruma yasalarına uygun olarak hazırlanmıştır.
+                {% else %}
+                    This policy has been prepared in compliance with applicable data protection laws such as the Turkish Personal Data Protection Law No. 6698 ("KVKK") and the European Union General Data Protection Regulation ("GDPR").
+                {% endif %}
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">
+                {% if current_lang == 'tr' %}2. Toplanan Bilgiler{% else %}2. Information We Collect{% endif %}
+            </h2>
+            <p>
+                {% if current_lang == 'tr' %}
+                    Eco Urgent olarak, yalnızca hizmetlerimizi sağlamak ve geliştirmek için gerekli olan minimum düzeyde kişisel veri topluyoruz. Topladığımız veri türleri şunlardır:
+                {% else %}
+                    As Eco Urgent, we collect only the minimum amount of personal data necessary to provide and improve our services. The types of data we collect include:
+                {% endif %}
+            </p>
+            <ul>
+                <li>
+                    {% if current_lang == 'tr' %}
+                        <strong>Kullanıcı Tarafından Sağlanan Veriler:</strong> Çevre testi sonuçları (anonim olarak saklanır), kullanıcı adı (zorunlu değil), dil tercihleri ve site ayarları.
+                    {% else %}
+                        <strong>User-Provided Data:</strong> Environmental test results (stored anonymously), username (not mandatory), language preferences and site settings.
+                    {% endif %}
+                </li>
+                <li>
+                    {% if current_lang == 'tr' %}
+                        <strong>Otomatik Toplanan Veriler:</strong> IP adresi, tarayıcı türü ve sürümü, işletim sistemi, sayfa ziyaret süreleri, tıklama yolları ve diğer teknik bilgiler.
+                    {% else %}
+                        <strong>Automatically Collected Data:</strong> IP address, browser type and version, operating system, page visit durations, click paths and other technical information.
+                    {% endif %}
+                </li>
+                <li>
+                    {% if current_lang == 'tr' %}
+                        <strong>Çerezler ve Benzer Teknolojiler:</strong> Site deneyiminizi iyileştirmek için çerezler ve benzer izleme teknolojileri kullanıyoruz.
+                    {% else %}
+                        <strong>Cookies and Similar Technologies:</strong> We use cookies and similar tracking technologies to improve your site experience.
+                    {% endif %}
+                </li>
+            </ul>
+            <p>
+                {% if current_lang == 'tr' %}
+                    <strong>Önemli Not:</strong> Çevresel etki testi sonuçlarınız tamamen anonim olarak saklanır ve kişisel kimliğinizle ilişkilendirilmez. Test sonuçları yalnızca istatistiksel analiz ve bilinçlendirme amaçlı kullanılır.
+                {% else %}
+                    <strong>Important Note:</strong> Your environmental impact test results are stored completely anonymously and are not associated with your personal identity. Test results are used only for statistical analysis and awareness purposes.
+                {% endif %}
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">
+                {% if current_lang == 'tr' %}3. Verilerin Kullanım Amacı{% else %}3. Purpose of Data Use{% endif %}
+            </h2>
+            <p>
+                {% if current_lang == 'tr' %}
+                    Topladığımız verileri aşağıdaki amaçlarla kullanıyoruz:
+                {% else %}
+                    We use the data we collect for the following purposes:
+                {% endif %}
+            </p>
+            <ul>
+                <li>
+                    {% if current_lang == 'tr' %}
+                        Site işlevselliğini sağlamak ve kullanıcı deneyimini iyileştirmek
+                    {% else %}
+                        To provide site functionality and improve user experience
+                    {% endif %}
+                </li>
+                <li>
+                    {% if current_lang == 'tr' %}
+                        Çevre bilinçlendirme çalışmalarını desteklemek ve istatistiksel analizler yapmak
+                    {% else %}
+                        To support environmental awareness efforts and conduct statistical analyses
+                    {% endif %}
+                </li>
+                <li>
+                    {% if current_lang == 'tr' %}
+                        Site güvenliğini sağlamak ve kötüye kullanımı önlemek
+                    {% else %}
+                        To ensure site security and prevent misuse
+                    {% endif %}
+                </li>
+                <li>
+                    {% if current_lang == 'tr' %}
+                        Yasal yükümlülüklerimizi yerine getirmek
+                    {% else %}
+                        To fulfill our legal obligations
+                    {% endif %}
+                </li>
+                <li>
+                    {% if current_lang == 'tr' %}
+                        Kullanıcı tercihlerine göre kişiselleştirilmiş içerik sunmak
+                    {% else %}
+                        To provide personalized content based on user preferences
+                    {% endif %}
+                </li>
+            </ul>
+            <p>
+                {% if current_lang == 'tr' %}
+                    Verileriniz hiçbir zaman reklam veya pazarlama amaçlı üçüncü taraflarla paylaşılmaz.
+                {% else %}
+                    Your data is never shared with third parties for advertising or marketing purposes.
+                {% endif %}
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">
+                {% if current_lang == 'tr' %}4. Veri Paylaşımı ve Aktarım{% else %}4. Data Sharing and Transfer{% endif %}
+            </h2>
+            <p>
+                {% if current_lang == 'tr' %}
+                    Topladığımız verileri yalnızca aşağıdaki durumlarda paylaşırız:
+                {% else %}
+                    We only share the data we collect in the following cases:
+                {% endif %}
+            </p>
+            <ul>
+                <li>
+                    {% if current_lang == 'tr' %}
+                        <strong>Hizmet Sağlayıcılar:</strong> Site işlemlerini destekleyen güvenilir üçüncü taraf hizmet sağlayıcılar (örneğin, barındırma hizmetleri). Bu sağlayıcılar verilerinizi yalnızca bizim talimatlarımız doğrultusunda işler.
+                    {% else %}
+                        <strong>Service Providers:</strong> Trusted third-party service providers that support site operations (e.g., hosting services). These providers process your data only according to our instructions.
+                    {% endif %}
+                </li>
+                <li>
+                    {% if current_lang == 'tr' %}
+                        <strong>Yasal Zorunluluklar:</strong> Yasa, düzenleme, mahkeme emri veya diğer yasal işlemler gerektirdiğinde.
+                    {% else %}
+                        <strong>Legal Requirements:</strong> When required by law, regulation, court order or other legal process.
+                    {% endif %}
+                </li>
+                <li>
+                    {% if current_lang == 'tr' %}
+                        <strong>Site Güvenliği:</strong> Site'nin güvenliğini korumak, kullanıcıları korumak veya dolandırıcılığı önlemek için gerekli olduğunda.
+                    {% else %}
+                        <strong>Site Security:</strong> When necessary to protect the security of the Site, protect users or prevent fraud.
+                    {% endif %}
+                </li>
+            </ul>
+            <p>
+                {% if current_lang == 'tr' %}
+                    Verileriniz Türkiye'de saklanır ancak bazı üçüncü taraf hizmet sağlayıcılar aracılığıyla diğer ülkelere aktarılabilir. Bu durumda, uygun koruma önlemlerinin alındığından emin oluruz.
+                {% else %}
+                    Your data is stored in Turkey but may be transferred to other countries through some third-party service providers. In such cases, we ensure that appropriate safeguards are in place.
+                {% endif %}
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">
+                {% if current_lang == 'tr' %}5. Çerezler ve İzleme Teknolojileri{% else %}5. Cookies and Tracking Technologies{% endif %}
+            </h2>
+            <p>
+                {% if current_lang == 'tr' %}
+                    Sitemiz, kullanıcı deneyimini iyileştirmek için çerezler ve benzer izleme teknolojileri kullanmaktadır. Çerezler, web sitesini ziyaret ettiğinizde cihazınıza kaydedilen küçük metin dosyalarıdır.
+                {% else %}
+                    Our site uses cookies and similar tracking technologies to improve user experience. Cookies are small text files that are saved on your device when you visit the website.
+                {% endif %}
+            </p>
+            <p>
+                {% if current_lang == 'tr' %}
+                    Kullandığımız çerez türleri:
+                {% else %}
+                    Types of cookies we use:
+                {% endif %}
+            </p>
+            <ul>
+                <li>
+                    {% if current_lang == 'tr' %}
+                        <strong>Zorunlu Çerezler:</strong> Site'nin temel işlevlerini çalıştırmak için gereklidir.
+                    {% else %}
+                        <strong>Essential Cookies:</strong> Necessary for the basic functions of the Site.
+                    {% endif %}
+                </li>
+                <li>
+                    {% if current_lang == 'tr' %}
+                        <strong>Tercih Çerezleri:</strong> Dil tercihleri gibi kullanıcı seçimlerini hatırlar.
+                    {% else %}
+                        <strong>Preference Cookies:</strong> Remember user choices such as language preferences.
+                    {% endif %}
+                </li>
+                <li>
+                    {% if current_lang == 'tr' %}
+                        <strong>Analitik Çerezler:</strong> Site kullanımını anonim olarak analiz etmemizi sağlar.
+                    {% else %}
+                        <strong>Analytics Cookies:</strong> Allow us to analyze site usage anonymously.
+                    {% endif %}
+                </li>
+            </ul>
+            <p>
+                {% if current_lang == 'tr' %}
+                    Çerez tercihlerinizi tarayıcı ayarlarınızdan yönetebilirsiniz. Ancak bazı çerezleri devre dışı bırakmanın site işlevselliğini etkileyebileceğini unutmayın.
+                {% else %}
+                    You can manage your cookie preferences through your browser settings. However, please note that disabling some cookies may affect site functionality.
+                {% endif %}
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">
+                {% if current_lang == 'tr' %}6. Veri Güvenliği{% else %}6. Data Security{% endif %}
+            </h2>
+            <p>
+                {% if current_lang == 'tr' %}
+                    Verilerinizin güvenliği bizim için çok önemlidir. Verilerinizi yetkisiz erişime, değişikliğe, ifşaya veya imhaya karşı korumak için aşağıdaki önlemleri alıyoruz:
+                {% else %}
+                    The security of your data is very important to us. We take the following measures to protect your data from unauthorized access, alteration, disclosure or destruction:
+                {% endif %}
+            </p>
+            <ul>
+                <li>
+                    {% if current_lang == 'tr' %}
+                        Gelişmiş şifreleme teknolojileri kullanmak (SSL/TLS)
+                    {% else %}
+                        Using advanced encryption technologies (SSL/TLS)
+                    {% endif %}
+                </li>
+                <li>
+                    {% if current_lang == 'tr' %}
+                        Düzenli güvenlik denetimleri ve penetrasyon testleri yapmak
+                    {% else %}
+                        Conducting regular security audits and penetration tests
+                    {% endif %}
+                </li>
+                <li>
+                    {% if current_lang == 'tr' %}
+                        Veri erişimini sıkı erişim kontrolleriyle sınırlandırmak
+                    {% else %}
+                        Limiting data access with strict access controls
+                    {% endif %}
+                </li>
+                <li>
+                    {% if current_lang == 'tr' %}
+                        Çalışanlarımıza düzenli gizlilik ve güvenlik eğitimleri vermek
+                    {% else %}
+                        Providing regular privacy and security training to our employees
+                    {% endif %}
+                </li>
+            </ul>
+            <p>
+                {% if current_lang == 'tr' %}
+                    Veri ihlali durumunda, yasal gereklilikler doğrultusunda en geç 72 saat içinde yetkili makamlara ve etkilenen bireylere bildirim yapılacaktır.
+                {% else %}
+                    In case of a data breach, notification will be made to the relevant authorities and affected individuals within 72 hours at the latest, in accordance with legal requirements.
+                {% endif %}
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">
+                {% if current_lang == 'tr' %}7. Veri Saklama Süresi{% else %}7. Data Retention Period{% endif %}
+            </h2>
+            <p>
+                {% if current_lang == 'tr' %}
+                    Kişisel verilerinizi yalnızca gerekli olduğu sürece saklarız. Saklama süreleri veri türüne ve toplama amacına göre değişir:
+                {% else %}
+                    We retain your personal data only as long as necessary. Retention periods vary depending on the type of data and the purpose of collection:
+                {% endif %}
+            </p>
+            <ul>
+                <li>
+                    {% if current_lang == 'tr' %}
+                        <strong>Kullanıcı etkileşim verileri:</strong> 2 yıl
+                    {% else %}
+                        <strong>User interaction data:</strong> 2 years
+                    {% endif %}
+                </li>
+                <li>
+                    {% if current_lang == 'tr' %}
+                        <strong>Test sonuçları (anonim):</strong> Süresiz (istatistiksel amaçlarla)
+                    {% else %}
+                        <strong>Test results (anonymous):</strong> Indefinitely (for statistical purposes)
+                    {% endif %}
+                </li>
+                <li>
+                    {% if current_lang == 'tr' %}
+                        <strong>Teknik veriler (IP adresi vb.):</strong> 6 ay
+                    {% else %}
+                        <strong>Technical data (IP address, etc.):</strong> 6 months
+                    {% endif %}
+                </li>
+            </ul>
+            <p>
+                {% if current_lang == 'tr' %}
+                    Saklama süresi sona erdiğinde, veriler güvenli bir şekilde silinir veya anonim hale getirilir.
+                {% else %}
+                    When the retention period expires, data is securely deleted or anonymized.
+                {% endif %}
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">
+                {% if current_lang == 'tr' %}8. Haklarınız{% else %}8. Your Rights{% endif %}
+            </h2>
+            <p>
+                {% if current_lang == 'tr' %}
+                    KVKK ve GDPR kapsamında sahip olduğunuz haklar:
+                {% else %}
+                    Your rights under KVKK and GDPR:
+                {% endif %}
+            </p>
+            <ul>
+                <li>
+                    {% if current_lang == 'tr' %}
+                        <strong>Bilgi Edinme Hakkı:</strong> Verilerinizin işlenip işlenmediğini öğrenme
+                    {% else %}
+                        <strong>Right to Information:</strong> Learn whether your data is being processed
+                    {% endif %}
+                </li>
+                <li>
+                    {% if current_lang == 'tr' %}
+                        <strong>Erişim Hakkı:</strong> Verilerinize erişim sağlama
+                    {% else %}
+                        <strong>Right of Access:</strong> Access your data
+                    {% endif %}
+                </li>
+                <li>
+                    {% if current_lang == 'tr' %}
+                        <strong>Düzeltme Hakkı:</strong> Yanlış veya eksik verilerin düzeltilmesini isteme
+                    {% else %}
+                        <strong>Right to Rectification:</strong> Request correction of incorrect or incomplete data
+                    {% endif %}
+                </li>
+                <li>
+                    {% if current_lang == 'tr' %}
+                        <strong>Silme Hakkı ("Unutulma Hakkı"):</strong> Verilerinizin silinmesini isteme
+                    {% else %}
+                        <strong>Right to Erasure ("Right to be Forgotten"):</strong> Request deletion of your data
+                    {% endif %}
+                </li>
+                <li>
+                    {% if current_lang == 'tr' %}
+                        <strong>İşleme İtiraz Hakkı:</strong> Verilerinizin işlenmesine itiraz etme
+                    {% else %}
+                        <strong>Right to Object to Processing:</strong> Object to processing of your data
+                    {% endif %}
+                </li>
+                <li>
+                    {% if current_lang == 'tr' %}
+                        <strong>Veri Taşınabilirliği Hakkı:</strong> Verilerinizi başka bir sisteme aktarma
+                    {% else %}
+                        <strong>Right to Data Portability:</strong> Transfer your data to another system
+                    {% endif %}
+                </li>
+            </ul>
+            <p>
+                {% if current_lang == 'tr' %}
+                    Haklarınızı kullanmak için bizimle iletişime geçebilirsiniz. Talepleriniz en geç 30 gün içinde yanıtlanacaktır. Kimlik doğrulama için bazı bilgiler istenebilir.
+                {% else %}
+                    You can contact us to exercise your rights. Your requests will be answered within 30 days at the latest. Some information may be requested for authentication purposes.
+                {% endif %}
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">
+                {% if current_lang == 'tr' %}9. Çocukların Gizliliği{% else %}9. Children's Privacy{% endif %}
+            </h2>
+            <p>
+                {% if current_lang == 'tr' %}
+                    Eco Urgent, 13 yaşın altındaki çocuklardan bilerek kişisel veri toplamaz. 13-18 yaş arası kullanıcıların Site'yi yalnızca ebeveyn veya vasilerinin gözetiminde kullanmalarını öneririz. Bir çocuğun kişisel verilerini topladığımızı fark edersek, bu verileri derhal sileriz.
+                {% else %}
+                    Eco Urgent does not knowingly collect personal data from children under 13. We recommend that users aged 13-18 use the Site only under the supervision of a parent or guardian. If we discover that we have collected personal data from a child, we will delete that data immediately.
+                {% endif %}
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">
+                {% if current_lang == 'tr' %}10. Politika Değişiklikleri{% else %}10. Policy Changes{% endif %}
+            </h2>
+            <p>
+                {% if current_lang == 'tr' %}
+                    Bu Gizlilik Politikasını zaman zaman güncelleyebiliriz. Değişiklikler sitede yayınlandığı anda yürürlüğe girer. Önemli değişiklikler için kullanıcıları e-posta yoluyla bilgilendirebiliriz. Politikanın üst kısmındaki "Son Güncelleme" tarihi, en son ne zaman değiştirildiğini gösterir.
+                {% else %}
+                    We may update this Privacy Policy from time to time. Changes take effect as soon as they are published on the site. We may notify users of significant changes by email. The "Last Updated" date at the top of the policy indicates when it was last modified.
+                {% endif %}
+            </p>
+        </div>
+
+        <div class="contact-info">
+            <h3>
+                {% if current_lang == 'tr' %}İletişim Bilgileri{% else %}Contact Information{% endif %}
+            </h3>
+            <p>
+                {% if current_lang == 'tr' %}
+                    <i class="fas fa-envelope"></i> E-posta: kaymasali3@gmail.com
+                {% else %}
+                    <i class="fas fa-envelope"></i> Email: kaymasali3@gmail.com
+                {% endif %}
+            </p>
+            <p>
+                {% if current_lang == 'tr' %}
+                    <i class="fas fa-calendar-alt"></i> Son güncelleme: 15 Ocak 2025
+                {% else %}
+                    <i class="fas fa-calendar-alt"></i> Last updated: January 15, 2025
+                {% endif %}
+            </p>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <i class="fas fa-leaf"></i>
+                    <span>Eco Urgent</span>
+                </div>
+                <p class="footer-about">
+                    {% if current_lang == 'tr' %}
+                        İklim değişikliği ile mücadelede birlikte hareket ediyoruz. Siz de söz verin, geleceğimizi birlikte kurtaralım.
+                    {% else %}
+                        We act together in the fight against climate change. Make your pledge and let's save our future together.
+                    {% endif %}
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <h3>
+                    {% if current_lang == 'tr' %}
+                        Hızlı Linkler
+                    {% else %}
+                        Quick Links
+                    {% endif %}
+                </h3>
+                <ul>
+                    <li><a href="{{ url_for('index') }}">
+                        <i class="fas fa-chevron-right"></i>
+                        <span>{{ t.home }}</span>
+                    </a></li>
+                    <li><a href="{{ url_for('bilgilendirme') }}">
+                        <i class="fas fa-chevron-right"></i>
+                        <span>{{ t.info }}</span>
+                    </a></li>
+                    <li><a href="{{ url_for('kurbanlar') }}">
+                        <i class="fas fa-chevron-right"></i>
+                        <span>{{ t.victims }}</span>
+                    </a></li>
+                    <li><a href="{{ url_for('senin_etkin') }}">
+                        <i class="fas fa-chevron-right"></i>
+                        <span>{{ t.impact_test }}</span>
+                    </a></li>
+                    <li><a href="{{ url_for('destek') }}">
+                        <i class="fas fa-chevron-right"></i>
+                        <span class="tr-text">Siteyi Destekle</span>
+                        <span class="en-text" style="display: none">Support Us</span>
+                    </a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h3>
+                    {% if current_lang == 'tr' %}
+                        İletişim
+                    {% else %}
+                        Contact
+                    {% endif %}
+                </h3>
+
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt contact-icon"></i>
+                    <div>
+                        <span>
+                            {% if current_lang == 'tr' %}
+                                24 № Tam Orta Okul
+                            {% else %}
+                                Fully Secondary School №24
+                            {% endif %}
+                        </span>
+                        <br>
+                        <span>
+                            {% if current_lang == 'tr' %}
+                                Bakü, Azerbaycan
+                            {% else %}
+                                Baku, Azerbaijan
+                            {% endif %}
+                        </span>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <i class="fas fa-envelope contact-icon"></i>
+                    <div>
+                        <span>kaymasali3@gmail.com</span>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt contact-icon"></i>
+                    <div>
+                        <span>+994 50 602 29 16</span>
+                    </div>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://instagram.com/mrkaymasfire" class="social-link" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2025 Eco Urgent. 
+                {% if current_lang == 'tr' %}
+                    Tüm hakları saklıdır.
+                {% else %}
+                    All rights reserved.
+                {% endif %}
+            </p>
+            <div style="margin-top: 15px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                <a href="{{ url_for('privacy_policy') }}" style="color: #bbb; text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">
+                    {% if current_lang == 'tr' %}
+                        Gizlilik Politikası
+                    {% else %}
+                        Privacy Policy
+                    {% endif %}
+                </a>
+                <a href="{{ url_for('terms_of_use') }}" style="color: #bbb; text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">
+                    {% if current_lang == 'tr' %}
+                        Kullanım Şartları
+                    {% else %}
+                        Terms of Use
+                    {% endif %}
+                </a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Mobile menu functionality
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navbarLinks = document.getElementById('navbarLinks');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navbarLinks.classList.toggle('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+    </script>
+</body>
+</html>

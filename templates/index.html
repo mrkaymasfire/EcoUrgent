@@ -1,0 +1,1989 @@
+<!DOCTYPE html>
+<html lang="{% if current_lang == 'tr' %}tr{% else %}en{% endif %}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if current_lang == 'tr' %}İklim Değişikliği | Geleceğimizi Koruyalım 🌍 | Eco Urgent{% else %}Climate Change | Protecting Our Future 🌍 | Eco Urgent{% endif %}</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="{% if current_lang == 'tr' %}İklim değişikliği ile mücadelede söz verin! Çevresel etkinizi ölçün, bilinçlendirme çalışmalarına katılın. Geleceğimizi birlikte koruyalım.{% else %}Take a pledge in the fight against climate change! Measure your environmental impact, join awareness efforts. Let's protect our future together.{% endif %}">
+    <meta name="keywords" content="{% if current_lang == 'tr' %}iklim değişikliği, çevre koruma, karbon ayak izi, sürdürülebilirlik, doğa koruma, çevre bilinci, yeşil yaşam{% else %}climate change, environmental protection, carbon footprint, sustainability, nature conservation, environmental awareness, green living{% endif %}">
+    <meta name="author" content="Eco Urgent Team">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://ecourgent.replit.app{{ url_for('index') }}">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="{% if current_lang == 'tr' %}İklim Değişikliği | Geleceğimizi Koruyalım{% else %}Climate Change | Protecting Our Future{% endif %}">
+    <meta property="og:description" content="{% if current_lang == 'tr' %}İklim değişikliği ile mücadelede söz verin! Çevresel etkinizi ölçün, fark yaratın.{% else %}Take a pledge in the fight against climate change! Measure your environmental impact, make a difference.{% endif %}">
+    <meta property="og:image" content="https://ecourgent.replit.app/static/img/arkaplan.jpg">
+    <meta property="og:url" content="https://ecourgent.replit.app{{ url_for('index') }}">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Eco Urgent">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{% if current_lang == 'tr' %}İklim Değişikliği | Geleceğimizi Koruyalım{% else %}Climate Change | Protecting Our Future{% endif %}">
+    <meta name="twitter:description" content="{% if current_lang == 'tr' %}İklim değişikliği ile mücadelede söz verin!{% else %}Take a pledge in the fight against climate change!{% endif %}">
+    <meta name="twitter:image" content="https://ecourgent.replit.app/static/img/arkaplan.jpg">
+
+    <!-- Additional SEO Tags -->
+    <meta name="theme-color" content="#2ecc71">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Eco Urgent">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Eco Urgent",
+      "url": "https://ecourgent.replit.app",
+      "logo": "https://ecourgent.replit.app/static/img/logo.png",
+      "description": "{% if current_lang == 'tr' %}İklim değişikliği ile mücadelede bilinçlendirme platformu{% else %}Climate change awareness and action platform{% endif %}",
+      "sameAs": [
+        "https://instagram.com/mrkaymasfire"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+994506022916",
+        "contactType": "customer service",
+        "email": "kaymasali3@gmail.com"
+      }
+    }
+    </script>
+
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
+
+    <!-- External Stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='img/apple-touch-icon.png') }}">
+    <style>
+        :root {
+            --primary-color: #2ecc71;
+            --primary-dark: #27ae60;
+            --secondary-color: #3498db;
+            --dark-color: #2c3e50;
+            --darker-color: #1a252f;
+            --light-color: #ecf0f1;
+            --lighter-color: #f9f9f9;
+            --danger-color: #e74c3c;
+            --warning-color: #f39c12;
+            --text-color: #333;
+            --text-light: #777;
+            --white: #fff;
+            --black: #000;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 10px 20px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        [data-theme="dark"] {
+            --light-color: #2c3e50;
+            --lighter-color: #34495e;
+            --text-color: #ecf0f1;
+            --text-light: #bdc3c7;
+            --white: #34495e;
+            --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 10px 20px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 15px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--lighter-color);
+            position: relative;
+            min-height: 100vh;
+            overflow-x: hidden;
+            transition: var(--transition);
+        }
+
+        /* Dark Mode Toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1200;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: none;
+            border-radius: 50px;
+            padding: 12px 16px;
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--white);
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        /* Language Switch */
+        .language-switch {
+            position: fixed;
+            top: 70px;
+            right: 20px;
+            z-index: 1100;
+            display: flex;
+            gap: 5px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            padding: 5px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .language-btn {
+            background: transparent;
+            border: none;
+            color: var(--white);
+            padding: 8px 12px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .language-btn.active {
+            background: var(--white);
+            color: var(--dark-color);
+        }
+
+        /* Navbar */
+        .navbar {
+            background: linear-gradient(135deg, var(--dark-color), var(--primary-dark));
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow-lg);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            background-color: rgba(44, 62, 80, 0.9);
+        }
+
+        .navbar.scrolled {
+            padding: 0.8rem 2rem;
+            background-color: rgba(44, 62, 80, 0.98);
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .navbar-logo {
+            font-weight: 700;
+            font-size: 1.8rem;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .navbar-logo:hover {
+            transform: scale(1.03);
+        }
+
+        .navbar-logo i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .navbar a {
+            color: var(--white);
+            text-decoration: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            transition: var(--transition);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .navbar a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .navbar a:hover::before, .navbar a.aktif::before {
+            width: 100%;
+        }
+
+        .navbar a:hover, .navbar a.aktif {
+            color: var(--primary-color);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            min-height: 800px;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('{{ url_for("static", filename="img/arkaplan.jpg") }}');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to top, var(--lighter-color), transparent);
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(46, 204, 113, 0.6);
+        }
+
+        /* Floating Elements */
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .floating-element {
+            position: absolute;
+            display: block;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            animation: float 15s linear infinite;
+            bottom: -150px;
+            border-radius: 50%;
+        }
+
+        .floating-element:nth-child(1) {
+            left: 25%;
+            width: 80px;
+            height: 80px;
+            animation-delay: 0s;
+            animation-duration: 20s;
+        }
+
+        .floating-element:nth-child(2) {
+            left: 10%;
+            width: 20px;
+            height: 20px;
+            animation-delay: 2s;
+            animation-duration: 12s;
+        }
+
+        .floating-element:nth-child(3) {
+            left: 70%;
+            width: 20px;
+            height: 20px;
+            animation-delay: 4s;
+        }
+
+        .floating-element:nth-child(4) {
+            left: 40%;
+            width: 60px;
+            height: 60px;
+            animation-delay: 0s;
+            animation-duration: 18s;
+        }
+
+        .floating-element:nth-child(5) {
+            left: 65%;
+            width: 20px;
+            height: 20px;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(6) {
+            left: 75%;
+            width: 110px;
+            height: 110px;
+            animation-delay: 3s;
+        }
+
+        .floating-element:nth-child(7) {
+            left: 35%;
+            width: 150px;
+            height: 150px;
+            animation-delay: 7s;
+        }
+
+        .floating-element:nth-child(8) {
+            left: 50%;
+            width: 25px;
+            height: 25px;
+            animation-delay: 15s;
+            animation-duration: 45s;
+        }
+
+        .floating-element:nth-child(9) {
+            left: 20%;
+            width: 15px;
+            height: 15px;
+            animation-delay: 2s;
+            animation-duration: 35s;
+        }
+
+        .floating-element:nth-child(10) {
+            left: 85%;
+            width: 150px;
+            height: 150px;
+            animation-delay: 0s;
+            animation-duration: 11s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+                border-radius: 50%;
+            }
+            100% {
+                transform: translateY(-1000px) rotate(720deg);
+                opacity: 0;
+                border-radius: 50%;
+            }
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--white);
+            font-size: 1.8rem;
+            z-index: 10;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+            40% { transform: translateY(-20px) translateX(-50%); }
+            60% { transform: translateY(-10px) translateX(-50%); }
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            background-color: var(--dark-color);
+            color: var(--white);
+            padding: 1.2rem;
+            position: sticky;
+            top: 80px;
+            z-index: 999;
+            backdrop-filter: blur(10px);
+            background-color: rgba(44, 62, 80, 0.9);
+        }
+        .navbar-links.active {
+            display: flex;
+        }
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 0.5rem 1.5rem;
+            position: relative;
+        }
+
+        .stat-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 40px;
+            width: 1px;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.3rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            letter-spacing: 0.5px;
+        }
+
+        /* Ticker */
+        .ticker-container {
+            background-color: var(--dark-color);
+            color: var(--white);
+            padding: 1rem 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .ticker-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 100%;
+            background: linear-gradient(to right, var(--darker-color), transparent);
+            z-index: 2;
+        }
+
+        .ticker-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100%;
+            background: linear-gradient(to left, var(--darker-color), transparent);
+            z-index: 2;
+        }
+
+        .ticker {
+            display: flex;
+            white-space: nowrap;
+            animation: ticker 40s linear infinite;
+        }
+
+        .ticker:hover {
+            animation-play-state: paused;
+        }
+
+        .ticker-item {
+            display: flex;
+            align-items: center;
+            margin-right: 4rem;
+            padding: 0.5rem 0;
+        }
+
+        .ticker-icon {
+            margin-right: 1rem;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+            background-color: var(--white);
+            border-radius: 12px;
+            padding: 3rem;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            color: var(--dark-color);
+            font-family: 'Montserrat', sans-serif;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 70px;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            border-radius: 5px;
+        }
+
+        /* Impact Counter */
+        .impact-counter {
+            text-align: center;
+            background: linear-gradient(135deg, var(--dark-color), var(--darker-color));
+            color: var(--white);
+            padding: 4rem 2rem;
+            border-radius: 12px;
+            margin-bottom: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .impact-counter::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        .counter-number {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-family: 'Montserrat', sans-serif;
+            position: relative;
+            display: inline-block;
+        }
+
+        .counter-number::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        .impact-counter p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Pledge Form */
+        .pledge-form {
+            background: linear-gradient(135deg, #f5f7fa, #e4efe9);
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-sm);
+            margin-top: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pledge-form::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            transform: translate(50px, -50px);
+            opacity: 0.1;
+        }
+
+        .pledge-form::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 150px;
+            height: 150px;
+            background-color: var(--secondary-color);
+            border-radius: 50%;
+            transform: translate(-50px, 50px);
+            opacity: 0.1;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
+            background-color: var(--white);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.2);
+        }
+
+        .char-counter {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            text-align: right;
+            margin-top: 0.25rem;
+        }
+
+        .honeypot {
+            position: absolute;
+            left: -9999px;
+            opacity: 0;
+        }
+
+        .btn {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: 0.5s;
+        }
+
+        .btn:hover::after {
+            left: 100%;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(46, 204, 113, 0.3);
+        }
+
+        /* Live Carbon Map */
+        .carbon-map-section {
+            background-color: var(--white);
+            border-radius: 12px;
+            padding: 3rem;
+            margin-bottom: 4rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .carbon-map {
+            width: 100%;
+            height: 600px;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        /* Recent Pledges */
+        .pledge-list {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .pledge-item {
+            background-color: var(--lighter-color);
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-left: 5px solid var(--primary-color);
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .pledge-item:hover {
+            transform: translateX(10px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .pledge-user {
+            font-weight: 600;
+            color: var(--dark-color);
+            font-size: 1.1rem;
+        }
+
+        .pledge-message {
+            color: var(--text-light);
+            font-style: italic;
+            margin-top: 0.5rem;
+        }
+
+        .pledge-date {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            min-width: 120px;
+            text-align: right;
+        }
+
+        /* Tips Section */
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .tip-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .tip-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .tip-icon {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 2rem;
+            text-align: center;
+            font-size: 2.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .tip-content {
+            padding: 2rem;
+        }
+
+        .tip-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .tip-card p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Analytics Display */
+        .analytics-display {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .analytics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .analytics-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .analytics-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .analytics-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Feedback Section */
+        .feedback-section {
+            background-color: var(--white);
+            padding: 3rem;
+            border-radius: 12px;
+            margin-bottom: 4rem;
+        }
+
+        .rating-stars {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .star {
+            font-size: 2rem;
+            color: #ddd;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .star:hover,
+        .star.active {
+            color: var(--warning-color);
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, var(--dark-color), var(--darker-color));
+            color: var(--white);
+            padding: 5rem 2rem 2rem;
+            margin-top: 5rem;
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to bottom, var(--lighter-color), transparent);
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .footer-logo i {
+            color: var(--primary-color);
+        }
+
+        .footer-about {
+            margin-bottom: 2rem;
+            line-height: 1.7;
+            opacity: 0.8;
+        }
+
+        h3, .footer-contact h3 {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .footer-links h3::after, .footer-contact h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+            transform: translateX(5px);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            gap: 15px;
+        }
+
+        .contact-icon {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin-top: 3px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white);
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+
+        .social-link:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 3rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bbb;
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999;
+            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
+            border: none;
+            text-decoration: none;
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-5px);
+        }
+
+        /* Loading Animation */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--white);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid var(--light-color);
+            border-top: 3px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Accessibility improvements */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Focus styles for better accessibility */
+        a:focus, button:focus, input:focus, textarea:focus {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+
+        /* Reduce motion for users who prefer it */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .section {
+                padding: 2rem;
+            }
+
+            .impact-counter {
+                padding: 3rem 1.5rem;
+            }
+
+            .counter-number {
+                font-size: 3.5rem;
+            }
+
+            .theme-toggle, .language-switch {
+                right: 10px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem;
+            }
+
+            .navbar-container {
+                padding: 0;
+            }
+
+            .navbar-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: linear-gradient(135deg, var(--dark-color), var(--darker-color));
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                transition: all 0.3s ease;
+                z-index: 999;
+                backdrop-filter: blur(10px);
+                overflow-y: auto;
+            }
+
+            .navbar-links.active {
+                left: 0;
+            }
+
+            .navbar-links a {
+                padding: 1rem 2rem;
+                width: 80%;
+                text-align: center;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                margin-bottom: 0.5rem;
+                border-radius: 10px;
+                justify-content: center;
+            }
+
+            .navbar-links a:hover {
+                background: rgba(255, 255, 255, 0.1);
+                transform: translateX(0);
+            }
+
+            .mobile-menu-btn {
+                display: block;
+                padding: 10px;
+                border-radius: 5px;
+                transition: var(--transition);
+            }
+
+            .mobile-menu-btn:hover {
+                background: rgba(255, 255, 255, 0.1);
+            }
+
+            .hero {
+                min-height: 100vh;
+                padding: 100px 15px 50px;
+                background-attachment: scroll;
+            }
+
+            .hero-content {
+                padding: 30px 20px;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+                line-height: 1.3;
+                margin-bottom: 1rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+                margin-bottom: 2rem;
+            }
+
+            .cta-button {
+                padding: 0.8rem 2rem;
+                font-size: 1rem;
+                width: auto;
+                min-width: 200px;
+            }
+
+            .stats-container {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .stat-item:not(:last-child)::after {
+                display: none;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .pledge-form {
+                padding: 2rem;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .analytics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .carbon-map {
+                height: 400px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .cta-button {
+                padding: 0.8rem 1.8rem;
+                font-size: 1rem;
+            }
+
+            .section {
+                padding: 1.5rem;
+            }
+
+            .tip-card {
+                max-width: 100%;
+            }
+
+            .theme-toggle {
+                top: 10px;
+                right: 10px;
+                padding: 10px 12px;
+                font-size: 1rem;
+            }
+
+            .language-switch {
+                top: 60px;
+                right: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading -->
+    <div class="loading">
+        <div class="spinner"></div>
+        <span class="sr-only">Loading...</span>
+    </div>
+    <!-- Language Switch -->
+    <div class="language-switch">
+        <button class="language-btn" data-lang="tr">TR</button>
+        <button class="language-btn active" data-lang="en">EN</button>
+    </div>
+    
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="{{ url_for('index') }}" class="navbar-logo">
+                <i class="fas fa-leaf"></i> Eco Urgent
+            </a>
+            <div class="navbar-links" id="navbarLinks">
+                <a href="{{ url_for('index') }}" class="{% if request.endpoint == 'index' %}aktif{% endif %}">
+                    <i class="fas fa-home"></i>
+                    <span class="tr-text">Ana Sayfa</span>
+                    <span class="en-text" style="display:none">Home</span>
+                </a>
+                <a href="{{ url_for('bilgilendirme') }}" class="{% if request.endpoint == 'bilgilendirme' %}aktif{% endif %}">
+                    <i class="fas fa-chart-bar"></i>
+                    <span class="tr-text">Bilgilendirme</span>
+                    <span class="en-text" style="display:none">Information</span>
+                </a>
+                <a href="{{ url_for('kurbanlar') }}" class="{% if request.endpoint == 'kurbanlar' %}aktif{% endif %}">
+                    <i class="fas fa-heart"></i>
+                    <span class="tr-text">Kurbanlar</span>
+                    <span class="en-text" style="display:none">Victims</span>
+                </a>
+                <a href="{{ url_for('senin_etkin') }}" class="{% if request.endpoint == 'senin_etkin' %}aktif{% endif %}">
+                    <i class="fas fa-flask"></i>
+                    <span class="tr-text">Senin Etkin</span>
+                    <span class="en-text" style="display:none">Your Impact</span>
+                </a>
+                <a href="{{ url_for('destek') }}" class="{% if request.endpoint == 'destek' %}aktif{% endif %}">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    <span class="tr-text">Siteyi Destekle</span>
+                    <span class="en-text" style="display:none">Support Us</span>
+                </a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle mobile menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="floating-elements">
+            <span class="floating-element"></span>
+            <span class="floating-element"></span>
+            <span class="floating-element"></span>
+            <span class="floating-element"></span>
+            <span class="floating-element"></span>
+            <span class="floating-element"></span>
+            <span class="floating-element"></span>
+            <span class="floating-element"></span>
+            <span class="floating-element"></span>
+            <span class="floating-element"></span>
+        </div>
+        
+        <div class="hero-content animate__animated animate__fadeInUp">
+            <h1 class="tr-text" style="display:none">Bugününüzü Unutursanız, Yarın Unutacak Hayatınız Olmayabilir</h1>
+            <h1 class="en-text">If You Forget Today, Tomorrow You May Have No Life to Forget</h1>
+            
+            <p class="tr-text" style="display:none">İklim değişikliği ile mücadelede hep birlikte hareket edelim. Söz verin, fark yaratın!</p>
+            <p class="en-text">Let's act together in the fight against climate change. Make a pledge, make a difference!</p>
+            
+            <a href="#pledge" class="cta-button animate__animated animate__fadeIn animate__delay-1s">
+                <span class="tr-text" style="display:none">Söz Ver</span>
+                <span class="en-text">Pledge</span>
+                <i class="fas fa-arrow-down"></i>
+            </a>
+        </div>
+        
+        <div class="scroll-indicator animate__animated animate__bounce animate__infinite">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+    
+    <!-- Stats Bar -->
+    <div class="stats-bar">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number">{{ soz_sayaci }}+</div>
+                <div class="stat-label tr-text">Söz Veren</div>
+                <div class="stat-label en-text" style="display:none">Pledges</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">1.6°C</div>
+                <div class="stat-label tr-text">Sıcaklık Artışı</div>
+                <div class="stat-label en-text" style="display:none">Temp. Rise</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">420ppm</div>
+                <div class="stat-label tr-text">CO2 Seviyesi</div>
+                <div class="stat-label en-text" style="display:none">CO2 Level</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">2030</div>
+                <div class="stat-label tr-text">Kritik Eşik</div>
+                <div class="stat-label en-text" style="display:none">Critical Threshold</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Ticker -->
+    <div class="ticker-container">
+        <div class="ticker">
+            <div class="ticker-item">
+                <i class="fas fa-exclamation-circle ticker-icon"></i>
+                <span class="tr-text">Plastik atıklar her yıl 1 milyon deniz kuşunu öldürüyor</span>
+                <span class="en-text" style="display:none">Plastic waste kills 1 million seabirds every year</span>
+            </div>
+            <div class="ticker-item">
+                <i class="fas fa-temperature-high ticker-icon"></i>
+                <span class="tr-text">Küresel sıcaklık 1900'lere göre 1.6°C arttı</span>
+                <span class="en-text" style="display:none">Global temperature has increased by 1.6°C since 1900s</span>
+            </div>
+            <div class="ticker-item">
+                <i class="fas fa-snowflake ticker-icon"></i>
+                <span class="tr-text">2050'ye kadar buzulların %80'i yok olabilir</span>
+                <span class="en-text" style="display:none">80% of glaciers may disappear by 2050</span>
+            </div>
+            <div class="ticker-item">
+                <i class="fas fa-tree ticker-icon"></i>
+                <span class="tr-text">1 ağaç yılda 22 kg karbon emer</span>
+                <span class="en-text" style="display:none">1 tree absorbs 22 kg of carbon per year</span>
+            </div>
+            <div class="ticker-item">
+                <i class="fas fa-tint ticker-icon"></i>
+                <span class="tr-text">Suyun %97'si içilemez</span>
+                <span class="en-text" style="display:none">97% of water is undrinkable</span>
+            </div>
+            <div class="ticker-item">
+                <i class="fas fa-fish ticker-icon"></i>
+                <span class="tr-text">Okyanus asitlenmesi deniz yaşamını tehdit ediyor</span>
+                <span class="en-text" style="display:none">Ocean acidification threatens marine life</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <!-- Impact Counter -->
+        <div class="impact-counter">
+            <h2 class="tr-text">Birlikte Yarattığımız Etki</h2>
+            <h2 class="en-text" style="display:none">The Impact We Created Together</h2>
+            <div class="counter-number">{{ soz_sayaci * 22 }}</div>
+            <p class="tr-text">kilogram karbon emisyonu azaltımı sağlandı (1 kişi = yılda 22kg)</p>
+            <p class="en-text" style="display:none">kilograms of carbon emissions reduced (1 person = 22kg per year)</p>
+        </div>
+        
+        <!-- Pledge Section -->
+        <section id="pledge" class="section">
+            <h2 class="section-title tr-text">Söz Ver, Fark Yarat</h2>
+            <h2 class="section-title en-text" style="display:none">Make a Pledge, Make a Difference</h2>
+            
+            <p class="tr-text">İklim değişikliği ile mücadelede küçük adımlar büyük farklar yaratır. Aşağıdaki formu doldurarak siz de söz verebilir, bu hareketin bir parçası olabilirsiniz.</p>
+            <p class="en-text" style="display:none">Small steps make big differences in the fight against climate change. You can be part of this movement by filling out the form below and making a pledge.</p>
+            
+            <div class="pledge-form">
+                <form method="POST">
+                    <div class="form-group">
+                        <label for="nick" class="tr-text">Adınız veya Takma Adınız*</label>
+                        <label for="nick" class="en-text" style="display:none">Your Name or Nickname*</label>
+                        <input type="text" id="nick" name="nick" class="form-control" placeholder="Örnek: İklimSavaşçısı" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="mesaj" class="tr-text">İklim İçin Sözünüz (Opsiyonel)</label>
+                        <label for="mesaj" class="en-text" style="display:none">Your Climate Pledge (Optional)</label>
+                        <input type="text" id="mesaj" name="mesaj" class="form-control" placeholder="Örnek: Plastik kullanmayı bırakıyorum!">
+                    </div>
+                    <button type="submit" class="btn">
+                        <i class="fas fa-hand-holding-heart"></i>
+                        <span class="tr-text">Söz Ver</span>
+                        <span class="en-text" style="display:none">Pledge</span>
+                    </button>
+                </form>
+            </div>
+            
+            <div class="istatistik" style="margin-top: 2rem;">
+                <p class="tr-text"><strong>Toplam söz veren kişi sayısı:</strong> {{ soz_sayaci }}</p>
+                <p class="en-text" style="display:none"><strong>Total number of pledges:</strong> {{ soz_sayaci }}</p>
+                
+                {% if son_soz_tarihi %}
+                    <p class="tr-text"><strong>Son söz verme:</strong> {{ son_soz_tarihi }}</p>
+                    <p class="en-text" style="display:none"><strong>Last pledge:</strong> {{ son_soz_tarihi }}</p>
+                {% endif %}
+            </div>
+        </section>
+        
+        <!-- Recent Pledges -->
+        <section class="section">
+            <h2 class="section-title tr-text">Son Söz Verenler</h2>
+            <h2 class="section-title en-text" style="display:none">Recent Pledges</h2>
+            
+            <ul class="pledge-list">
+                {% for kisi in son_bes_kisi %}
+                    <li class="pledge-item">
+                        <div>
+                            <span class="pledge-user">{{ kisi.nick }}</span>
+                            {% if kisi.mesaj %}
+                                <span class="pledge-message">"{{ kisi.mesaj }}"</span>
+                            {% endif %}
+                        </div>
+                        <span class="pledge-date">{{ kisi.tarih }}</span>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+        
+        <!-- Tips Section -->
+        <section class="section">
+            <h2 class="section-title tr-text">Günlük Yaşamda İklim İçin Yapabilecekleriniz</h2>
+            <h2 class="section-title en-text" style="display:none">Daily Actions for Climate</h2>
+            
+            <p class="tr-text">Küçük değişikliklerle büyük farklar yaratabilirsiniz. İşte günlük yaşamınızda uygulayabileceğiniz basit öneriler:</p>
+            <p class="en-text" style="display:none">You can make a big difference with small changes. Here are simple suggestions you can apply in your daily life:</p>
+            
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div class="tip-content">
+                        <h3 class="tip-title tr-text">Enerji Tasarrufu</h3>
+                        <h3 class="tip-title en-text" style="display:none">Energy Saving</h3>
+                        <p class="tr-text">Kullanmadığınız elektronik cihazları fişten çekin, LED ampuller kullanın, enerji verimli cihazlar tercih edin.</p>
+                        <p class="en-text" style="display:none">Unplug electronic devices when not in use, use LED bulbs, choose energy efficient appliances.</p>
+                    </div>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-recycle"></i>
+                    </div>
+                    <div class="tip-content">
+                        <h3 class="tip-title tr-text">Geri Dönüşüm</h3>
+                        <h3 class="tip-title en-text" style="display:none">Recycling</h3>
+                        <p class="tr-text">Atıklarınızı ayrıştırın, tek kullanımlık plastiklerden kaçının, yeniden kullanılabilir ürünler tercih edin.</p>
+                        <p class="en-text" style="display:none">Sort your waste, avoid single-use plastics, prefer reusable products.</p>
+                    </div>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-bicycle"></i>
+                    </div>
+                    <div class="tip-content">
+                        <h3 class="tip-title tr-text">Ulaşım</h3>
+                        <h3 class="tip-title en-text" style="display:none">Transportation</h3>
+                        <p class="tr-text">Toplu taşıma kullanın, yürüyün veya bisiklete binin, araç paylaşımı yapın, gereksiz seyahatlerden kaçının.</p>
+                        <p class="en-text" style="display:none">Use public transport, walk or bike, carpool, avoid unnecessary trips.</p>
+                    </div>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <div class="tip-content">
+                        <h3 class="tip-title tr-text">Beslenme</h3>
+                        <h3 class="tip-title en-text" style="display:none">Nutrition</h3>
+                        <p class="tr-text">Yerel ve mevsimsel ürünler tüketin, et tüketimini azaltın, gıda israfını önleyin, kompost yapın.</p>
+                        <p class="en-text" style="display:none">Consume local and seasonal products, reduce meat consumption, prevent food waste, compost.</p>
+                    </div>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-shopping-bag"></i>
+                    </div>
+                    <div class="tip-content">
+                        <h3 class="tip-title tr-text">Tüketim Alışkanlıkları</h3>
+                        <h3 class="tip-title en-text" style="display:none">Consumption Habits</h3>
+                        <p class="tr-text">İhtiyacınız kadar alın, ikinci el ürünler satın alın, dayanıklı ürünler tercih edin, hızlı modadan kaçının.</p>
+                        <p class="en-text" style="display:none">Buy only what you need, purchase second-hand items, choose durable products, avoid fast fashion.</p>
+                    </div>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-tree"></i>
+                    </div>
+                    <div class="tip-content">
+                        <h3 class="tip-title tr-text">Doğa Dostu</h3>
+                        <h3 class="tip-title en-text" style="display:none">Eco-Friendly</h3>
+                        <p class="tr-text">Ağaç dikin, yeşil alanları koruyun, su tüketimini azaltın, kimyasal ürünlerden kaçının.</p>
+                        <p class="en-text" style="display:none">Plant trees, protect green areas, reduce water consumption, avoid chemical products.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="carbon-map-section">
+            <h2 class="section-title">
+                {% if current_lang == 'tr' %}
+                    Canlı Küresel Karbon Emisyonu Haritası
+                {% else %}
+                    Live Global Carbon Emission Map
+                {% endif %}
+            </h2>
+            <p>
+                {% if current_lang == 'tr' %}
+                    Dünya genelinde CO₂ emisyonlarını gerçek zamanlı olarak takip edin.
+                {% else %}
+                    Track CO₂ emissions around the world in real-time.
+                {% endif %}
+            </p>
+            <iframe class="carbon-map" 
+                    src="https://app.electricitymaps.com/?lang=en" 
+                    allowfullscreen 
+                    loading="lazy"
+                    title="Live Global Air Quality and Carbon Emissions Map">
+            </iframe>
+    </div>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <i class="fas fa-leaf"></i>
+                    <span>Eco Urgent</span>
+                </div>
+                <p class="footer-about">
+                    {% if current_lang == 'tr' %}
+                        İklim değişikliği ile mücadelede birlikte hareket ediyoruz. Siz de söz verin, geleceğimizi birlikte kurtaralım.
+                    {% else %}
+                        We act together in the fight against climate change. Make your pledge and let's save our future together.
+                    {% endif %}
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <h3>
+                    {% if current_lang == 'tr' %}
+                        Hızlı Linkler
+                    {% else %}
+                        Quick Links
+                    {% endif %}
+                </h3>
+                <ul>
+                    <li><a href="{{ url_for('index') }}">
+                        <i class="fas fa-chevron-right"></i>
+                        <span>{{ t.home }}</span>
+                    </a></li>
+                    <li><a href="{{ url_for('bilgilendirme') }}">
+                        <i class="fas fa-chevron-right"></i>
+                        <span>{{ t.info }}</span>
+                    </a></li>
+                    <li><a href="{{ url_for('kurbanlar') }}">
+                        <i class="fas fa-chevron-right"></i>
+                        <span>{{ t.victims }}</span>
+                    </a></li>
+                    <li><a href="{{ url_for('senin_etkin') }}">
+                        <i class="fas fa-chevron-right"></i>
+                        <span>{{ t.impact_test }}</span>
+                    </a></li>
+                    <li><a href="{{ url_for('destek') }}">
+                        <i class="fas fa-chevron-right"></i>
+                        <span class="tr-text">Siteyi Destekle</span>
+                        <span class="en-text" style="display: none">Support Us</span>
+                    </a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h3>
+                    {% if current_lang == 'tr' %}
+                        İletişim
+                    {% else %}
+                        Contact
+                    {% endif %}
+                </h3>
+
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt contact-icon"></i>
+                    <div>
+                        <span>
+                            {% if current_lang == 'tr' %}
+                                24 № Tam Orta Okul
+                            {% else %}
+                                Fully Secondary School №24
+                            {% endif %}
+                        </span>
+                        <br>
+                        <span>
+                            {% if current_lang == 'tr' %}
+                                Bakü, Azerbaycan
+                            {% else %}
+                                Baku, Azerbaijan
+                            {% endif %}
+                        </span>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <i class="fas fa-envelope contact-icon"></i>
+                    <div>
+                        <span>kaymasali3@gmail.com</span>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt contact-icon"></i>
+                    <div>
+                        <span>+994 50 602 29 16</span>
+                    </div>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://instagram.com/mrkaymasfire" class="social-link" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2025 Eco Urgent. 
+                {% if current_lang == 'tr' %}
+                    Tüm hakları saklıdır.
+                {% else %}
+                    All rights reserved.
+                {% endif %}
+            </p>
+            <div style="margin-top: 15px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                <a href="{{ url_for('privacy_policy') }}" style="color: #bbb; text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">
+                    {% if current_lang == 'tr' %}
+                        Gizlilik Politikası
+                    {% else %}
+                        Privacy Policy
+                    {% endif %}
+                </a>
+                <a href="{{ url_for('terms_of_use') }}" style="color: #bbb; text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">
+                    {% if current_lang == 'tr' %}
+                        Kullanım Şartları
+                    {% else %}
+                        Terms of Use
+                    {% endif %}
+                </a>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+        <span class="sr-only">Back to Top</span>
+    </a>
+    
+    <script>
+        // Initialize default language as English
+        document.querySelectorAll('.tr-text').forEach(el => el.style.display = 'none');
+        document.querySelectorAll('.en-text').forEach(el => el.style.display = '');
+
+        // Language Switch Functionality
+        document.querySelectorAll('.language-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const lang = this.getAttribute('data-lang');
+
+                // Update active button
+                document.querySelectorAll('.language-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+
+                // Show/hide language texts
+                if (lang === 'tr') {
+                    document.querySelectorAll('.tr-text').forEach(el => el.style.display = '');
+                    document.querySelectorAll('.en-text').forEach(el => el.style.display = 'none');
+                } else {
+                    document.querySelectorAll('.tr-text').forEach(el => el.style.display = 'none');
+                    document.querySelectorAll('.en-text').forEach(el => el.style.display = '');
+                }
+            });
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navbarLinks = document.querySelector('.navbar-links');
+
+        if (mobileMenuBtn && navbarLinks) {
+            mobileMenuBtn.addEventListener('click', () => {
+                navbarLinks.classList.toggle('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                if (navbarLinks.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+
+            // Close mobile menu when clicking on a link
+            navbarLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navbarLinks.classList.remove('active');
+                    const icon = mobileMenuBtn.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                    document.body.style.overflow = 'auto';
+                });
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!navbarLinks.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                    navbarLinks.classList.remove('active');
+                    const icon = mobileMenuBtn.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        }
+        
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            const backToTop = document.querySelector('.back-to-top');
+            
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            if (window.scrollY > 300) {
+                backToTop.classList.add('active');
+            } else {
+                backToTop.classList.remove('active');
+            }
+        });
+        
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (navbarLinks.classList.contains('active')) {
+                        navbarLinks.classList.remove('active');
+                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                }
+            });
+        });
+        
+        // Back to Top Button
+        document.querySelector('.back-to-top').addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Animate elements when they come into view
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.section, .tip-card, .pledge-item');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementPosition < windowHeight - 100) {
+                    element.classList.add('animate__animated', 'animate__fadeInUp');
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+
+        // Loading animation
+        window.addEventListener('load', () => {
+            const loading = document.querySelector('.loading');
+            loading.classList.add('hidden');
+        });
+    </script>
+</body>
+</html>

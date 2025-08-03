@@ -1,0 +1,2163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İklim Krizi - Bilgilendirme</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto+Slab:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        :root {
+            --primary-color: #2ecc71;
+            --primary-dark: #27ae60;
+            --secondary-color: #3498db;
+            --dark-color: #2c3e50;
+            --darker-color: #1a252f;
+            --light-color: #ecf0f1;
+            --lighter-color: #f9f9f9;
+            --danger-color: #e74c3c;
+            --warning-color: #f39c12;
+            --success-color: #27ae60;
+            --text-color: #333;
+            --text-light: #777;
+            --white: #fff;
+            --black: #000;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 10px 20px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 15px 30px rgba(0, 0, 0, 0.15);
+            --gradient-primary: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            --gradient-dark: linear-gradient(135deg, var(--dark-color) 0%, var(--darker-color) 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark-color);
+            background-color: var(--lighter-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: background 0.5s ease;
+        }
+
+        .language-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            display: flex;
+            gap: 10px;
+            background: rgba(255,255,255,0.9);
+            padding: 10px 15px;
+            border-radius: 50px;
+            box-shadow: var(--shadow-md);
+            backdrop-filter: blur(5px);
+        }
+
+        .language-btn {
+            background: none;
+            border: none;
+            font-weight: 600;
+            padding: 5px 10px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .language-btn.active {
+            background: var(--gradient-primary);
+            color: white;
+        }
+        
+        .bilgi-body {
+            position: relative;
+        }
+        
+        /* Video Arka Plan */
+        #arkaVideo {
+            position: fixed;
+            right: -280px;
+            bottom: -150px;
+            min-width: 50%;
+            min-height: 100%;
+            z-index: -10;
+            opacity: 0.5;
+            filter: grayscale(20%) brightness(0.8);
+            object-fit: cover;
+            transition: opacity 0.5s ease;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: var(--gradient-dark);
+            padding: 1.2rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow-lg);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            background-color: rgba(44, 62, 80, 0.95);
+        }
+        
+        .navbar.scrolled {
+            padding: 0.8rem 3rem;
+            background-color: rgba(44, 62, 80, 0.98);
+        }
+        
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .navbar-logo {
+            font-weight: 700;
+            font-size: 1.8rem;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .navbar-logo:hover {
+            transform: scale(1.03);
+        }
+        
+        .navbar-logo i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        .navbar-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        
+        .navbar a {
+            color: var(--white);
+            text-decoration: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            transition: var(--transition);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .navbar a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+        
+        .navbar a:hover::before, .navbar a.aktif::before {
+            width: 100%;
+        }
+        
+        .navbar a:hover, .navbar a.aktif {
+            color: var(--primary-color);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Bilgi Giriş Bölümü */
+        .bilgi-giris {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            background: var(--gradient-primary);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .giris-icerik {
+            max-width: 900px;
+            z-index: 2;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .giris-icerik h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-family: 'Roboto Slab', serif;
+            line-height: 1.2;
+        }
+        
+        .giris-icerik p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+        
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+            z-index: 10;
+            background: rgba(255,255,255,0.2);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .scroll-down:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateX(-50%) scale(1.1);
+        }
+        
+        /* Bilgi Container */
+        .bilgi-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem 4rem;
+        }
+        
+        /* Bilgi Kutuları */
+        .bilgi-kutu {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+            position: relative;
+        }
+        
+        .bilgi-kutu:nth-child(1) { animation-delay: 0.2s; }
+        .bilgi-kutu:nth-child(2) { animation-delay: 0.4s; }
+        .bilgi-kutu:nth-child(3) { animation-delay: 0.6s; }
+        .bilgi-kutu:nth-child(4) { animation-delay: 0.8s; }
+        .bilgi-kutu:nth-child(5) { animation-delay: 1s; }
+        .bilgi-kutu:nth-child(6) { animation-delay: 1.2s; }
+        .bilgi-kutu:nth-child(7) { animation-delay: 1.4s; }
+        .bilgi-kutu:nth-child(8) { animation-delay: 1.6s; }
+        .bilgi-kutu:nth-child(9) { animation-delay: 1.8s; }
+        .bilgi-kutu:nth-child(10) { animation-delay: 2s; }
+        .bilgi-kutu:nth-child(11) { animation-delay: 2.2s; }
+        
+        .bilgi-kutu:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .bilgi-kutu img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-bottom: 4px solid var(--secondary-color);
+            transition: transform 0.5s ease;
+        }
+        
+        .bilgi-kutu:hover img {
+            transform: scale(1.03);
+        }
+        
+        .bilgi-yazi {
+            padding: 2.5rem;
+        }
+        
+        .bilgi-yazi h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .bilgi-yazi h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--accent-color);
+        }
+        
+        .bilgi-yazi p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+        }
+        
+        /* Bayrak Bölümü */
+        .bayrak {
+            text-align: center;
+            margin: 5rem auto;
+            padding: 3rem 2rem;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 16px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            border-top: 5px solid var(--danger-color);
+            border-bottom: 5px solid var(--danger-color);
+            transform: scale(0.95);
+            transition: transform 0.5s ease;
+        }
+
+        .bayrak:hover {
+            transform: scale(1);
+        }
+        
+        .bayrak img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.2));
+            transition: transform 0.5s ease;
+        }
+
+        .bayrak:hover img {
+            transform: scale(1.05);
+        }
+        
+        .bayrak p {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--dark-color);
+            font-style: italic;
+        }
+        
+        /* İstatistik Kartları */
+        .istatistikler {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .istatistik-kart {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.5s ease;
+            border-top: 4px solid var(--primary-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .istatistik-kart::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 0;
+        }
+
+        .istatistik-kart:hover::before {
+            opacity: 0.1;
+        }
+        
+        .istatistik-kart:hover {
+            transform: translateY(-10px);
+        }
+        
+        .istatistik-kart .sayi {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 1rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .istatistik-kart:hover .sayi {
+            color: var(--dark-color);
+        }
+        
+        .istatistik-kart .etiket {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .istatistik-kart:hover .etiket {
+            color: var(--text-color);
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 4rem auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--secondary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 10px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            animation-delay: 0.3s;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            animation-delay: 0.6s;
+        }
+        
+        .timeline-content {
+            padding: 25px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: scale(1.02);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content {
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content {
+            border-right: 4px solid var(--accent-color);
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: white;
+            border: 4px solid var(--primary-color);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .timeline-item:nth-child(even)::after {
+            left: -16px;
+        }
+        
+        .timeline-date {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        /* Call to Action */
+        .cta {
+            background: var(--gradient-primary);
+            color: white;
+            text-align: center;
+            padding: 5rem 2rem;
+            margin: 4rem 0;
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+            transform: scale(0.98);
+            transition: transform 0.5s ease;
+        }
+
+        .cta:hover {
+            transform: scale(1);
+        }
+        
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("{{ url_for('static', filename='img/pattern.png') }}");
+            opacity: 0.1;
+        }
+        .navbar-links.active {
+            display: flex;
+        }
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+        
+        .cta p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            position: relative;
+        }
+        
+        .cta-btn {
+            display: inline-block;
+            background: white;
+            color: var(--primary-color);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border: 2px solid transparent;
+        }
+        
+        .cta-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            background: transparent;
+            color: white;
+            border-color: white;
+        }
+        
+        /* FOOTER STYLES */
+        .footer {
+        background: linear-gradient(135deg, #0a2e38, #08313b);
+        color: #e0f7fa;
+        padding: 5rem 2rem 2rem;
+        margin-top: 5rem;
+        position: relative;
+        border-top: 4px solid #2ecc71;
+        box-shadow: 0 -5px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        background: linear-gradient(to bottom, rgba(46, 204, 113, 0.2), transparent);
+        z-index: 0;
+        }
+
+        .footer-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 3rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+        }
+
+        .footer-logo {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        font-family: 'Montserrat', sans-serif;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: #ffffff;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .footer-logo i {
+        color: #2ecc71;
+        font-size: 1.8rem;
+        }
+
+        .footer-about {
+        margin-bottom: 2rem;
+        line-height: 1.7;
+        color: #b3e5fc;
+        font-size: 1rem;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer-links h3, 
+        .footer-contact h3 {
+        font-size: 1.4rem;
+        margin-bottom: 2rem;
+        position: relative;
+        padding-bottom: 0.8rem;
+        font-family: 'Montserrat', sans-serif;
+        color: #ffffff;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer-links h3::after, 
+        .footer-contact h3::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 4px;
+        background: linear-gradient(to right, #2ecc71, #3498db);
+        border-radius: 2px;
+        box-shadow: 0 2px 4px rgba(46, 204, 113, 0.3);
+        }
+
+        .footer-links ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        }
+
+        .footer-links li {
+        margin-bottom: 1rem;
+        transition: all 0.3s ease;
+        }
+
+        .footer-links li:hover {
+        transform: translateX(5px);
+        }
+
+        .footer-links a {
+        color: #b3e5fc;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 1rem;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer-links a:hover {
+        color: #2ecc71;
+        }
+
+        .footer-links i {
+        font-size: 0.9rem;
+        color: #2ecc71;
+        }
+
+        .contact-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 1.5rem;
+        gap: 15px;
+        }
+
+        .contact-icon {
+        color: #2ecc71;
+        font-size: 1.2rem;
+        margin-top: 3px;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-item div {
+        color: #b3e5fc;
+        line-height: 1.5;
+        font-size: 1rem;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-links {
+        display: flex;
+        gap: 1.5rem;
+        margin-top: 2rem;
+        }
+
+        .social-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 45px;
+        height: 45px;
+        background-color: rgba(46, 204, 113, 0.1);
+        border-radius: 50%;
+        color: #ffffff;
+        transition: all 0.3s ease;
+        font-size: 1.2rem;
+        border: 1px solid rgba(46, 204, 113, 0.3);
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-link:hover {
+        background-color: #2ecc71;
+        transform: translateY(-5px);
+        color: #ffffff;
+        box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
+        }
+
+        .copyright {
+        text-align: center;
+        padding-top: 3rem;
+        margin-top: 3rem;
+        border-top: 1px solid rgba(46, 204, 113, 0.2);
+        color: #81d4fa;
+        font-size: 0.9rem;
+        position: relative;
+        z-index: 1;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+        .footer {
+            padding: 3rem 1.5rem 1.5rem;
+            border-top-width: 3px;
+        }
+        
+        .footer-container {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            justify-content: center;
+        }
+        
+        .footer-about {
+            text-align: center;
+        }
+        
+        .footer-links h3, 
+        .footer-contact h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .footer-links h3::after,
+        .footer-contact h3::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .footer-links ul {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .social-links {
+            justify-content: center;
+        }
+        
+        .contact-item {
+            justify-content: center;
+        }
+        }
+
+        @media (max-width: 480px) {
+        .footer {
+            padding: 2.5rem 1rem 1.5rem;
+        }
+        
+        .footer-logo {
+            font-size: 1.6rem;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            font-size: 1.1rem;
+        }
+        }
+        
+        /* Animasyonlar */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-20px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7);
+            }
+            70% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 15px rgba(46, 204, 113, 0);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
+            }
+        }
+        
+        /* Responsive Tasarım */
+        @media (max-width: 1200px) {
+            .giris-icerik h1 {
+                font-size: 3rem;
+            }
+            
+            .bilgi-yazi h2 {
+                font-size: 1.8rem;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .giris-icerik h1 {
+                font-size: 2.5rem;
+            }
+            
+            .bilgi-yazi {
+                padding: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem;
+            }
+            
+            .navbar-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--dark-color);
+                padding: text
+            1rem;
+                box-shadow: var(--shadow-md);
+            }
+            
+            .navbar-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .giris-icerik h1 {
+                font-size: 2.2rem;
+            }
+            
+            .giris-icerik p {
+                font-size: 1.1rem;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 18px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+
+            .language-toggle {
+                bottom: 20px;
+                right: 20px;
+                padding: 8px 12px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .giris-icerik h1 {
+                font-size: 1.8rem;
+            }
+            
+            .bilgi-yazi {
+                padding: 1.5rem;
+            }
+            
+            .bilgi-yazi h2 {
+                font-size: 1.5rem;
+            }
+            
+            .bilgi-yazi p {
+                font-size: 1rem;
+            }
+            
+            .cta h2 {
+                font-size: 1.8rem;
+            }
+            
+            .cta p {
+                font-size: 1rem;
+            }
+
+            .istatistikler {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Özel Efektler */
+        .highlight-text {
+            background: linear-gradient(120deg, var(--accent-color) 0%, var(--danger-color) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 700;
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        .float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Scroll Bar Özelleştirme */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary-color);
+        }
+        
+        /* Tooltip */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            border-bottom: 1px dotted var(--primary-color);
+            cursor: help;
+        }
+        
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 200px;
+            background-color: var(--dark-color);
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 10px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -100px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        /* Progress Bar */
+        .progress-container {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            overflow: hidden;
+            height: 25px;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: var(--gradient-primary);
+            border-radius: 10px;
+            text-align: center;
+            line-height: 25px;
+            color: white;
+            font-weight: bold;
+            transition: width 1s ease;
+            font-size: 0.9rem;
+        }
+        
+        /* New Professional Accordion System */
+        .accordion-container {
+            margin: 20px 0;
+        }
+        
+        .accordion-item {
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .accordion-item:hover {
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .accordion-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            cursor: pointer;
+            padding: 20px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .accordion-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .accordion-header:hover::before {
+            left: 100%;
+        }
+        
+        .accordion-icon {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .accordion-item.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+        
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: white;
+        }
+        
+        .accordion-content.active {
+            max-height: 1000px;
+        }
+        
+        .accordion-body {
+            padding: 25px;
+            color: var(--text-color);
+            line-height: 1.7;
+            border-top: 1px solid rgba(46, 204, 113, 0.1);
+        }
+        
+        .accordion-body ul {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        
+        .accordion-body li {
+            margin-bottom: 8px;
+            position: relative;
+        }
+        
+        .accordion-body li::before {
+            content: '▶';
+            color: var(--primary-color);
+            position: absolute;
+            left: -20px;
+            font-size: 0.8rem;
+        }
+
+        /* Parallax Effect */
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* Floating Elements */
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .floating-element {
+            position: absolute;
+            display: block;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            animation: float 15s linear infinite;
+            bottom: -150px;
+        }
+
+        .floating-element:nth-child(1) {
+            left: 25%;
+            width: 80px;
+            height: 80px;
+            animation-delay: 0s;
+            animation-duration: 20s;
+        }
+
+        .floating-element:nth-child(2) {
+            left: 10%;
+            width: 20px;
+            height: 20px;
+            animation-delay: 2s;
+            animation-duration: 12s;
+        }
+
+        .floating-element:nth-child(3) {
+            left: 70%;
+            width: 20px;
+            height: 20px;
+            animation-delay: 4s;
+            animation-duration: 18s;
+        }
+
+        .floating-element:nth-child(4) {
+            left: 40%;
+            width: 60px;
+            height: 60px;
+            animation-delay: 0s;
+            animation-duration: 22s;
+        }
+
+        .floating-element:nth-child(5) {
+            left: 65%;
+            width: 20px;
+            height: 20px;
+            animation-delay: 0s;
+            animation-duration: 15s;
+        }
+
+        .floating-element:nth-child(6) {
+            left: 75%;
+            width: 110px;
+            height: 110px;
+            animation-delay: 3s;
+            animation-duration: 25s;
+        }
+
+        .floating-element:nth-child(7) {
+            left: 35%;
+            width: 150px;
+            height: 150px;
+            animation-delay: 7s;
+            animation-duration: 30s;
+        }
+
+        .floating-element:nth-child(8) {
+            left: 50%;
+            width: 25px;
+            height: 25px;
+            animation-delay: 15s;
+            animation-duration: 45s;
+        }
+
+        .floating-element:nth-child(9) {
+            left: 20%;
+            width: 15px;
+            height: 15px;
+            animation-delay: 2s;
+            animation-duration: 35s;
+        }
+
+        .floating-element:nth-child(10) {
+            left: 85%;
+            width: 150px;
+            height: 150px;
+            animation-delay: 0s;
+            animation-duration: 20s;
+        }
+    </style>
+</head>
+<body class="bilgi-body">
+    <!-- Language Toggle -->
+    <div class="language-toggle">
+        <button class="language-btn" id="tr-btn">TR</button>
+        <button class="language-btn active" id="en-btn">EN</button>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="{{ url_for('index') }}" class="navbar-logo">
+                <i class="fas fa-leaf"></i> Eco Urgent
+            </a>
+            <div class="navbar-links">
+                <a href="{{ url_for('index') }}">
+                    <i class="fas fa-home"></i>
+                    <span class="tr-text">Ana Sayfa</span>
+                    <span class="en-text" style="display:none">Home</span>
+                </a>
+                <a href="{{ url_for('bilgilendirme') }}" class="active">
+                    <i class="fas fa-chart-bar"></i>
+                    <span class="tr-text">Bilgilendirme</span>
+                    <span class="en-text" style="display:none">Information</span>
+                </a>
+                <a href="{{ url_for('kurbanlar') }}">
+                    <i class="fas fa-heart"></i>
+                    <span class="tr-text">Kurbanlar</span>
+                    <span class="en-text" style="display:none">Victims</span>
+                </a>
+                <a href="{{ url_for('senin_etkin') }}">
+                    <i class="fas fa-flask"></i>
+                    <span class="tr-text">Senin Etkin</span>
+                    <span class="en-text" style="display:none">Your Impact</span>
+                </a>
+                <a href="{{ url_for('destek') }}" >
+                    <i class="fas fa-hand-holding-usd"></i>
+                    <span class="tr-text">Siteyi Destekle</span>
+                    <span class="en-text" style="display:none">Support Us</span>
+                </a>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="floating-elements">
+            <span class="floating-element"></span>
+            <span class="floating-element"></span>
+            <span class="floating-element"></span>
+            <span class="floating-element"></span>
+            <span class="floating-element"></span>
+            <span class="floating-element"></span>
+            <span class="floating-element"></span>
+            <span class="floating-element"></span>
+            <span class="floating-element"></span>
+            <span class="floating-element"></span>
+        </div>
+        
+        <div class="hero-content animate__animated animate__fadeInUp">
+            <h1 class="tr-text">Bugününüzü Unutursanız, Yarın Unutacak Hayatınız Olmayabilir</h1>
+            <h1 class="en-text" style="display:none">If You Forget Today, Tomorrow You May Have No Life to Forget</h1>
+            
+            <p class="tr-text">İklim değişikliği ile mücadelede hep birlikte hareket edelim. Söz verin, fark yaratın!</p>
+            <p class="en-text" style="display:none">Let's act together in the fight against climate change. Make a pledge, make a difference!</p>
+            
+            <a href="#pledge" class="cta-button animate__animated animate__fadeIn animate__delay-1s">
+                <span class="tr-text">Söz Ver</span>
+                <span class="en-text" style="display:none">Pledge</span>
+                <i class="fas fa-arrow-down"></i>
+            </a>
+        </div>
+        
+        <div class="scroll-indicator animate__animated animate__bounce animate__infinite">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+    
+    <!-- Arka Plan Videosu -->
+    <video autoplay muted loop playsinline id="arkaVideo">
+        <source src="{{ url_for('static', filename='video/arkaplan.mp4') }}" type="video/mp4">
+    </video>
+
+    <!-- Bilgi Giriş Bölümü -->
+    <div class="bilgi-giris">
+        <div class="giris-icerik">
+            <h1 class="tr-text" style="display:none">Durumun <span class="highlight-text">Ciddiyetini</span> Hala Anlamadınız mı?</h1>
+            <h1 class="en-text">Haven't You Understood the <span class="highlight-text">Seriousness</span> of the Situation Yet?</h1>
+            <p class="tr-text" style="display:none">Şimdi, gelin hep beraber öğrenelim. İklim krizi kapımızda ve her saniye geleceğimizi şekillendiriyor. Bu bölümde, dünyanın dört bir yanında yaşanan felaketlerin ardındaki gerçekleri, etkileyici verilerle ve çarpıcı görsellerle birlikte keşfedeceksiniz.</p>
+            <p class="en-text">Now, let's learn together. The climate crisis is at our door and shaping our future every second. In this section, you'll discover the truths behind disasters happening around the world with impressive data and striking visuals.</p>
+        </div>
+        <div class="scroll-down" onclick="scrollToContent()">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </div>
+    
+    <!-- Bilgi Container -->
+    <div class="bilgi-container">
+        <!-- İstatistikler -->
+        <div class="istatistikler">
+            <div class="istatistik-kart">
+                <i class="fas fa-temperature-high fa-2x" style="color: var(--danger-color);"></i>
+                <div class="sayi">+1.4°C</div>
+                <div class="etiket tr-text">1900'den beri küresel sıcaklık artışı</div>
+                <div class="etiket en-text" style="display:none">Global temperature rise since 1900</div>
+            </div>
+            <div class="istatistik-kart">
+                <i class="fas fa-industry fa-2x" style="color: var(--dark-color);"></i>
+                <div class="sayi">420 ppm</div>
+                <div class="etiket tr-text">Atmosferdeki CO₂ seviyesi</div>
+                <div class="etiket en-text" style="display:none">Atmospheric CO₂ level</div>
+            </div>
+            <div class="istatistik-kart">
+                <i class="fas fa-fire fa-2x" style="color: var(--warning-color);"></i>
+                <div class="sayi">%23</div>
+                <div class="etiket tr-text">Son 20 yılda orman yangınlarında artış</div>
+                <div class="etiket en-text" style="display:none">Increase in forest fires in last 20 years</div>
+            </div>
+            <div class="istatistik-kart">
+                <i class="fas fa-tint fa-2x" style="color: var(--primary-color);"></i>
+                <div class="sayi">2.2B</div>
+                <div class="etiket tr-text">Su kıtlığı çeken insan sayısı</div>
+                <div class="etiket en-text" style="display:none">People suffering water scarcity</div>
+            </div>
+        </div>
+        
+        <!-- Bilgi Kutuları -->
+        <div class="bilgi-kutu">
+            <img src="{{ url_for('static', filename='img/onbilgi.png') }}" alt="Ön Bilgi">
+            <div class="bilgi-yazi">
+                <h2 class="tr-text">Ön Bilgi</h2>
+                <h2 class="en-text" style="display:none">Introduction</h2>
+                <p class="tr-text">İklim değişikliği, insanlık tarihinin karşılaştığı en sinsi ve en kapsamlı tehditlerden biridir. Sessizce, yavaşça ama kesin adımlarla ilerleyen bu kriz, aslında bizi küresel bir felakete, hatta bir yok oluş sürecine doğru sürüklüyor. Ne yazık ki çoğu insan, bu tehdidin büyüklüğünü ve derinliğini hâlâ tam olarak kavrayabilmiş değil. "2-3 derecelik sıcaklık artışıyla ne olacak ki?" düşüncesi yaygın. Oysa bu küçük gibi görünen değişim, gerçekte gezegenin tüm dengesini altüst edecek kadar büyük bir kırılmadır.</p>
+                <p class="en-text" style="display:none">Climate change is one of the most insidious and comprehensive threats humanity has ever faced. This crisis, progressing silently, slowly but surely, is actually dragging us towards a global catastrophe, even a process of extinction. Unfortunately, most people still don't fully grasp the magnitude and depth of this threat. The thought "What difference will 2-3 degrees of temperature increase make?" is common. Yet this seemingly small change is actually a major disruption that will completely upset the planet's balance.</p>
+                
+                <div class="accordion-container">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span class="tr-text">Daha fazla bilgi göster</span>
+                            <span class="en-text" style="display:none">Show more information</span>
+                            <i class="fas fa-chevron-down accordion-icon"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p class="tr-text">Dünya tarihine baktığımızda, bu kadar küçük sıcaklık değişimlerinin bile buz çağları başlattığını veya sona erdirdiğini görüyoruz. Bugün yaşadığımız artışlar ise insan faaliyetlerinin tetiklediği, doğal dengenin dışında ve çok daha hızlı gerçekleşen bir ısınmadır.</p>
+                                <p class="en-text" style="display:none">Looking at Earth's history, we see that even such small temperature changes have triggered or ended ice ages. The increases we're experiencing today, however, are warming triggered by human activities, outside natural balance and occurring much faster.</p>
+                                <p class="tr-text">Bu sıcaklık artışı; kutuplarda binlerce yılda oluşmuş buzulların erimesine, deniz seviyelerinin yükselmesine, orman yangınlarının kontrol edilemez hale gelmesine, kuraklıkların yayılmasına, tarım alanlarının verimsizleşmesine ve binlerce canlı türünün yok oluşuna neden oluyor. Artık mevsimler yer değiştiriyor, alışılmış hava düzenleri bozuluyor, bazı bölgelerde yağmurlar aylarca gelmiyor, bazı yerlerde ise bir günde aylık yağış düşerek sel felaketlerine yol açıyor.</p>
+                                <p class="en-text" style="display:none">This temperature rise causes the melting of glaciers formed over thousands of years at the poles, rising sea levels, uncontrollable forest fires, spreading droughts, agricultural lands becoming unproductive, and the extinction of thousands of species. Now seasons are shifting, familiar weather patterns are disrupted, in some regions rains don't come for months, while in others a month's rainfall in a single day causes flood disasters.</p>
+                                <p class="tr-text">Bu değişimler yalnızca doğayı değil, insan yaşamını da doğrudan tehdit ediyor. Susuzluk, gıda krizi, göç hareketleri, sağlık sorunları, ekonomik çöküşler ve hatta yeni savaşlar… Hepsi iklim değişikliğinin domino etkisiyle ortaya çıkan sonuçlar arasında. Şimdi gelin, bu işi daha derinden öğrenelim.</p>
+                                <p class="en-text" style="display:none">These changes threaten not just nature but human life directly. Water shortages, food crises, migration movements, health problems, economic collapses and even new wars... All are among the consequences emerging from the domino effect of climate change. Now let's learn about this more deeply.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bilgi-kutu">
+            <img src="{{ url_for('static', filename='img/sicaklik.png') }}" alt="Küresel Sıcaklık">
+            <div class="bilgi-yazi">
+                <h2 class="tr-text">Küresel Sıcaklık Artışı</h2>
+                <h2 class="en-text" style="display:none">Global Temperature Rise</h2>
+                <p class="tr-text">1900'lü yılların başından günümüze kadar geçen sürede dünya genelindeki ortalama yüzey sıcaklığı yaklaşık 1.4°C oranında artış göstermiştir. Bu artış, iklim sistemimizde meydana gelen doğal dalgalanmaların ötesinde, insan kaynaklı etkilerin belirgin bir sonucudur.</p>
+                <p class="en-text" style="display:none">From the early 1900s to the present day, the average global surface temperature has increased by approximately 1.4°C. This increase is a clear result of human-induced effects beyond the natural fluctuations in our climate system.</p>
+                
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 70%">
+                        <span class="tr-text">1.4°C Artış</span>
+                        <span class="en-text" style="display:none">1.4°C Increase</span>
+                    </div>
+                </div>
+                
+                <p class="tr-text">Bu sıcaklık artışının başlıca nedeni fosil yakıtların yoğun kullanımıdır. Kömür, petrol ve doğal gaz gibi fosil yakıtlar yakıldığında büyük miktarda karbon dioksit (CO₂) ve diğer sera gazları atmosfere salınır. Bu gazlar atmosferde birikerek sera etkisini güçlendirir, yani güneşten gelen enerjinin bir kısmı dünya yüzeyinden yansıyıp tekrar uzaya gitmek yerine atmosferde hapsolur. Bu durum, gezegenin ısınmasına neden olur.</p>
+                <p class="en-text" style="display:none">The main cause of this temperature rise is the intensive use of fossil fuels. When fossil fuels like coal, oil and natural gas are burned, large amounts of carbon dioxide (CO₂) and other greenhouse gases are released into the atmosphere. These gases accumulate in the atmosphere, enhancing the greenhouse effect, meaning some of the energy from the sun that would reflect back into space from Earth's surface gets trapped in the atmosphere instead. This causes the planet to warm.</p>
+                
+                <div class="accordion-container">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span class="tr-text">Sera Etkisi Nasıl Çalışır?</span>
+                            <span class="en-text" style="display:none">How Does the Greenhouse Effect Work?</span>
+                            <i class="fas fa-chevron-down accordion-icon"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p class="tr-text">Sera etkisi aslında doğal ve gerekli bir süreçtir. Atmosferdeki sera gazları olmasaydı, Dünya'nın ortalama sıcaklığı -18°C civarında olurdu ve yaşam mümkün olmazdı. Ancak insan faaliyetleri bu gazların konsantrasyonunu doğal seviyelerin çok üzerine çıkarmıştır.</p>
+                                <p class="en-text" style="display:none">The greenhouse effect is actually a natural and necessary process. Without greenhouse gases in the atmosphere, Earth's average temperature would be around -18°C and life wouldn't be possible. But human activities have raised the concentration of these gases far above natural levels.</p>
+                                <p class="tr-text">Başlıca sera gazları:</p>
+                                <p class="en-text" style="display:none">Main greenhouse gases:</p>
+                                <ul>
+                                    <li class="tr-text">Karbondioksit (CO₂) - Fosil yakıtların yanması, ormansızlaşma</li>
+                                    <li class="en-text" style="display:none">Carbon dioxide (CO₂) - Burning fossil fuels, deforestation</li>
+                                    <li class="tr-text">Metan (CH₄) - Hayvancılık, pirinç tarlaları, çöplükler</li>
+                                    <li class="en-text" style="display:none">Methane (CH₄) - Livestock, rice paddies, landfills</li>
+                                    <li class="tr-text">Azot oksit (N₂O) - Endüstriyel süreçler, gübre kullanımı</li>
+                                    <li class="en-text" style="display:none">Nitrous oxide (N₂O) - Industrial processes, fertilizer use</li>
+                                    <li class="tr-text">Florlu gazlar - Endüstriyel kullanımlar</li>
+                                    <li class="en-text" style="display:none">Fluorinated gases - Industrial uses</li>
+                                </ul>
+                                <p class="tr-text">Bu gazların atmosferde kalma süreleri farklıdır. CO₂ yüzlerce yıl atmosferde kalabilirken, metan yaklaşık 12 yılda parçalanır ancak ısı tutma kapasitesi CO₂'den 25 kat daha fazladır.</p>
+                                <p class="en-text" style="display:none">These gases have different atmospheric lifetimes. While CO₂ can remain in the atmosphere for centuries, methane breaks down in about 12 years but has 25 times more heat-trapping capacity than CO₂.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bilgi-kutu">
+            <img src="{{ url_for('static', filename='img/karbon.png') }}" alt="Karbon Emisyonları">
+            <div class="bilgi-yazi">
+                <h2 class="tr-text">Karbon Emisyonları</h2>
+                <h2 class="en-text" style="display:none">Carbon Emissions</h2>
+                <p class="tr-text">Sanayi Devrimi'nin başlamasıyla birlikte insanlık, fosil yakıtlara dayalı büyük bir üretim ve tüketim dönemine girmiştir. 18. yüzyılın ortalarından günümüze kadar geçen sürede, kömür, petrol ve doğal gaz gibi enerji kaynaklarının yoğun şekilde kullanılması sonucu atmosfere milyarlarca ton karbondioksit (CO₂) salınmıştır. Bu, tarihte benzeri görülmemiş bir ölçekte sera gazı birikimine neden olmuştur.</p>
+                <p class="en-text" style="display:none">With the beginning of the Industrial Revolution, humanity entered a period of massive production and consumption based on fossil fuels. From the mid-18th century to the present, the intensive use of energy sources like coal, oil and natural gas has released billions of tons of carbon dioxide (CO₂) into the atmosphere. This has caused greenhouse gas accumulation on an unprecedented scale in history.</p>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-date">1750</div>
+                            <p class="tr-text">Sanayi Devrimi başlangıcı. Atmosferdeki CO₂ seviyesi: ~280 ppm</p>
+                            <p class="en-text" style="display:none">Beginning of Industrial Revolution. Atmospheric CO₂ level: ~280 ppm</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-date">1950</div>
+                            <p class="tr-text">Hızlı endüstriyel büyüme. CO₂ seviyesi: ~310 ppm</p>
+                            <p class="en-text" style="display:none">Rapid industrial growth. CO₂ level: ~310 ppm</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-date">2023</div>
+                            <p class="tr-text">CO₂ seviyesi: 420 ppm'yi aştı</p>
+                            <p class="en-text" style="display:none">CO₂ level: exceeded 420 ppm</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <p class="tr-text">Atmosferdeki CO₂ seviyesi, sanayi öncesi dönemde milyonda yaklaşık 280 parçayken, günümüzde bu rakam 420 ppm'yi (milyonda parça) aşmıştır. Bu dramatik artış, dünyanın enerji dengesini bozmakta ve küresel ortalama sıcaklıkları istikrarlı bir şekilde yükseltmektedir. Sonuç olarak, buzullar erimekte, deniz seviyeleri yükselmekte, doğal afetlerin sıklığı ve şiddeti giderek artmaktadır.</p>
+                <p class="en-text" style="display:none">While atmospheric CO₂ levels were about 280 parts per million in the pre-industrial period, today this number has exceeded 420 ppm (parts per million). This dramatic increase is disrupting Earth's energy balance and steadily raising global average temperatures. As a result, glaciers are melting, sea levels are rising, and the frequency and intensity of natural disasters are increasing.</p>
+            </div>
+        </div>
+
+        <div class="bilgi-kutu">
+            <img src="{{ url_for('static', filename='img/kuraklik.jpg') }}" alt="Kuraklık">
+            <div class="bilgi-yazi">
+                <h2 class="tr-text">Kuraklık ve Su Kıtlığı</h2>
+                <h2 class="en-text" style="display:none">Drought and Water Scarcity</h2>
+                <p class="tr-text">İklim değişikliği, yalnızca sıcaklık artışlarıyla sınırlı kalmayıp, su döngüsünü derinden etkileyen karmaşık bir süreçtir. Atmosferdeki sıcaklıkların yükselmesi buharlaşmayı artırmakta, yağış düzenlerini bozmakta ve su kaynaklarının mevsimsel dağılımında ciddi dengesizliklere neden olmaktadır.</p>
+                <p class="en-text" style="display:none">Climate change is not limited to just temperature increases, but is a complex process that deeply affects the water cycle. Rising atmospheric temperatures increase evaporation, disrupt precipitation patterns, and cause serious imbalances in the seasonal distribution of water resources.</p>
+                
+                <div class="accordion-container">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span class="tr-text">Su Döngüsü Nasıl Bozuluyor?</span>
+                            <span class="en-text" style="display:none">How is the Water Cycle Disrupted?</span>
+                            <i class="fas fa-chevron-down accordion-icon"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p class="tr-text">Isınan hava daha fazla nem tutabilir, bu da bazı bölgelerde aşırı yağışlara, diğerlerinde ise uzun süreli kuraklıklara yol açar. Ayrıca kar örtüsünün azalması ve buzulların erimesi, nehirlerin beslenme düzenini değiştirir.</p>
+                                <p class="en-text" style="display:none">Warmer air can hold more moisture, which leads to excessive rainfall in some regions and prolonged droughts in others. Additionally, reduced snow cover and melting glaciers alter river feeding patterns.</p>
+                                <p class="tr-text">Örneğin:</p>
+                                <p class="en-text" style="display:none">For example:</p>
+                                <ul>
+                                    <li class="tr-text">Akdeniz havzasında yağışlar %20'ye varan oranlarda azalıyor</li>
+                                    <li class="en-text" style="display:none">Rainfall in the Mediterranean basin is decreasing by up to 20%</li>
+                                    <li class="tr-text">Himalaya buzulları hızla eriyor, bu da Asya'nın büyük nehir sistemlerini tehdit ediyor</li>
+                                    <li class="en-text" style="display:none">Himalayan glaciers are melting rapidly, threatening Asia's major river systems</li>
+                                    <li class="tr-text">Kaliforniya gibi bölgelerde "megakuraklık" olarak adlandırılan uzun süreli kuraklıklar görülüyor</li>
+                                    <li class="en-text" style="display:none">Regions like California are experiencing long-term droughts called "megadroughts"</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <p class="tr-text">Bu durum özellikle tatlı su kaynaklarını tehdit etmektedir. Kuraklıkların daha sık ve daha şiddetli hale gelmesi, göllerin ve yer altı su rezervlerinin hızla tükenmesine yol açmaktadır. Aynı zamanda dağlardaki kar örtüsünün azalması ve buzulların erimesi, milyonlarca insanın içme suyu ihtiyacını karşılayan akarsu sistemlerini tehlikeye sokmaktadır.</p>
+                <p class="en-text" style="display:none">This situation particularly threatens freshwater resources. More frequent and severe droughts are causing lakes and groundwater reserves to deplete rapidly. At the same time, reduced mountain snow cover and melting glaciers endanger river systems that supply drinking water to millions of people.</p>
+                <p class="tr-text">Tarım sektörü, bu değişimlerden en çok etkilenen alanların başında gelmektedir. Yağışların dengesizliği ve kuraklık, tarımsal üretkenliği düşürmekte, toprak neminde azalma, tuzlanma ve çölleşme gibi sorunlara neden olmaktadır. Sonuç olarak, gıda arzı azalmakta, fiyatlar yükselmekte ve gıda güvenliği tehdit altına girmektedir.</p>
+                <p class="en-text" style="display:none">The agricultural sector is among the areas most affected by these changes. Irregular rainfall and drought reduce agricultural productivity, causing problems like decreased soil moisture, salinization and desertification. As a result, food supply decreases, prices rise, and food security is threatened.</p>
+                <p class="tr-text">İçme suyu krizleri ise, özellikle yoksul ve kurak bölgelerde yaşayan topluluklar için hayati bir tehdit oluşturmaktadır. Birçok bölgede suya erişim zaten sınırlıyken, iklim değişikliği bu eşitsizliği daha da derinleştirmektedir. Su savaşları, göç dalgaları ve sağlık krizleri gibi sosyal ve insani sonuçlar da iklim değişikliğinin etkilerini daha da ağırlaştırmaktadır.</p>
+                <p class="en-text" style="display:none">Drinking water crises pose a vital threat, especially to communities living in poor and arid regions. While water access is already limited in many areas, climate change is deepening this inequality. Social and humanitarian consequences like water wars, migration waves and health crises further exacerbate the effects of climate change.</p>
+            </div>
+        </div>
+
+        <div class="bilgi-kutu">
+            <img src="{{ url_for('static', filename='img/tarim.jpg') }}" alt="Gıda Sorunları">
+            <div class="bilgi-yazi">
+                <h2 class="tr-text">Gıda Sorunları</h2>
+                <h2 class="en-text" style="display:none">Food Problems</h2>
+                <p class="tr-text">Tarım ve Gıda Güvenliği, iklim değişikliğinin en hayati etkilerinden biridir. Artan sıcaklıklar, düzensiz yağış rejimleri, kuraklıklar ve aşırı hava olayları, tarımsal üretimi ciddi şekilde tehdit ederken, dünya genelinde milyonlarca insanın gıda güvenliğini riske atmaktadır.</p>
+                <p class="en-text" style="display:none">Agriculture and Food Security is one of the most vital impacts of climate change. Rising temperatures, irregular rainfall patterns, droughts and extreme weather events seriously threaten agricultural production while risking food security for millions of people worldwide.</p>
+                
+                <div class="accordion-container">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span class="tr-text">Etkilenen Temel Ürünler</span>
+                            <span class="en-text" style="display:none">Affected Basic Crops</span>
+                            <i class="fas fa-chevron-down accordion-icon"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li class="tr-text"><strong>Buğday:</strong> Her 1°C sıcaklık artışında verim %6 azalıyor</li>
+                                    <li class="en-text" style="display:none"><strong>Wheat:</strong> Yield decreases by 6% for every 1°C temperature increase</li>
+                                    <li class="tr-text"><strong>Pirinç:</strong> Sıcaklık artışı ve su kıtlığından ciddi şekilde etkileniyor</li>
+                                    <li class="en-text" style="display:none"><strong>Rice:</strong> Severely affected by temperature rise and water scarcity</li>
+                                    <li class="tr-text"><strong>Mısır:</strong> Aşırı sıcaklar çiçeklenmeyi engelliyor</li>
+                                    <li class="en-text" style="display:none"><strong>Corn:</strong> Extreme heat prevents flowering</li>
+                                    <li class="tr-text"><strong>Kahve:</strong> Uygun yetişme alanları 2050'ye kadar %50 azalabilir</li>
+                                    <li class="en-text" style="display:none"><strong>Coffee:</strong> Suitable growing areas may decrease by 50% by 2050</li>
+                                    <li class="tr-text"><strong>Balıkçılık:</strong> Okyanus asitlenmesi ve ısınması stokları azaltıyor</li>
+                                    <li class="en-text" style="display:none"><strong>Fisheries:</strong> Ocean acidification and warming reduce stocks</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <p class="tr-text">Birçok temel tarım ürünü, iklim koşullarındaki değişimlere karşı oldukça hassastır. Yüksek sıcaklıklar, toprakta nem kaybına yol açarken, su kaynaklarının azalması da sulamaya dayalı üretimi zora sokar. Aynı zamanda zararlılar ve hastalıklar da bu koşullarda daha yaygın hale gelir, bu da ürün verimini düşürür.</p>
+                <p class="en-text" style="display:none">Many basic agricultural crops are highly sensitive to changes in climate conditions. High temperatures lead to moisture loss in soil, while decreasing water resources make irrigation-based production difficult. At the same time, pests and diseases become more prevalent under these conditions, reducing crop yields.</p>
+                <p class="tr-text">Aşırı hava olayları sadece tarlalardaki mahsulü değil, aynı zamanda gıda tedarik zincirini de kesintiye uğratır; yollar kapanabilir, ürünler pazarlara ulaşamaz, hasat zamanları kayabilir. Bu durum özellikle küçük ölçekli çiftçiler için büyük bir tehdit oluşturur çünkü iklim değişikliğine karşı adaptasyon imkanları sınırlıdır.</p>
+                <p class="en-text" style="display:none">Extreme weather events disrupt not just crops in fields but also the food supply chain; roads may close, products can't reach markets, harvest times may shift. This poses a major threat especially for small-scale farmers as their adaptation possibilities to climate change are limited.</p>
+                <p class="tr-text">Üretimde yaşanan bu sıkıntılar ise doğrudan gıda fiyatlarını yükseltir, düşük gelirli kesimlerin sağlıklı ve yeterli beslenme imkanlarını kısıtlar. Gıda artık sadece üretim sorunu değil, erişim sorunu da haline gelir. İklim değişikliği, yalnızca çevresel bir kriz değil, aynı zamanda büyüyen bir gıda krizi tehdididir ve bu tehdit, sürdürülebilir tarım politikaları ve küresel iş birliği olmadan her geçen gün daha da derinleşecektir.</p>
+                <p class="en-text" style="display:none">These production difficulties directly increase food prices, limiting healthy and adequate nutrition opportunities for low-income groups. Food is no longer just a production problem but also an access problem. Climate change is not just an environmental crisis but also a growing food crisis threat, and without sustainable agricultural policies and global cooperation, this threat will deepen day by day.</p>
+            </div>
+        </div>
+
+        <div class="bilgi-kutu">
+            <img src="{{ url_for('static', filename='img/ormanyangin.jpg') }}" alt="Orman Yangınları">
+            <div class="bilgi-yazi">
+                <h2 class="tr-text">Orman Yangınları</h2>
+                <h2 class="en-text" style="display:none">Forest Fires</h2>
+                <p class="tr-text">Son yıllarda küresel ölçekte yaşanan sıcaklık artışları ve uzun süreli kuraklıklar, orman yangınlarının hem sıklığını hem de yıkıcılığını ciddi şekilde artırmıştır. İklim değişikliği, dünyanın birçok bölgesinde doğal yangın döngüsünü bozarak, orman ekosistemlerini benzeri görülmemiş risklerle karşı karşıya bırakmaktadır.</p>
+                <p class="en-text" style="display:none">Temperature increases and prolonged droughts experienced globally in recent years have seriously increased both the frequency and destructiveness of forest fires. Climate change is disrupting natural fire cycles in many regions of the world, exposing forest ecosystems to unprecedented risks.</p>
+                
+                <div class="accordion-container">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span class="tr-text">Son Büyük Yangınlar</span>
+                            <span class="en-text" style="display:none">Recent Major Fires</span>
+                            <i class="fas fa-chevron-down accordion-icon"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li class="tr-text"><strong>Avustralya (2019-2020):</strong> 18.6 milyon hektar yandı, 3 milyar hayvan etkilendi</li>
+                                    <li class="en-text" style="display:none"><strong>Australia (2019-2020):</strong> 18.6 million hectares burned, 3 billion animals affected</li>
+                                    <li class="tr-text"><strong>Amazonlar (2019):</strong> Rekor sayıda yangın, 900.000 hektar kayıp</li>
+                                    <li class="en-text" style="display:none"><strong>Amazon (2019):</strong> Record number of fires, 900,000 hectares lost</li>
+                                    <li class="tr-text"><strong>Kaliforniya (2020):</strong> 1.7 milyon hektar yandı, tarihin en büyük yangın sezonu</li>
+                                    <li class="en-text" style="display:none"><strong>California (2020):</strong> 1.7 million hectares burned, largest fire season in history</li>
+                                    <li class="tr-text"><strong>Türkiye (2021):</strong> 178.000 hektar orman alanı kaybı</li>
+                                    <li class="en-text" style="display:none"><strong>Turkey (2021):</strong> 178,000 hectares of forest area lost</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <p class="tr-text">Yükselen sıcaklıklar, toprak nemini azaltmakta, bitki örtüsünü kurutarak yanıcı madde miktarını artırmakta ve ormanların tutuşma eşiğini düşürmektedir. Özellikle Akdeniz havzası, Kuzey Amerika, Avustralya ve Amazonlar gibi bölgelerde, yangın mevsimleri artık daha erken başlamakta ve daha geç sona ermektedir. Bu durum, yangın sezonunun uzamasıyla birlikte müdahale sürecini daha zorlu ve maliyetli hale getirmektedir.</p>
+                <p class="en-text" style="display:none">Rising temperatures reduce soil moisture, dry out vegetation increasing combustible material, and lower forests' ignition threshold. Especially in regions like the Mediterranean basin, North America, Australia and the Amazon, fire seasons now start earlier and end later. This situation makes intervention processes more challenging and costly along with the lengthening fire season.</p>
+                <p class="tr-text">Aynı zamanda iklim değişikliği nedeniyle oluşan sıcak hava dalgaları ve anormal rüzgar sistemleri, küçük bir kıvılcımın bile geniş alanlara hızla yayılmasına neden olmaktadır. Bunun sonucunda kontrolden çıkan mega yangınlar, yalnızca milyonlarca hektarlık orman alanını yok etmekle kalmamakta, aynı zamanda binlerce canlı türünü tehdit etmekte, insan yerleşimlerini ve altyapıyı tahrip etmekte.</p>
+                <p class="en-text" style="display:none">At the same time, heatwaves and abnormal wind systems caused by climate change enable even a small spark to spread rapidly over large areas. As a result, out-of-control megafires not only destroy millions of hectares of forest area but also threaten thousands of species and devastate human settlements and infrastructure.</p>
+                <p class="tr-text">Orman yangınlarının yarattığı tahribat, atmosfere büyük miktarda karbon salınmasına yol açmakta ve bu da iklim değişikliğini daha da hızlandırarak kısır bir döngü oluşturmaktadır. Ayrıca yangın sonrası topraklar verimliliğini kaybetmekte, erozyon artmakta ve ekosistemin kendini toparlaması on yıllar sürebilmektedir.</p>
+                <p class="en-text" style="display:none">The destruction caused by forest fires leads to large amounts of carbon being released into the atmosphere, further accelerating climate change and creating a vicious cycle. Additionally, post-fire lands lose fertility, erosion increases, and ecosystem recovery can take decades.</p>
+            </div>
+        </div>
+
+        <div class="bilgi-kutu">
+            <img src="{{ url_for('static', filename='img/buzul.jpg') }}" alt="Buzulların Erimesi">
+            <div class="bilgi-yazi">
+                <h2 class="tr-text">Buzulların Erimesi</h2>
+                <h2 class="en-text" style="display:none">Melting Glaciers</h2>
+                <p class="tr-text">Küresel ısınmanın en çarpıcı ve ölçülebilir etkilerinden biri, kuzey ve güney kutup bölgelerindeki buzulların büyük bir hızla erimesidir. Özellikle Grönland ve Antarktika'da bulunan devasa buz kütleleri, artan hava ve okyanus sıcaklıklarına bağlı olarak her yıl milyarlarca ton buz kaybetmektedir. Bu durum, yalnızca kutup ekosistemlerini değil, tüm dünya üzerindeki yaşam alanlarını doğrudan etkilemektedir.</p>
+                <p class="en-text" style="display:none">One of the most striking and measurable effects of global warming is the rapid melting of glaciers in the northern and southern polar regions. The massive ice masses in Greenland and Antarctica in particular are losing billions of tons of ice each year due to rising air and ocean temperatures. This situation directly affects not just polar ecosystems but habitats across the entire world.</p>
+                
+                <div class="progress-container">
+                    <div class="progress-bar" style="width: 85%">
+                        <span class="tr-text">Grönland: 270 milyar ton/yıl</span>
+                        <span class="en-text" style="display:none">Greenland: 270 billion tons/year</span>
+                    </div>
+                </div>
+                
+                <p class="tr-text">Bilimsel araştırmalar, son birkaç on yılda kutup buzullarının erime hızının önceki yüzyıllara göre katlanarak arttığını göstermektedir. Örneğin Grönland tek başına her yıl ortalama 270 milyar ton buz kaybetmekte, bu da deniz seviyesinin küresel çapta milimetre düzeyinde yükselmesine neden olmaktadır. Antarktika'daki erime de benzer şekilde hız kazanmıştır.</p>
+                <p class="en-text" style="display:none">Scientific research shows that the melting rate of polar glaciers has increased exponentially in recent decades compared to previous centuries. For example, Greenland alone loses an average of 270 billion tons of ice each year, causing global sea levels to rise by millimeters. Melting in Antarctica has similarly accelerated.</p>
+                <p class="tr-text">Bu erime, deniz seviyelerinde sürekli bir yükselmeye yol açmakta ve özellikle alçak kıyı bölgelerinde yaşayan milyarlarca insan için büyük bir tehdit oluşturmaktadır. Miami, New York, Bangkok, Amsterdam, Şanghay ve İstanbul gibi pek çok kıyı kenti, sel riskiyle karşı karşıya kalmakta; altyapı, içme suyu kaynakları ve ekonomik sistemler bu durumdan olumsuz etkilenmektedir.</p>
+                <p class="en-text" style="display:none">This melting leads to continuous sea level rise and poses a major threat especially to billions living in low-lying coastal areas. Many coastal cities like Miami, New York, Bangkok, Amsterdam, Shanghai and Istanbul face flood risks; infrastructure, drinking water sources and economic systems are negatively affected by this situation.</p>
+                <p class="tr-text">Ayrıca eriyen buzullar, yalnızca deniz seviyesini değil, okyanusların kimyasal ve ısısal dengesini de değiştirmekte, bu da deniz akıntılarının yönünü ve gücünü etkileyerek küresel iklim sistemini daha da istikrarsız hale getirmektedir. Aynı zamanda kutuplardaki erimenin geri bildirim etkisi de vardır: daha az buz, daha az yansıtıcı yüzey (albedo) demek; bu da daha fazla güneş ışığının emilmesi ve ısınmanın hızlanması anlamına gelir.</p>
+                <p class="en-text" style="display:none">Additionally, melting glaciers change not just sea levels but also the chemical and thermal balance of oceans, affecting ocean current directions and strengths, making the global climate system even more unstable. At the same time, polar melting has a feedback effect: less ice means less reflective surface (albedo); this means more sunlight is absorbed and warming accelerates.</p>
+            </div>
+        </div>
+
+        <div class="bilgi-kutu">
+            <img src="{{ url_for('static', filename='img/gelecek.jpg') }}" alt="Gelecek">
+            <div class="bilgi-yazi">
+                <h2 class="tr-text">İklim Krizi Gelecekte</h2>
+                <h2 class="en-text" style="display:none">Climate Crisis in the Future</h2>
+                <p class="tr-text">İklim krizi, artık yalnızca gelecek kuşakları ilgilendiren bir senaryo değil; bilimsel verilerle doğrulanan, hızla yaklaşan ve yaşanabilirliği tehdit eden küresel bir acil durumdur. Küresel sıcaklık artışı 2°C'ye ulaştığında, deniz seviyelerinin metrelerce yükselmesiyle birlikte kıyı şehirleri risk altına girecek, milyonlarca insan iklim mültecisi konumuna düşecektir.</p>
+                <p class="en-text" style="display:none">The climate crisis is no longer just a scenario concerning future generations; it's a global emergency confirmed by scientific data, rapidly approaching and threatening habitability. When global temperature rise reaches 2°C, coastal cities will be at risk with sea levels rising meters, and millions will become climate refugees.</p>
+                
+                <div class="accordion-container">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span class="tr-text">2°C Artışın Olası Sonuçları</span>
+                            <span class="en-text" style="display:none">Potential Consequences of 2°C Increase</span>
+                            <i class="fas fa-chevron-down accordion-icon"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li class="tr-text">Deniz seviyesinde 0.5-1 metre yükselme</li>
+                                    <li class="en-text" style="display:none">0.5-1 meter sea level rise</li>
+                                    <li class="tr-text">Mercan resiflerinin %99'unun yok olması</li>
+                                    <li class="en-text" style="display:none">99% of coral reefs disappearing</li>
+                                    <li class="tr-text">Tarımsal verimde %10-25 düşüş</li>
+                                    <li class="en-text" style="display:none">10-25% decrease in agricultural yield</li>
+                                    <li class="tr-text">230 milyon insanın su kıtlığı yaşaması</li>
+                                    <li class="en-text" style="display:none">230 million people experiencing water scarcity</li>
+                                    <li class="tr-text">Yılda 250.000 ek ölüm (ısı stresi, sıtma, yetersiz beslenme)</li>
+                                    <li class="en-text" style="display:none">250,000 additional deaths annually (heat stress, malaria, malnutrition)</li>
+                                    <li class="tr-text">Dünya nüfusunun %37'sinin aşırı sıcak dalgalarına maruz kalması</li>
+                                    <li class="en-text" style="display:none">37% of world population exposed to extreme heat waves</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <p class="tr-text">Tarım sistemleri bozulacak, gıda güvenliği azalacak ve su kaynaklarına erişim ciddi oranda zorlaşacaktır. Aşırı sıcaklık dalgaları, kuraklıklar, orman yangınları ve şiddetli fırtınalar dünya genelinde çok daha sık ve yıkıcı hale gelecektir. Ayrıca, mercan resiflerinin %99'u yok olacak, kutup buzulları geri dönülmez biçimde eriyecek ve Amazon gibi kritik ekosistemler çöküşe sürüklenecektir.</p>
+                <p class="en-text" style="display:none">Agricultural systems will be disrupted, food security will decrease, and access to water resources will become significantly more difficult. Extreme heat waves, droughts, forest fires and severe storms will become much more frequent and destructive worldwide. Additionally, 99% of coral reefs will disappear, polar glaciers will melt irreversibly, and critical ecosystems like the Amazon will be pushed toward collapse.</p>
+                <p class="tr-text">Bilim insanları, 2°C eşiğinin aşılmasının iklim sistemini geri döndürülemez zincirleme tepkimelere sokabileceğini vurguluyor. Bugün bireyler, toplumlar ve devletler olarak alacağımız kararlar, sadece kendi geleceğimizi değil, tüm gezegenin kaderini belirleyecek. Geleceği kurtarmak hâlâ elimizde — ama zaman daralıyor.</p>
+                <p class="en-text" style="display:none">Scientists emphasize that exceeding the 2°C threshold could push the climate system into irreversible chain reactions. The decisions we make today as individuals, societies and governments will determine not just our own future but the fate of the entire planet. Saving the future is still in our hands — but time is running out.</p>
+            </div>
+        </div>
+
+        <div class="bilgi-kutu">
+            <img src="{{ url_for('static', filename='img/planet.jpg') }}" alt="Ne Yapa Biliriz?">
+            <div class="bilgi-yazi">
+                <h2 class="tr-text">Peki Ne Yapa Biliriz?</h2>
+                <h2 class="en-text" style="display:none">So What Can We Do?</h2>
+                <p class="tr-text">İklim değişikliğini önlemek, yavaşlatmak, dünyayı geri soğutmak, bunların yine hepsi bizim elimizde! Her birimiz bunu önlemek için sorumluluklarımızı yapmalıyız. Resimden de göründüğü gibi, barına bileceğimiz yaşanabilir ikinci bir gezegen yok! Etrafı kirletmemek, boşa su harcamamak, boşa ısı üretmemek, geri dönüşüm ve b. çok basit şeyler gözükse de, aslında çok etkili davranışlar! Ben yapsam ne değişir ki demeyin, en kötü ihtimalle en azından sizin bu felakete bir katkınız olmaz! Burada ki en kritik nokta, elimizden geldiği kadar başkalarını da bilgilendirmek, çünkü tek başımıza yetersiziz, toplum olarak, insanlık olarak bu felakete dur demeliyiz, ve dünyamızı korumalıyız.</p>
+                <p class="en-text" style="display:none">Preventing climate change, slowing it down, cooling the Earth back down - all these are in our hands! Each of us must fulfill our responsibilities to prevent this. As the picture shows, there's no second habitable planet we can take refuge on! Not polluting the environment, not wasting water, not generating unnecessary heat, recycling etc. may seem very simple things, but they're actually very effective behaviors! Don't say "what difference will it make if I do it?" - at worst, at least you won't be contributing to this disaster! The most critical point here is to inform others as much as we can, because we're insufficient alone, we must say stop to this disaster as a society, as humanity, and protect our world.</p>
+                
+                <div class="accordion-container">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span class="tr-text">Bireysel Olarak Yapabileceklerimiz</span>
+                            <span class="en-text" style="display:none">What We Can Do Individually</span>
+                            <i class="fas fa-chevron-down accordion-icon"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li class="tr-text"><strong>Enerji tasarrufu:</strong> LED ampuller, A+++ ev aletleri, gereksiz aydınlatmayı kapatma</li>
+                                    <li class="en-text" style="display:none"><strong>Energy saving:</strong> LED bulbs, A+++ appliances, turning off unnecessary lighting</li>
+                                    <li class="tr-text"><strong>Ulaşım:</strong> Toplu taşıma, bisiklet, yürüme, elektrikli araçlar, uçak yolculuğunu azaltma</li>
+                                    <li class="en-text" style="display:none"><strong>Transportation:</strong> Public transport, bicycle, walking, electric vehicles, reducing air travel</li>
+                                    <li class="tr-text"><strong>Beslenme:</strong> Daha az et tüketme (özellikle kırmızı et), yerel ve mevsimsel ürünler</li>
+                                    <li class="en-text" style="display:none"><strong>Nutrition:</strong> Eating less meat (especially red meat), local and seasonal products</li>
+                                    <li class="tr-text"><strong>Tüketim:</strong> Geri dönüşüm, tek kullanımlık plastiklerden kaçınma, onarım, ikinci el</li>
+                                    <li class="en-text" style="display:none"><strong>Consumption:</strong> Recycling, avoiding single-use plastics, repair, second-hand</li>
+                                    <li class="tr-text"><strong>Yatırımlar:</strong> Fosil yakıt şirketlerinden çekilme, yeşil yatırımlar</li>
+                                    <li class="en-text" style="display:none"><strong>Investments:</strong> Divesting from fossil fuel companies, green investments</li>
+                                    <li class="tr-text"><strong>Sesini duyur:</strong> Oy ver, protesto et, bilgilendir, sosyal medyada paylaş</li>
+                                    <li class="en-text" style="display:none"><strong>Make your voice heard:</strong> Vote, protest, inform, share on social media</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bilgi-kutu">
+            <img src="{{ url_for('static', filename='img/kop.jpg') }}" alt="Uluslararası Kurumlar">
+            <div class="bilgi-yazi">
+                <h2 class="tr-text">Uluslararası Kurumlar Ve Konferanslar</h2>
+                <h2 class="en-text" style="display:none">International Organizations and Conferences</h2>
+                <p class="tr-text">İklim değişikliği ile mücadele, yalnızca bireyler sorumlulukları üstlenmekle sınırlanmıyor. Bir çok uluslararası kurumlar, teşkilatlar bu durumu yakından gözlüyor, bunu engellemek için konferanslar düzenliyor, hükumetler yüklü miktarda yatırımlar yapıyor Bu konferanslara bir numune de, 2024 kasımda Baküde BM (Birleşmiş Milletler) tarafından organize edilmiş COP29 (İklim Değişikliği Hakkında Taraflar Konferansı) konferansını göstere biliriz.</p>
+                <p class="en-text" style="display:none">The fight against climate change isn't limited to individuals taking responsibility. Many international organizations and institutions are closely monitoring this situation, organizing conferences to prevent it, and governments are making substantial investments. As an example of these conferences, we can point to COP29 (Conference of the Parties on Climate Change) organized by the UN in Baku in November 2024.</p>
+                
+                <div class="accordion-container">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span class="tr-text">Önemli İklim Anlaşmaları</span>
+                            <span class="en-text" style="display:none">Important Climate Agreements</span>
+                            <i class="fas fa-chevron-down accordion-icon"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li class="tr-text"><strong>Rio Zirvesi (1992):</strong> BM İklim Değişikliği Çerçeve Sözleşmesi</li>
+                                    <li class="en-text" style="display:none"><strong>Rio Summit (1992):</strong> UN Framework Convention on Climate Change</li>
+                                    <li class="tr-text"><strong>Kyoto Protokolü (1997):</strong> Gelişmiş ülkeler için emisyon sınırlamaları</li>
+                                    <li class="en-text" style="display:none"><strong>Kyoto Protocol (1997):</strong> Emission limits for developed countries</li>
+                                    <li class="tr-text"><strong>Paris Anlaşması (2015):</strong> Küresel ısınmayı 2°C'nin altında tutma hedefi</li>
+                                    <li class="en-text" style="display:none"><strong>Paris Agreement (2015):</strong> Goal to keep global warming below 2°C</li>
+                                    <li class="tr-text"><strong>Glasgow Paktı (2021):</strong> Kömür kullanımını aşamalı olarak azaltma taahhüdü</li>
+                                    <li class="en-text" style="display:none"><strong>Glasgow Pact (2021):</strong> Commitment to phase down coal use</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bilgi-kutu">
+            <img src="{{ url_for('static', filename='img/iklimaktivist.jpg') }}" alt="İklim Aktivistleri">
+            <div class="bilgi-yazi">
+                <h2 class="tr-text">İklim Aktivistlerinin Önemi</h2>
+                <h2 class="en-text" style="display:none">The Importance of Climate Activists</h2>
+                <p class="tr-text">Günümüzde iklim krizi karşısında en güçlü ve kararlı seslerden biri, dünya genelindeki genç aktivistlerden yükselmektedir. Çocuklar ve gençler, yalnızca kendi geleceklerinin değil, aynı zamanda tüm gezegenin sürdürülebilirliği için seslerini duyurmakta, liderlere ve topluma sorumluluklarını hatırlatmaktadır. Onlar, bilimsel verileri cesaretle savunarak politik karar alıcıların karşısına çıkmakta, sessiz kalmanın bedelini reddederek harekete geçmenin gerekliliğini vurgulamaktadır.</p>
+                <p class="en-text" style="display:none">Today, one of the strongest and most determined voices against the climate crisis comes from young activists worldwide. Children and youth are making their voices heard not just for their own future but for the sustainability of the entire planet, reminding leaders and society of their responsibilities. They courageously advocate scientific data, confront political decision-makers, and emphasize the necessity of taking action by refusing to pay the price of silence.</p>
+                
+                <div class="accordion-container">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <span class="tr-text">Ünlü İklim Aktivistleri</span>
+                            <span class="en-text" style="display:none">Famous Climate Activists</span>
+                            <i class="fas fa-chevron-down accordion-icon"></i>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li class="tr-text"><strong>Greta Thunberg:</strong> Fridays for Future hareketinin kurucusu</li>
+                                    <li class="en-text" style="display:none"><strong>Greta Thunberg:</strong> Founder of Fridays for Future movement</li>
+                                    <li class="tr-text"><strong>Vanessa Nakate:</strong> Afrika'daki iklim adaleti mücadelesinin öncüsü</li>
+                                    <li class="en-text" style="display:none"><strong>Vanessa Nakate:</strong> Pioneer of climate justice struggle in Africa</li>
+                                    <li class="tr-text"><strong>Autumn Peltier:</strong> Yerli su hakları savunucusu</li>
+                                    <li class="en-text" style="display:none"><strong>Autumn Peltier:</strong> Indigenous water rights advocate</li>
+                                    <li class="tr-text"><strong>Xiye Bastida:</strong> Latin Amerika gençliğinin iklim lideri</li>
+                                    <li class="en-text" style="display:none"><strong>Xiye Bastida:</strong> Climate leader of Latin American youth</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <p class="tr-text">Bu genç aktivistler, iklim değişikliğinin etkilerinin adil dağılmadığını vurgulamaktadır. En az sorumlu olan yoksul topluluklar ve gelecek nesiller, krizin en ağır yükünü taşımaktadır. Bu nedenle iklim adaleti, mücadelenin merkezinde yer almaktadır.</p>
+                <p class="en-text" style="display:none">These young activists emphasize that the effects of climate change aren't distributed fairly. Poor communities least responsible and future generations bear the heaviest burden of the crisis. That's why climate justice is at the heart of the struggle.</p>
+                <p class="tr-text">Aktivistlerin çabaları sayesinde iklim krizi küresel gündemin üst sıralarına yerleşmiş, birçok ülkede yeşil politikalar güçlenmiş ve fosil yakıt yatırımları sorgulanmaya başlanmıştır. Ancak daha kat edilmesi gereken çok yol vardır. Her birimiz, yaşımız veya konumumuz ne olursa olsun, bu mücadelenin bir parçası olabiliriz.</p>
+                <p class="en-text" style="display:none">Thanks to activists' efforts, the climate crisis has risen to the top of the global agenda, green policies have strengthened in many countries, and fossil fuel investments have begun to be questioned. But there's still much ground to cover. Each of us, regardless of age or location, can be part of this struggle.</p>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="cta pulse">
+            <h2 class="tr-text">Harekete Geçme Zamanı!</h2>
+            <h2 class="en-text" style="display:none">Time to Take Action!</h2>
+            <p class="tr-text">İklim krizi karşısında sessiz kalamayız. Bugün bireysel olarak atacağınız küçük adımlar, yarın büyük farklar yaratabilir. Siz de değişimin bir parçası olun!</p>
+            <p class="en-text" style="display:none">We cannot remain silent in the face of the climate crisis. Small steps you take individually today can make big differences tomorrow. You too be part of the change!</p>
+            <a href="{{ url_for('senin_etkin') }}" class="cta-btn">
+                <span class="tr-text">Ben Ne Yapabilirim?</span>
+                <span class="en-text" style="display:none">What Can I Do?</span>
+            </a>
+        </div>
+
+        <!-- Bayrak Bölümü -->
+        <div class="bayrak float">
+            <img src="{{ url_for('static', filename='img/bayrak.png') }}" alt="İklim Aktivisti Bayrağı">
+            <p class="tr-text"><em>Gezegenimizi savunmak bir tercih değil, zorunluluktur.</em></p>
+            <p class="en-text" style="display:none"><em>Defending our planet is not a choice, but a necessity.</em></p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <i class="fas fa-leaf"></i>
+                    <span>Eco Urgent</span>
+                </div>
+                <p class="footer-about">
+                    {% if current_lang == 'tr' %}
+                        İklim değişikliği ile mücadelede birlikte hareket ediyoruz. Siz de söz verin, geleceğimizi birlikte kurtaralım.
+                    {% else %}
+                        We act together in the fight against climate change. Make your pledge and let's save our future together.
+                    {% endif %}
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <h3>
+                    {% if current_lang == 'tr' %}
+                        Hızlı Linkler
+                    {% else %}
+                        Quick Links
+                    {% endif %}
+                </h3>
+                <ul>
+                    <li><a href="{{ url_for('index') }}">
+                        <i class="fas fa-chevron-right"></i>
+                        <span>{{ t.home }}</span>
+                    </a></li>
+                    <li><a href="{{ url_for('bilgilendirme') }}">
+                        <i class="fas fa-chevron-right"></i>
+                        <span>{{ t.info }}</span>
+                    </a></li>
+                    <li><a href="{{ url_for('kurbanlar') }}">
+                        <i class="fas fa-chevron-right"></i>
+                        <span>{{ t.victims }}</span>
+                    </a></li>
+                    <li><a href="{{ url_for('senin_etkin') }}">
+                        <i class="fas fa-chevron-right"></i>
+                        <span>{{ t.impact_test }}</span>
+                    </a></li>
+                    <li><a href="{{ url_for('destek') }}">
+                        <i class="fas fa-chevron-right"></i>
+                        <span class="tr-text">Siteyi Destekle</span>
+                        <span class="en-text" style="display: none">Support Us</span>
+                    </a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h3>
+                    {% if current_lang == 'tr' %}
+                        İletişim
+                    {% else %}
+                        Contact
+                    {% endif %}
+                </h3>
+
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt contact-icon"></i>
+                    <div>
+                        <span>
+                            {% if current_lang == 'tr' %}
+                                24 № Tam Orta Okul
+                            {% else %}
+                                Fully Secondary School №24
+                            {% endif %}
+                        </span>
+                        <br>
+                        <span>
+                            {% if current_lang == 'tr' %}
+                                Bakü, Azerbaycan
+                            {% else %}
+                                Baku, Azerbaijan
+                            {% endif %}
+                        </span>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <i class="fas fa-envelope contact-icon"></i>
+                    <div>
+                        <span>kaymasali3@gmail.com</span>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt contact-icon"></i>
+                    <div>
+                        <span>+994 50 602 29 16</span>
+                    </div>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://instagram.com/mrkaymasfire" class="social-link" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2025 Eco Urgent. 
+                {% if current_lang == 'tr' %}
+                    Tüm hakları saklıdır.
+                {% else %}
+                    All rights reserved.
+                {% endif %}
+            </p>
+            <div style="margin-top: 15px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                <a href="{{ url_for('privacy_policy') }}" style="color: #bbb; text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">
+                    {% if current_lang == 'tr' %}
+                        Gizlilik Politikası
+                    {% else %}
+                        Privacy Policy
+                    {% endif %}
+                </a>
+                <a href="{{ url_for('terms_of_use') }}" style="color: #bbb; text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">
+                    {% if current_lang == 'tr' %}
+                        Kullanım Şartları
+                    {% else %}
+                        Terms of Use
+                    {% endif %}
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Language Toggle Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const trBtn = document.getElementById('tr-btn');
+            const enBtn = document.getElementById('en-btn');
+
+            // Set up language toggle
+            function setLanguage(lang) {
+                if (lang === 'tr') {
+                    trBtn.classList.add('active');
+                    enBtn.classList.remove('active');
+
+                    // Hide all English elements
+                    document.querySelectorAll('.en-text').forEach(el => {
+                        el.style.display = 'none';
+                    });
+
+                    // Show all Turkish elements
+                    document.querySelectorAll('.tr-text').forEach(el => {
+                        el.style.display = '';
+                    });
+
+                    // Change document language attribute
+                    document.documentElement.lang = 'tr';
+                } else {
+                    enBtn.classList.add('active');
+                    trBtn.classList.remove('active');
+
+                    // Hide all Turkish elements
+                    document.querySelectorAll('.tr-text').forEach(el => {
+                        el.style.display = 'none';
+                    });
+
+                    // Show all English elements
+                    document.querySelectorAll('.en-text').forEach(el => {
+                        el.style.display = '';
+                    });
+
+                    // Change document language attribute
+                    document.documentElement.lang = 'en';
+                }
+
+                // Reinitialize accordions for the new visible language
+                setTimeout(initAccordions, 50);
+            }
+
+            // Initialize with English as default
+            setLanguage('en');
+
+            trBtn.addEventListener('click', function() {
+                if (!this.classList.contains('active')) {
+                    setLanguage('tr');
+                }
+            });
+
+            enBtn.addEventListener('click', function() {
+                if (!this.classList.contains('active')) {
+                    setLanguage('en');
+                }
+            });
+
+            // Mobile menu toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navbarLinks = document.getElementById('navbarLinks');
+
+            if (mobileMenuBtn && navbarLinks) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    navbarLinks.classList.toggle('active');
+                });
+
+                // Close mobile menu when clicking a link
+                document.querySelectorAll('.navbar-links a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navbarLinks.classList.remove('active');
+                    });
+                });
+            }
+        });
+
+        // New Professional Accordion System
+        function initAccordions() {
+            // Get all accordion items
+            const accordionItems = document.querySelectorAll('.accordion-item');
+            
+            accordionItems.forEach(item => {
+                const header = item.querySelector('.accordion-header');
+                const content = item.querySelector('.accordion-content');
+                
+                if (header && content) {
+                    // Remove any existing listeners
+                    const newHeader = header.cloneNode(true);
+                    header.parentNode.replaceChild(newHeader, header);
+                    
+                    // Add click listener to new header
+                    newHeader.addEventListener('click', function() {
+                        const isActive = item.classList.contains('active');
+                        
+                        // Close all other accordions
+                        accordionItems.forEach(otherItem => {
+                            otherItem.classList.remove('active');
+                            const otherContent = otherItem.querySelector('.accordion-content');
+                            if (otherContent) {
+                                otherContent.classList.remove('active');
+                            }
+                        });
+                        
+                        // Toggle this accordion
+                        if (!isActive) {
+                            item.classList.add('active');
+                            content.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }
+
+        // Scroll animation
+        function scrollToContent() {
+            document.querySelector('.bilgi-container').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        }
+        
+        // Scroll animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                threshold: 0.1
+            };
+            
+            const observer = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('.bilgi-kutu').forEach(box => {
+                observer.observe(box);
+            });
+            
+            document.querySelectorAll('.timeline-item').forEach(item => {
+                observer.observe(item);
+            });
+            
+            // Navbar scroll effect
+            window.addEventListener('scroll', function() {
+                const navbar = document.querySelector('.navbar');
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+            
+            // Video control
+            const video = document.getElementById('arkaVideo');
+            if (video) {
+                video.playbackRate = 0.8;
+            }
+            
+            // Floating elements animation
+            const floatingElements = document.querySelectorAll('.floating-element');
+            floatingElements.forEach((el, index) => {
+                el.style.left = Math.random() * 100 + '%';
+                el.style.animationDelay = Math.random() * 5 + 's';
+                el.style.animationDuration = 10 + Math.random() * 20 + 's';
+            });
+        });
+    </script>
+</body>
+</html>

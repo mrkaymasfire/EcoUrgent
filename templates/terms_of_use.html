@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="{{ current_lang }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if current_lang == 'tr' %}Kullanım Şartları | Eco Urgent{% else %}Terms of Use | Eco Urgent{% endif %}</title>
+    <meta name="description" content="{% if current_lang == 'tr' %}Eco Urgent kullanım şartları ve koşulları. Siteyi kullanmadan önce okuyunuz.{% else %}Eco Urgent terms of use and conditions. Please read before using the site.{% endif %}">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #2ecc71;
+            --primary-dark: #27ae60;
+            --secondary-color: #3498db;
+            --dark-color: #2c3e50;
+            --darker-color: #1a252f;
+            --light-color: #ecf0f1;
+            --lighter-color: #f9f9f9;
+            --text-color: #333;
+            --text-light: #777;
+            --white: #fff;
+            --transition: all 0.4s ease;
+            --shadow-md: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--lighter-color);
+            padding-top: 80px;
+        }
+        /* FOOTER STYLES */
+        .footer {
+        background: linear-gradient(135deg, #0a2e38, #08313b);
+        color: #e0f7fa;
+        padding: 5rem 2rem 2rem;
+        margin-top: 5rem;
+        position: relative;
+        border-top: 4px solid #2ecc71;
+        box-shadow: 0 -5px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        background: linear-gradient(to bottom, rgba(46, 204, 113, 0.2), transparent);
+        z-index: 0;
+        }
+
+        .footer-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 3rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+        }
+
+        .footer-logo {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        font-family: 'Montserrat', sans-serif;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: #ffffff;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .footer-logo i {
+        color: #2ecc71;
+        font-size: 1.8rem;
+        }
+
+        .footer-about {
+        margin-bottom: 2rem;
+        line-height: 1.7;
+        color: #b3e5fc;
+        font-size: 1rem;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer-links h3, 
+        .footer-contact h3 {
+        font-size: 1.4rem;
+        margin-bottom: 2rem;
+        position: relative;
+        padding-bottom: 0.8rem;
+        font-family: 'Montserrat', sans-serif;
+        color: #ffffff;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer-links h3::after, 
+        .footer-contact h3::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 4px;
+        background: linear-gradient(to right, #2ecc71, #3498db);
+        border-radius: 2px;
+        box-shadow: 0 2px 4px rgba(46, 204, 113, 0.3);
+        }
+
+        .footer-links ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        }
+
+        .footer-links li {
+        margin-bottom: 1rem;
+        transition: all 0.3s ease;
+        }
+
+        .footer-links li:hover {
+        transform: translateX(5px);
+        }
+
+        .footer-links a {
+        color: #b3e5fc;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 1rem;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer-links a:hover {
+        color: #2ecc71;
+        }
+
+        .footer-links i {
+        font-size: 0.9rem;
+        color: #2ecc71;
+        }
+
+        .contact-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 1.5rem;
+        gap: 15px;
+        }
+
+        .contact-icon {
+        color: #2ecc71;
+        font-size: 1.2rem;
+        margin-top: 3px;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-item div {
+        color: #b3e5fc;
+        line-height: 1.5;
+        font-size: 1rem;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-links {
+        display: flex;
+        gap: 1.5rem;
+        margin-top: 2rem;
+        }
+
+        .social-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 45px;
+        height: 45px;
+        background-color: rgba(46, 204, 113, 0.1);
+        border-radius: 50%;
+        color: #ffffff;
+        transition: all 0.3s ease;
+        font-size: 1.2rem;
+        border: 1px solid rgba(46, 204, 113, 0.3);
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-link:hover {
+        background-color: #2ecc71;
+        transform: translateY(-5px);
+        color: #ffffff;
+        box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
+        }
+
+        .copyright {
+        text-align: center;
+        padding-top: 3rem;
+        margin-top: 3rem;
+        border-top: 1px solid rgba(46, 204, 113, 0.2);
+        color: #81d4fa;
+        font-size: 0.9rem;
+        position: relative;
+        z-index: 1;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+        .footer {
+            padding: 3rem 1.5rem 1.5rem;
+            border-top-width: 3px;
+        }
+        
+        .footer-container {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            justify-content: center;
+        }
+        
+        .footer-about {
+            text-align: center;
+        }
+        
+        .footer-links h3, 
+        .footer-contact h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .footer-links h3::after,
+        .footer-contact h3::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .footer-links ul {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .social-links {
+            justify-content: center;
+        }
+        
+        .contact-item {
+            justify-content: center;
+        }
+        }
+
+        @media (max-width: 480px) {
+        .footer {
+            padding: 2.5rem 1rem 1.5rem;
+        }
+        
+        .footer-logo {
+            font-size: 1.6rem;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            font-size: 1.1rem;
+        }
+        }
+        .navbar {
+            background: linear-gradient(135deg, var(--dark-color), var(--primary-dark));
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow-md);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .navbar-logo {
+            font-weight: 700;
+            font-size: 1.8rem;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .navbar-logo i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .navbar a {
+            color: var(--white);
+            text-decoration: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            transition: var(--transition);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .navbar a:hover {
+            color: var(--primary-color);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            background: var(--white);
+            padding: 3rem 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+        }
+
+        .content-section {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--dark-color);
+            margin-bottom: 1.5rem;
+            font-family: 'Montserrat', sans-serif;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        .content-section p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .content-section ul {
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+        }
+
+        .content-section li {
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        .important-notice {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .language-toggle {
+            position: fixed;
+            top: 70px;
+            right: 20px;
+            z-index: 1200;
+            display: flex;
+            gap: 10px;
+            background: rgba(255,255,255,0.9);
+            padding: 10px 15px;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            backdrop-filter: blur(5px);
+        }
+
+        .language-toggle button {
+            background: none;
+            border: none;
+            font-weight: 600;
+            padding: 5px 10px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .language-toggle button.active {
+            background: linear-gradient(135deg, #2ecc71, #3498db);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem;
+            }
+
+            .navbar-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--dark-color);
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .navbar-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .content-section {
+                padding: 2rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .language-toggle {
+                top: 80px;
+                right: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="{{ url_for('index') }}" class="navbar-logo">
+                <i class="fas fa-leaf"></i> Eco Urgent
+            </a>
+            <div class="navbar-links" id="navbarLinks">
+                <a href="{{ url_for('index') }}">
+                    <i class="fas fa-home"></i>
+                    {{ t['home'] }}
+                </a>
+                <a href="{{ url_for('bilgilendirme') }}">
+                    <i class="fas fa-chart-bar"></i>
+                    {{ t['info'] }}
+                </a>
+                <a href="{{ url_for('kurbanlar') }}">
+                    <i class="fas fa-heart"></i>
+                    {{ t['victims'] }}
+                </a>
+                <a href="{{ url_for('senin_etkin') }}">
+                    <i class="fas fa-flask"></i>
+                    {{ t['impact_test'] }}
+                </a>
+                <a href="{{ url_for('destek') }}">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    {{ t['destek'] }}
+                </a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Language Toggle -->
+    <div class="language-toggle">
+        <a href="{{ url_for('set_language', lang='tr') }}" id="langTR" class="{% if current_lang == 'tr' %}active{% endif %}">TR</a>
+        <a href="{{ url_for('set_language', lang='en') }}" id="langEN" class="{% if current_lang == 'en' %}active{% endif %}">EN</a>
+    </div>
+
+    <div class="container">
+        <div class="page-header">
+            <h1 class="page-title">
+                {{ t['terms_of_use'] }}
+            </h1>
+            <p class="page-subtitle">
+                {% if current_lang == 'tr' %}
+                    Eco Urgent platformunu kullanarak bu şartları kabul etmiş olursunuz
+                {% else %}
+                    By using the Eco Urgent platform, you accept these terms
+                {% endif %}
+            </p>
+        </div>
+
+        <div class="important-notice">
+            <h3>
+                <i class="fas fa-exclamation-triangle"></i>
+                {% if current_lang == 'tr' %}
+                    Önemli Bilgilendirme
+                {% else %}
+                    Important Notice
+                {% endif %}
+            </h3>
+            <p>
+                {% if current_lang == 'tr' %}
+                    Bu platform eğitim ve bilinçlendirme amaçlıdır. Verilen bilgiler genel niteliktedir ve profesyonel danışmanlık yerine geçmez. Test sonuçları tahmini değerlerdir ve kişisel durumunuzu tam olarak yansıtmayabilir.
+                {% else %}
+                    This platform is for educational and awareness purposes. The information provided is general in nature and does not replace professional advice. Test results are estimates and may not fully reflect your personal situation.
+                {% endif %}
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">
+                {% if current_lang == 'tr' %}1. Kabul Edilen Şartlar{% else %}1. Acceptance of Terms{% endif %}
+            </h2>
+            <p>
+                {% if current_lang == 'tr' %}
+                    Eco Urgent web sitesini ("Site") kullanarak, aşağıdaki kullanım şartlarını ("Şartlar") kabul etmiş sayılırsınız. Bu Şartlar, Site'nin tüm sayfalarını, özelliklerini ve hizmetlerini kapsar. Şartları kabul etmiyorsanız, lütfen Site'yi kullanmayınız. Site'yi kullanmaya devam etmeniz, Şartlar'da yapılan değişiklikleri de kabul ettiğiniz anlamına gelir.
+                {% else %}
+                    By using the Eco Urgent website ("Site"), you are deemed to have accepted the following terms of use ("Terms"). These Terms apply to all pages, features and services of the Site. If you do not accept the Terms, please do not use the Site. Your continued use of the Site means you accept any changes made to the Terms.
+                {% endif %}
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">
+                {% if current_lang == 'tr' %}2. Site İçeriği ve Amaç{% else %}2. Site Content and Purpose{% endif %}
+            </h2>
+            <p>
+                {% if current_lang == 'tr' %}
+                    Eco Urgent, iklim değişikliği konusunda bilinçlendirme ve eğitim amaçlı bir platformdur. Site içeriği bilimsel verilere dayalı olarak hazırlanmıştır ancak profesyonel tavsiye yerine geçmez. Site içeriğinin doğruluğunu sürekli olarak kontrol etmekteyiz, ancak hatalar veya eksiklikler olabileceğini kabul ederiz.
+                {% else %}
+                    Eco Urgent is a platform for awareness and education on climate change. Site content is based on scientific data but does not replace professional advice. We constantly check the accuracy of the site content, but we acknowledge that there may be errors or omissions.
+                {% endif %}
+            </p>
+            <ul>
+                <li>
+                    {% if current_lang == 'tr' %}
+                        İklim krizi ve küresel ısınma hakkında bilimsel verilerle desteklenmiş eğitici içerikler
+                    {% else %}
+                        Educational content about climate crisis and global warming supported by scientific data
+                    {% endif %}
+                </li>
+                <li>
+                    {% if current_lang == 'tr' %}
+                        Kişisel karbon ayak izi hesaplama ve çevresel etki değerlendirme testleri (tahmini sonuçlar verir)
+                    {% else %}
+                        Personal carbon footprint calculation and environmental impact assessment tests (provides estimated results)
+                    {% endif %}
+                </li>
+                <li>
+                    {% if current_lang == 'tr' %}
+                        İklim değişikliğinden etkilenen canlıların hikayeleri ve koruma çalışmaları hakkında bilgiler
+                    {% else %}
+                        Information about living beings affected by climate change and conservation efforts
+                    {% endif %}
+                </li>
+                <li>
+                    {% if current_lang == 'tr' %}
+                        Kullanıcıların çevre koruma konusunda söz verme ve etkileşim platformu
+                    {% else %}
+                        Platform for users to make pledges and interact on environmental protection
+                    {% endif %}
+                </li>
+                <li>
+                    {% if current_lang == 'tr' %}
+                        Sürdürülebilir yaşam önerileri ve pratik çözümler
+                    {% else %}
+                        Sustainable living recommendations and practical solutions
+                    {% endif %}
+                </li>
+                <li>
+                    {% if current_lang == 'tr' %}
+                        Küresel iklim verilerinin canlı takibi ve görselleştirme araçları
+                    {% else %}
+                        Live tracking and visualization tools for global climate data
+                    {% endif %}
+                </li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">
+                {% if current_lang == 'tr' %}3. Kullanıcı Sorumlulukları{% else %}3. User Responsibilities{% endif %}
+            </h2>
+            <p>
+                {% if current_lang == 'tr' %}
+                    Site kullanıcıları aşağıdaki kurallara uymakla yükümlüdür. Bu kurallara uyulmaması durumunda hesabınız askıya alınabilir veya Site'ye erişiminiz engellenebilir.
+                {% else %}
+                    Site users are obligated to follow these rules. Failure to comply may result in suspension of your account or blocking of your access to the Site.
+                {% endif %}
+            </p>
+            <ul>
+                <li>
+                    {% if current_lang == 'tr' %}
+                        Gerçek ve doğru bilgiler paylaşmak (test sonuçlarınızı manipüle etmemek)
+                    {% else %}
+                        Share true and accurate information (not to manipulate your test results)
+                    {% endif %}
+                </li>
+                <li>
+                    {% if current_lang == 'tr' %}
+                        Diğer kullanıcılara ve Site personeline saygılı davranmak
+                    {% else %}
+                        Treat other users and Site staff with respect
+                    {% endif %}
+                </li>
+                <li>
+                    {% if current_lang == 'tr' %}
+                        Yasa dışı, zararlı, tehdit edici, taciz edici, ırkçı, ayrımcı veya başka bir şekilde uygunsuz içerik paylaşmamak
+                    {% else %}
+                        Not share illegal, harmful, threatening, harassing, racist, discriminatory or otherwise inappropriate content
+                    {% endif %}
+                </li>
+                <li>
+                    {% if current_lang == 'tr' %}
+                        Site'nin güvenliğini tehlikeye atacak herhangi bir girişimde bulunmamak (hacking, virüs yayma vb.)
+                    {% else %}
+                        Not attempt to compromise site security (hacking, spreading viruses, etc.)
+                    {% endif %}
+                </li>
+                <li>
+                    {% if current_lang == 'tr' %}
+                        Site'nin normal işleyişini bozacak faaliyetlerde bulunmamak (spam gönderme, bot kullanma vb.)
+                    {% else %}
+                        Not engage in activities that disrupt the normal operation of the Site (sending spam, using bots, etc.)
+                    {% endif %}
+                </li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">
+                {% if current_lang == 'tr' %}4. Fikri Mülkiyet Hakları{% else %}4. Intellectual Property Rights{% endif %}
+            </h2>
+            <p>
+                {% if current_lang == 'tr' %}
+                    Site içindeki tüm içerikler (metin, grafik, logo, ikon, görsel, yazılım kodları vb.) Eco Urgent'e veya lisans verenlerine aittir ve telif hakları ile korunmaktadır. İçeriklerin izinsiz kopyalanması, dağıtılması, değiştirilmesi veya ticari amaçlı kullanımı yasaktır. Site'den alıntı yaparken kaynak belirtmek zorunludur.
+                {% else %}
+                    All content on the Site (text, graphics, logos, icons, images, software codes, etc.) belongs to Eco Urgent or its licensors and is protected by copyright. Unauthorized copying, distribution, modification or commercial use of content is prohibited. Attribution is required when quoting from the Site.
+                {% endif %}
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">
+                {% if current_lang == 'tr' %}5. Yasaklanan Davranışlar{% else %}5. Prohibited Behaviors{% endif %}
+            </h2>
+            <p>
+                {% if current_lang == 'tr' %}
+                    Aşağıdaki davranışlar kesinlikle yasaktır ve bu tür davranışlar tespit edildiğinde yasal işlem başlatılabilir:
+                {% else %}
+                    The following behaviors are strictly prohibited and legal action may be taken when such behaviors are detected:
+                {% endif %}
+            </p>
+            <ul>
+                <li>
+                    {% if current_lang == 'tr' %}
+                        Spam, reklam veya istenmeyen ticari içerik paylaşımı
+                    {% else %}
+                        Sharing spam, advertisements or unwanted commercial content
+                    {% endif %}
+                </li>
+                <li>
+                    {% if current_lang == 'tr' %}
+                        Nefret söylemi, ayrımcılık veya şiddeti teşvik eden içerik
+                    {% else %}
+                        Content promoting hate speech, discrimination or violence
+                    {% endif %}
+                </li>
+                <li>
+                    {% if current_lang == 'tr' %}
+                        Yanlış, yanıltıcı veya sahte bilgi yayma
+                    {% else %}
+                        Spreading false, misleading or fake information
+                    {% endif %}
+                </li>
+                <li>
+                    {% if current_lang == 'tr' %}
+                        Site sistemlerine zarar verme veya performansını düşürme girişimleri
+                    {% else %}
+                        Attempts to damage site systems or degrade performance
+                    {% endif %}
+                </li>
+                <li>
+                    {% if current_lang == 'tr' %}
+                        Başkalarının kişisel bilgilerini izinsiz paylaşma
+                    {% else %}
+                        Sharing others' personal information without permission
+                    {% endif %}
+                </li>
+                <li>
+                    {% if current_lang == 'tr' %}
+                        Otomatik botlar veya scriptler kullanarak Site'yi kötüye kullanma
+                    {% else %}
+                        Misusing the Site using automated bots or scripts
+                    {% endif %}
+                </li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">
+                {% if current_lang == 'tr' %}6. Sorumluluk Reddi{% else %}6. Disclaimer{% endif %}
+            </h2>
+            <p>
+                {% if current_lang == 'tr' %}
+                    Eco Urgent, site içeriğinin doğruluğu, eksiksizliği veya güncelliği konusunda herhangi bir garanti vermemektedir. Kullanıcılar, siteyi kendi riskleri altında kullanır. Site'de sunulan bilgiler profesyonel tavsiye yerine geçmez. Çevresel etki testleri tahmini sonuçlar verir ve kişisel durumunuzu tam olarak yansıtmayabilir.
+                {% else %}
+                    Eco Urgent makes no warranty regarding the accuracy, completeness, or currency of site content. Users use the site at their own risk. Information provided on the Site does not replace professional advice. Environmental impact tests provide estimated results and may not fully reflect your personal situation.
+                {% endif %}
+            </p>
+            <p>
+                {% if current_lang == 'tr' %}
+                    Eco Urgent, Site'nin kesintisiz, güvenli veya hatasız olacağını garanti etmez. Site'de sunulan üçüncü taraf bağlantılarından veya içeriklerinden sorumlu değildir. Kullanıcılar bu tür bağlantıları kendi sorumluluklarında takip eder.
+                {% else %}
+                    Eco Urgent does not guarantee that the Site will be uninterrupted, secure or error-free. It is not responsible for third-party links or content provided on the Site. Users follow such links at their own risk.
+                {% endif %}
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">
+                {% if current_lang == 'tr' %}7. Değişiklikler ve Güncellemeler{% else %}7. Changes and Updates{% endif %}
+            </h2>
+            <p>
+                {% if current_lang == 'tr' %}
+                    Bu kullanım şartları herhangi bir zamanda değiştirilebilir. Değişiklikler sitede yayınlandığı anda yürürlüğe girer. Önemli değişiklikler için kullanıcıları e-posta yoluyla bilgilendirebiliriz, ancak bu bir zorunluluk değildir. Kullanıcıların Şartlar'ı düzenli olarak kontrol etmeleri önerilir.
+                {% else %}
+                    These terms of use may be changed at any time. Changes take effect as soon as they are published on the site. We may notify users of significant changes by email, but this is not an obligation. Users are advised to check the Terms regularly.
+                {% endif %}
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">
+                {% if current_lang == 'tr' %}8. Uygulanabilir Hukuk ve Uyuşmazlık Çözümü{% else %}8. Applicable Law and Dispute Resolution{% endif %}
+            </h2>
+            <p>
+                {% if current_lang == 'tr' %}
+                    Bu Şartlar Türkiye Cumhuriyeti hukukuna tabidir. Şartlardan kaynaklanan herhangi bir uyuşmazlık durumunda, taraflar öncelikle dostane çözüm yolları arayacaktır. Anlaşmazlıkların çözülemediği durumlarda, İstanbul Mahkemeleri ve İcra Daireleri yetkilidir.
+                {% else %}
+                    These Terms are governed by the laws of the Republic of Turkey. In case of any dispute arising from the Terms, the parties will first seek amicable solutions. If disputes cannot be resolved, Istanbul Courts and Enforcement Offices are authorized.
+                {% endif %}
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">
+                {% if current_lang == 'tr' %}9. İletişim ve Şikayetler{% else %}9. Contact and Complaints{% endif %}
+            </h2>
+            <p>
+                {% if current_lang == 'tr' %}
+                    Kullanım şartları ile ilgili sorularınız veya şikayetleriniz için bizimle iletişime geçebilirsiniz. Şikayetleriniz en geç 30 iş günü içinde yanıtlanacaktır.
+                {% else %}
+                    You can contact us for questions or complaints regarding the terms of use. Your complaints will be answered within 30 business days at the latest.
+                {% endif %}
+            </p>
+        </div>
+
+        <div class="contact-info">
+            <h3>
+                {% if current_lang == 'tr' %}İletişim Bilgileri{% else %}Contact Information{% endif %}
+            </h3>
+            <p>
+                {% if current_lang == 'tr' %}
+                    <i class="fas fa-envelope"></i> E-posta: kaymasali3@gmail.com
+                {% else %}
+                    <i class="fas fa-envelope"></i> Email: kaymasali3@gmail.com
+                {% endif %}
+            </p>
+            <p>
+                {% if current_lang == 'tr' %}
+                    <i class="fas fa-calendar-alt"></i> Son güncelleme: 15 Ocak 2025
+                {% else %}
+                    <i class="fas fa-calendar-alt"></i> Last updated: January 15, 2025
+                {% endif %}
+            </p>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <i class="fas fa-leaf"></i>
+                    <span>Eco Urgent</span>
+                </div>
+                <p class="footer-about">
+                    {% if current_lang == 'tr' %}
+                        İklim değişikliği ile mücadelede birlikte hareket ediyoruz. Siz de söz verin, geleceğimizi birlikte kurtaralım.
+                    {% else %}
+                        We act together in the fight against climate change. Make your pledge and let's save our future together.
+                    {% endif %}
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <h3>
+                    {% if current_lang == 'tr' %}
+                        Hızlı Linkler
+                    {% else %}
+                        Quick Links
+                    {% endif %}
+                </h3>
+                <ul>
+                    <li><a href="{{ url_for('index') }}">
+                        <i class="fas fa-chevron-right"></i>
+                        <span>{{ t.home }}</span>
+                    </a></li>
+                    <li><a href="{{ url_for('bilgilendirme') }}">
+                        <i class="fas fa-chevron-right"></i>
+                        <span>{{ t.info }}</span>
+                    </a></li>
+                    <li><a href="{{ url_for('kurbanlar') }}">
+                        <i class="fas fa-chevron-right"></i>
+                        <span>{{ t.victims }}</span>
+                    </a></li>
+                    <li><a href="{{ url_for('senin_etkin') }}">
+                        <i class="fas fa-chevron-right"></i>
+                        <span>{{ t.impact_test }}</span>
+                    </a></li>
+                    <li><a href="{{ url_for('destek') }}">
+                        <i class="fas fa-chevron-right"></i>
+                        <span class="tr-text">Siteyi Destekle</span>
+                        <span class="en-text" style="display: none">Support Us</span>
+                    </a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h3>
+                    {% if current_lang == 'tr' %}
+                        İletişim
+                    {% else %}
+                        Contact
+                    {% endif %}
+                </h3>
+
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt contact-icon"></i>
+                    <div>
+                        <span>
+                            {% if current_lang == 'tr' %}
+                                24 № Tam Orta Okul
+                            {% else %}
+                                Fully Secondary School №24
+                            {% endif %}
+                        </span>
+                        <br>
+                        <span>
+                            {% if current_lang == 'tr' %}
+                                Bakü, Azerbaycan
+                            {% else %}
+                                Baku, Azerbaijan
+                            {% endif %}
+                        </span>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <i class="fas fa-envelope contact-icon"></i>
+                    <div>
+                        <span>kaymasali3@gmail.com</span>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt contact-icon"></i>
+                    <div>
+                        <span>+994 50 602 29 16</span>
+                    </div>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://instagram.com/mrkaymasfire" class="social-link" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2025 Eco Urgent. 
+                {% if current_lang == 'tr' %}
+                    Tüm hakları saklıdır.
+                {% else %}
+                    All rights reserved.
+                {% endif %}
+            </p>
+            <div style="margin-top: 15px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                <a href="{{ url_for('privacy_policy') }}" style="color: #bbb; text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">
+                    {% if current_lang == 'tr' %}
+                        Gizlilik Politikası
+                    {% else %}
+                        Privacy Policy
+                    {% endif %}
+                </a>
+                <a href="{{ url_for('terms_of_use') }}" style="color: #bbb; text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">
+                    {% if current_lang == 'tr' %}
+                        Kullanım Şartları
+                    {% else %}
+                        Terms of Use
+                    {% endif %}
+                </a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Mobile menu functionality
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navbarLinks = document.getElementById('navbarLinks');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navbarLinks.classList.toggle('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+    </script>
+</body>
+</html>

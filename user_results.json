@@ -1,0 +1,444 @@
+[
+  {
+    "timestamp": "2025-07-27T14:15:45.043714",
+    "score": 38,
+    "category_scores": {
+      "transportation": 62.5,
+      "nutrition": 50.0,
+      "energy": 41.666666666666664,
+      "waste": 0.0,
+      "consumption": 12.5,
+      "lifestyle": 50
+    },
+    "test_type": "kisa"
+  },
+  {
+    "timestamp": "2025-07-27T14:32:18.198880",
+    "score": 38,
+    "category_scores": {
+      "transportation": 62.5,
+      "nutrition": 50.0,
+      "energy": 41.666666666666664,
+      "waste": 0.0,
+      "consumption": 12.5,
+      "lifestyle": 50
+    },
+    "test_type": "kisa"
+  },
+  {
+    "timestamp": "2025-07-27T14:32:58.263596",
+    "score": 77,
+    "category_scores": {
+      "transportation": 87.5,
+      "nutrition": 75.0,
+      "energy": 75.0,
+      "waste": 75.0,
+      "consumption": 87.5,
+      "lifestyle": 50
+    },
+    "test_type": "kisa"
+  },
+  {
+    "timestamp": "2025-07-27T15:04:45.577099",
+    "score": 56,
+    "category_scores": {
+      "transportation": 75.0,
+      "nutrition": 12.5,
+      "energy": 75.0,
+      "waste": 100.0,
+      "consumption": 25.0,
+      "lifestyle": 50
+    },
+    "test_type": "kisa"
+  },
+  {
+    "timestamp": "2025-07-27T15:10:01.264706",
+    "score": 56,
+    "category_scores": {
+      "transportation": 75.0,
+      "nutrition": 12.5,
+      "energy": 75.0,
+      "waste": 100.0,
+      "consumption": 25.0,
+      "lifestyle": 50
+    },
+    "test_type": "kisa"
+  },
+  {
+    "timestamp": "2025-07-27T15:10:16.159805",
+    "score": 56,
+    "category_scores": {
+      "transportation": 75.0,
+      "nutrition": 12.5,
+      "energy": 75.0,
+      "waste": 100.0,
+      "consumption": 25.0,
+      "lifestyle": 50
+    },
+    "test_type": "kisa"
+  },
+  {
+    "timestamp": "2025-07-27T15:22:17.631827",
+    "score": 63,
+    "category_scores": {
+      "transportation": 37.5,
+      "nutrition": 62.5,
+      "energy": 66.66666666666667,
+      "waste": 100.0,
+      "consumption": 62.5,
+      "lifestyle": 50
+    },
+    "test_type": "kisa"
+  },
+  {
+    "timestamp": "2025-07-27T15:33:21.317746",
+    "score": 51,
+    "category_scores": {
+      "transportation": 37.5,
+      "nutrition": 37.5,
+      "energy": 58.33333333333333,
+      "waste": 100.0,
+      "consumption": 25.0,
+      "lifestyle": 50
+    },
+    "test_type": "kisa"
+  },
+  {
+    "timestamp": "2025-07-27T15:35:22.538442",
+    "score": 38,
+    "category_scores": {
+      "transportation": 12.5,
+      "nutrition": 37.5,
+      "energy": 41.666666666666664,
+      "waste": 50.0,
+      "consumption": 50.0,
+      "lifestyle": 50
+    },
+    "test_type": "kisa"
+  },
+  {
+    "timestamp": "2025-07-27T15:36:10.857126",
+    "score": 54,
+    "category_scores": {
+      "transportation": 50.0,
+      "nutrition": 37.5,
+      "energy": 75.0,
+      "waste": 75.0,
+      "consumption": 37.5,
+      "lifestyle": 50
+    },
+    "test_type": "kisa"
+  },
+  {
+    "timestamp": "2025-07-27T15:44:07.036471",
+    "score": 54,
+    "category_scores": {
+      "transportation": 100.0,
+      "nutrition": 50.0,
+      "energy": 66.66666666666667,
+      "waste": 25.0,
+      "consumption": 12.5,
+      "lifestyle": 50
+    },
+    "test_type": "kisa"
+  },
+  {
+    "timestamp": "2025-07-27T16:14:35.473149",
+    "score": 47,
+    "category_scores": {
+      "transportation": 75.0,
+      "nutrition": 12.5,
+      "energy": 75.0,
+      "waste": 50.0,
+      "consumption": 12.5,
+      "lifestyle": 50
+    },
+    "test_type": "kisa"
+  },
+  {
+    "timestamp": "2025-07-27T16:15:56.860521",
+    "score": 48,
+    "category_scores": {
+      "transportation": 75.0,
+      "nutrition": 12.5,
+      "energy": 58.33333333333333,
+      "waste": 75.0,
+      "consumption": 12.5,
+      "lifestyle": 50
+    },
+    "test_type": "kisa"
+  },
+  {
+    "timestamp": "2025-07-27T16:17:02.085488",
+    "score": 45,
+    "category_scores": {
+      "transportation": 87.5,
+      "nutrition": 62.5,
+      "energy": 41.666666666666664,
+      "waste": 0.0,
+      "consumption": 12.5,
+      "lifestyle": 50
+    },
+    "test_type": "kisa"
+  },
+  {
+    "timestamp": "2025-07-27T16:17:12.399823",
+    "score": 45,
+    "category_scores": {
+      "transportation": 87.5,
+      "nutrition": 62.5,
+      "energy": 41.666666666666664,
+      "waste": 0.0,
+      "consumption": 12.5,
+      "lifestyle": 50
+    },
+    "test_type": "kisa"
+  },
+  {
+    "timestamp": "2025-07-27T16:18:12.759300",
+    "score": 94,
+    "category_scores": {
+      "transportation": 100.0,
+      "nutrition": 100.0,
+      "energy": 100.0,
+      "waste": 100.0,
+      "consumption": 100.0,
+      "lifestyle": 50
+    },
+    "test_type": "kisa"
+  },
+  {
+    "timestamp": "2025-07-27T17:04:06.976940",
+    "score": 56,
+    "category_scores": {
+      "transportation": 62.5,
+      "nutrition": 25.0,
+      "energy": 50.0,
+      "waste": 100.0,
+      "consumption": 50.0,
+      "lifestyle": 50
+    },
+    "test_type": "kisa"
+  },
+  {
+    "timestamp": "2025-07-27T17:05:42.513770",
+    "score": 6,
+    "category_scores": {
+      "transportation": 0.0,
+      "nutrition": 0.0,
+      "energy": 0.0,
+      "waste": 0.0,
+      "consumption": 0.0,
+      "lifestyle": 50
+    },
+    "test_type": "kisa"
+  },
+  {
+    "timestamp": "2025-07-27T17:06:15.736760",
+    "score": 6,
+    "category_scores": {
+      "transportation": 0.0,
+      "nutrition": 0.0,
+      "energy": 0.0,
+      "waste": 0.0,
+      "consumption": 0.0,
+      "lifestyle": 50
+    },
+    "test_type": "kisa"
+  },
+  {
+    "timestamp": "2025-07-27T17:06:16.952019",
+    "score": 6,
+    "category_scores": {
+      "transportation": 0.0,
+      "nutrition": 0.0,
+      "energy": 0.0,
+      "waste": 0.0,
+      "consumption": 0.0,
+      "lifestyle": 50
+    },
+    "test_type": "kisa"
+  },
+  {
+    "timestamp": "2025-07-27T17:29:49.960438",
+    "score": 50,
+    "category_scores": {
+      "transportation": 62.5,
+      "nutrition": 50.0,
+      "energy": 66.66666666666667,
+      "waste": 50.0,
+      "consumption": 12.5,
+      "lifestyle": 50
+    },
+    "test_type": "kisa"
+  },
+  {
+    "timestamp": "2025-07-27T17:30:16.095272",
+    "score": 50,
+    "category_scores": {
+      "transportation": 62.5,
+      "nutrition": 50.0,
+      "energy": 66.66666666666667,
+      "waste": 50.0,
+      "consumption": 12.5,
+      "lifestyle": 50
+    },
+    "test_type": "kisa"
+  },
+  {
+    "timestamp": "2025-07-27T17:30:42.612545",
+    "score": 50,
+    "category_scores": {
+      "transportation": 62.5,
+      "nutrition": 50.0,
+      "energy": 66.66666666666667,
+      "waste": 50.0,
+      "consumption": 12.5,
+      "lifestyle": 50
+    },
+    "test_type": "kisa"
+  },
+  {
+    "timestamp": "2025-07-27T17:30:47.735891",
+    "score": 50,
+    "category_scores": {
+      "transportation": 62.5,
+      "nutrition": 50.0,
+      "energy": 66.66666666666667,
+      "waste": 50.0,
+      "consumption": 12.5,
+      "lifestyle": 50
+    },
+    "test_type": "kisa"
+  },
+  {
+    "timestamp": "2025-07-27T17:42:21.426996",
+    "score": 49,
+    "category_scores": {
+      "transportation": 37.5,
+      "nutrition": 50.0,
+      "energy": 25.0,
+      "waste": 100.0,
+      "consumption": 37.5,
+      "lifestyle": 50
+    },
+    "test_type": "kisa"
+  },
+  {
+    "timestamp": "2025-07-27T17:42:29.214408",
+    "score": 49,
+    "category_scores": {
+      "transportation": 37.5,
+      "nutrition": 50.0,
+      "energy": 25.0,
+      "waste": 100.0,
+      "consumption": 37.5,
+      "lifestyle": 50
+    },
+    "test_type": "kisa"
+  },
+  {
+    "timestamp": "2025-07-27T17:42:37.221242",
+    "score": 49,
+    "category_scores": {
+      "transportation": 37.5,
+      "nutrition": 50.0,
+      "energy": 25.0,
+      "waste": 100.0,
+      "consumption": 37.5,
+      "lifestyle": 50
+    },
+    "test_type": "kisa"
+  },
+  {
+    "timestamp": "2025-07-27T17:51:53.053255",
+    "score": 57,
+    "category_scores": {
+      "transportation": 75.0,
+      "nutrition": 25.0,
+      "energy": 33.33333333333334,
+      "waste": 75.0,
+      "consumption": 87.5,
+      "lifestyle": 50
+    },
+    "test_type": "kisa"
+  },
+  {
+    "timestamp": "2025-07-27T17:52:00.198851",
+    "score": 57,
+    "category_scores": {
+      "transportation": 75.0,
+      "nutrition": 25.0,
+      "energy": 33.33333333333334,
+      "waste": 75.0,
+      "consumption": 87.5,
+      "lifestyle": 50
+    },
+    "test_type": "kisa"
+  },
+  {
+    "timestamp": "2025-07-27T18:21:26.034703",
+    "score": 57,
+    "category_scores": {
+      "transportation": 75.0,
+      "nutrition": 25.0,
+      "energy": 33.33333333333334,
+      "waste": 75.0,
+      "consumption": 87.5,
+      "lifestyle": 50
+    },
+    "test_type": "kisa"
+  },
+  {
+    "timestamp": "2025-07-28T11:03:33.938789",
+    "score": 51,
+    "category_scores": {
+      "transportation": 75.0,
+      "nutrition": 0.0,
+      "energy": 50.0,
+      "waste": 50.0,
+      "consumption": 87.5,
+      "lifestyle": 50
+    },
+    "test_type": "kisa"
+  },
+  {
+    "timestamp": "2025-07-28T11:07:48.839051",
+    "score": 94,
+    "category_scores": {
+      "transportation": 100.0,
+      "nutrition": 100.0,
+      "energy": 100.0,
+      "waste": 100.0,
+      "consumption": 100.0,
+      "lifestyle": 50
+    },
+    "test_type": "kisa"
+  },
+  {
+    "timestamp": "2025-07-28T11:09:21.535525",
+    "score": 94,
+    "category_scores": {
+      "transportation": 100.0,
+      "nutrition": 100.0,
+      "energy": 100.0,
+      "waste": 100.0,
+      "consumption": 100.0,
+      "lifestyle": 50
+    },
+    "test_type": "kisa"
+  },
+  {
+    "timestamp": "2025-07-29T16:43:49.053722",
+    "score": 62,
+    "category_scores": {
+      "transportation": 50.0,
+      "nutrition": 62.5,
+      "energy": 58.33333333333333,
+      "waste": 75.0,
+      "consumption": 75.0,
+      "lifestyle": 50
+    },
+    "test_type": "kisa"
+  }
+]
